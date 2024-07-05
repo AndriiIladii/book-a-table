@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./reducer";
+import tableReducer from "./TableSlice";
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    table: tableReducer,
+  },
 });
 
 export default store;

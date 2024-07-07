@@ -10,7 +10,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2>Table number {tableNumber}</h2>
+            <h2>Table number: {tableNumber}</h2>
           </div>
         </div>
       )}

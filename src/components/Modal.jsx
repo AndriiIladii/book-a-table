@@ -1,7 +1,7 @@
 import React from "react";
 import * as styles from "./Modal.module.css";
 
-const Modal = ({ active, setActive }) => {
+const Modal = ({ active, setActive, tableNumber }) => {
   return (
     <>
       {active && (
@@ -9,7 +9,9 @@ const Modal = ({ active, setActive }) => {
           <div
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
-          ></div>
+          >
+            <h2>Table number {tableNumber}</h2>
+          </div>
         </div>
       )}
     </>

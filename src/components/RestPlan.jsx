@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+
 import * as styles from "./RestPlan.module.css";
 
 const RestPlan = ({ setActive }) => {
+  const [selectedTable, setSelectedTable] = useState(null);
+
+  const handleTable = (number) => {
+    setSelectedTable(number);
+    setActive(number);
+  };
+
   return (
-    <div className={styles.svgContainer} onClick={() => setActive(true)}>
+    <div className={styles.svgContainer}>
       <svg
         id="Layer_1"
         data-name="Layer 1"
@@ -152,7 +160,7 @@ const RestPlan = ({ setActive }) => {
           />
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(1)}>
           <rect
             className={styles.cls3}
             x="462.61"
@@ -165,7 +173,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(2)}>
           <rect
             className={styles.cls3}
             x="462.48"
@@ -178,7 +186,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(3)}>
           <rect
             className={styles.cls3}
             x="461.59"
@@ -191,7 +199,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(4)}>
           <rect
             className={styles.cls3}
             x="461.59"
@@ -204,7 +212,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(5)}>
           <rect
             className={styles.cls3}
             x="459.71"
@@ -217,7 +225,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(6)}>
           <rect
             className={styles.cls3}
             x="459.71"
@@ -230,7 +238,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(7)}>
           <rect
             className={styles.cls3}
             x="460.69"
@@ -243,7 +251,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(8)}>
           <rect
             className={styles.cls3}
             x="461.46"
@@ -256,7 +264,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(9)}>
           <rect
             className={styles.cls3}
             x="392.39"
@@ -269,7 +277,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(10)}>
           <rect
             className={styles.cls3}
             x="391.29"
@@ -282,7 +290,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(11)}>
           <rect
             className={styles.cls3}
             x="391.29"
@@ -295,7 +303,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(12)}>
           <rect
             className={styles.cls3}
             x="392.39"
@@ -308,7 +316,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(13)}>
           <rect
             className={styles.cls3}
             x="392.39"
@@ -321,7 +329,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(14)}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -334,7 +342,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(15)}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -347,7 +355,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(16)}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -360,7 +368,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(17)}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -373,7 +381,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(18)}>
           <rect
             className={styles.cls3}
             x="314.27"
@@ -386,7 +394,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(19)}>
           <ellipse
             className={styles.cls3}
             cx="471.96"
@@ -399,7 +407,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(20)}>
           <ellipse
             className={styles.cls3}
             cx="383.64"
@@ -412,7 +420,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(21)}>
           <ellipse
             className={styles.cls3}
             cx="294.41"
@@ -425,7 +433,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(22)}>
           <ellipse
             className={styles.cls3}
             cx="236.55"
@@ -438,7 +446,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(23)}>
           <ellipse
             className={styles.cls3}
             cx="148.48"
@@ -451,7 +459,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(24)}>
           <rect
             className={styles.cls3}
             x="38.61"
@@ -464,7 +472,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(25)}>
           <rect
             className={styles.cls3}
             x="37.07"
@@ -477,7 +485,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(26)}>
           <rect
             className={styles.cls3}
             x="70.61"
@@ -490,7 +498,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(27)}>
           <rect
             className={styles.cls3}
             x="67.88"
@@ -503,7 +511,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(28)}>
           <rect
             className={styles.cls3}
             x="62.1"
@@ -516,7 +524,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(29)}>
           <rect
             className={styles.cls3}
             x="140.56"
@@ -529,7 +537,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(30)}>
           <rect
             className={styles.cls3}
             x="1.5"
@@ -545,7 +553,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(40)}>
           <rect
             className={styles.cls3}
             x="254.27"
@@ -558,7 +566,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(41)}>
           <rect
             className={styles.cls3}
             x="254.9"
@@ -571,7 +579,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(42)}>
           <rect
             className={styles.cls3}
             x="255.03"
@@ -584,7 +592,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g className={styles.table}>
+        <g className={styles.table} onClick={() => handleTable(45)}>
           <rect
             className={styles.cls3}
             x="58.18"

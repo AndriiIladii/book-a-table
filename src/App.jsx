@@ -4,11 +4,21 @@ import Modal from "./components/Modal";
 
 const App = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [tableNumber, setTableNumber] = useState(null);
+
+  const handleSetActive = (table) => {
+    setModalActive(true);
+    setTableNumber(table);
+  };
 
   return (
     <div className="App">
-      <RestPlan setActive={setModalActive} />
-      <Modal active={modalActive} setActive={setModalActive} />
+      <RestPlan setActive={handleSetActive} />
+      <Modal
+        active={modalActive}
+        setActive={setModalActive}
+        tableNumber={tableNumber}
+      />
     </div>
   );
 };

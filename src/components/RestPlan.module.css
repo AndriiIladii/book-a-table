@@ -47,3 +47,19 @@
   font-weight: 700;
   font-family: Calibri-Bold, Calibri;
 }
+
+/* Hover effects */
+
+g:hover rect,
+g:hover ellipse {
+  fill: #122223;
+  cursor: pointer;
+}
+
+g:hover text {
+  fill: #ffd9b6;
+  cursor: pointer;
+}
+/*
+
+text color*/

@@ -48,18 +48,17 @@
   font-family: Calibri-Bold, Calibri;
 }
 
-/* Hover effects */
-
-g:hover rect,
-g:hover ellipse {
+.table:hover rect,
+.table:hover ellipse {
   fill: #122223;
   cursor: pointer;
 }
 
-g:hover text {
+.table:hover text {
   fill: #ffd9b6;
   cursor: pointer;
 }
-/*
 
-text color*/
+.bar {
+  pointer-events: none;
+}

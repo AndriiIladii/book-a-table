@@ -57,7 +57,7 @@ const RestPlan = ({ setActive }) => {
           height="14.49"
         />
 
-        <g>
+        <g className={styles.bar}>
           <ellipse
             className={styles.cls3}
             cx="199.8"
@@ -152,7 +152,7 @@ const RestPlan = ({ setActive }) => {
           />
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="462.61"
@@ -165,7 +165,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="462.48"
@@ -178,7 +178,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="461.59"
@@ -191,7 +191,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="461.59"
@@ -204,7 +204,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="459.71"
@@ -217,7 +217,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="459.71"
@@ -230,7 +230,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="460.69"
@@ -243,7 +243,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="461.46"
@@ -256,7 +256,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="392.39"
@@ -269,7 +269,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="391.29"
@@ -282,7 +282,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="391.29"
@@ -295,7 +295,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="392.39"
@@ -308,7 +308,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="392.39"
@@ -321,7 +321,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -334,7 +334,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -347,7 +347,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -360,7 +360,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="313.76"
@@ -373,7 +373,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="314.27"
@@ -386,7 +386,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <ellipse
             className={styles.cls3}
             cx="471.96"
@@ -399,7 +399,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <ellipse
             className={styles.cls3}
             cx="383.64"
@@ -412,7 +412,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <ellipse
             className={styles.cls3}
             cx="294.41"
@@ -425,7 +425,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <ellipse
             className={styles.cls3}
             cx="236.55"
@@ -438,7 +438,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <ellipse
             className={styles.cls3}
             cx="148.48"
@@ -451,7 +451,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="38.61"
@@ -464,7 +464,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="37.07"
@@ -477,7 +477,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="70.61"
@@ -490,7 +490,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="67.88"
@@ -503,7 +503,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="62.1"
@@ -516,7 +516,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="140.56"
@@ -529,7 +529,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="1.5"
@@ -545,7 +545,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="254.27"
@@ -558,7 +558,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="254.9"
@@ -571,7 +571,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="255.03"
@@ -584,7 +584,7 @@ const RestPlan = ({ setActive }) => {
           </text>
         </g>
 
-        <g>
+        <g className={styles.table}>
           <rect
             className={styles.cls3}
             x="58.18"

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import RestPlan from "./restPlan.svg";
+import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
 
 const App = () => {
-  const [modalActive, setModalActive] = useState(true);
+  const [modalActive, setModalActive] = useState(false);
 
   return (
     <div className="App">
-      <RestPlan onClick={() => setModalActive(true)} />
+      <RestPlan setActive={setModalActive} />
       <Modal active={modalActive} setActive={setModalActive} />
     </div>
   );

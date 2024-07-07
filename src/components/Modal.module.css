@@ -1,33 +1,20 @@
+/* Modal.module.css */
 .modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.5s all;
-}
-
-.modal.active {
-  opacity: 1;
-  pointer-events: all;
 }
 
 .modalContent {
+  background-color: #fff;
   padding: 20px;
   border-radius: 12px;
-  background-color: #fff;
-  width: 500px;
-  height: 500px;
-  transform: scale(0.5);
-  transition: 0.4s all;
-}
-
-.modalContent.active {
-  transform: scale(1);
+  width: 300px;
+  height: 300px;
 }

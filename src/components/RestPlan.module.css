@@ -1,0 +1,49 @@
+.svgContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.svgContent {
+  height: 100%;
+  width: 100%;
+}
+
+.cls3 {
+  fill: none;
+}
+
+.cls1,
+.cls2,
+.cls3 {
+  stroke: #1d1d1b;
+}
+
+.cls1,
+.cls2 {
+  stroke-width: 3px;
+}
+
+.cls2,
+.cls5,
+.cls6 {
+  fill: #1d1d1b;
+}
+
+.cls3 {
+  stroke-width: 2px;
+}
+
+.cls4 {
+  fill: #fff;
+}
+
+.cls5,
+.cls6 {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: Calibri-Bold, Calibri;
+}

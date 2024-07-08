@@ -50,6 +50,10 @@
   font-family: "Apercu Pro", sans-serif;
 }
 
+.table {
+  fill: #fff;
+}
+
 .table:hover rect,
 .table:hover ellipse {
   fill: #122223;

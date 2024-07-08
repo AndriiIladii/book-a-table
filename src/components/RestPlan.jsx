@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import tablesData from "./tablesData";
+import "../App.module.css";
 import * as styles from "./RestPlan.module.css";
 
 const RestPlan = ({ setActive }) => {

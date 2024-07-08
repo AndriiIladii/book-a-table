@@ -13,14 +13,42 @@
 }
 
 .modalContent {
-  display: flex;
-  justify-content: center;
   font-family: "Apercu Pro", sans-serif;
   font-weight: 400;
   background-color: #122223;
   color: #ffd9b6;
   padding: 20px;
   border-radius: 12px;
-  width: 300px;
-  height: 300px;
+  width: 600px;
+  height: 600px;
+}
+
+.tableNumber {
+  text-align: center;
+}
+
+form {
+  margin: 40px 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+form input,
+.commentary input {
+  background-color: #414e4f;
+}
+
+.commentary label {
+  display: block;
+  text-align: center;
+}
+
+.first input {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.second input {
+  display: block;
+  margin-bottom: 20px;
 }

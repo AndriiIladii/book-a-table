@@ -11,6 +11,15 @@
   box-sizing: border-box;
 }
 
+body {
+  background: rgb(18, 35, 24);
+  background: linear-gradient(
+    37deg,
+    rgba(18, 35, 24, 1) 46%,
+    rgba(255, 203, 182, 1) 100%
+  );
+}
+
 :focus,
 :active {
   /*outline: none;*/

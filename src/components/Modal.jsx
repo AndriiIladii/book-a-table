@@ -59,6 +59,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
                   <label>Name</label>
                   <input
                     type="text"
+                    placeholder="Enter guest name"
                     onChange={(e) => setTableName(e.target.value)}
                   />
                 </div>
@@ -66,6 +67,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
                   <label>Guest count</label>
                   <input
                     type="number"
+                    placeholder="Enter guest count"
                     onChange={(e) => setGuestCount(e.target.value)}
                   />
                 </div>
@@ -89,21 +91,29 @@ const Modal = ({ active, setActive, tableNumber }) => {
                   <label>Phone number</label>
                   <input
                     type="tel"
+                    placeholder="+380"
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label>Has birthday</label>
-                  <input
-                    type="checkbox"
-                    onChange={(e) => setBirthday(e.target.checked)}
-                  />
+                <div className={styles.checkboxWrapper}>
+                  <label>
+                    Has birthday
+                    <input
+                      type="checkbox"
+                      onChange={(e) => setBirthday(e.target.checked)}
+                    />
+                    <span className={styles.checkbox}></span>
+                  </label>
                 </div>
               </div>
             </form>
             <div className={styles.commentary}>
               <label>Notes</label>
-              <input type="text" onChange={(e) => setNotes(e.target.value)} />
+              <input
+                type="text"
+                placeholder="Enter special requests"
+                onChange={(e) => setNotes(e.target.value)}
+              />
             </div>
             <div>
               <button

@@ -9,7 +9,7 @@ export const TableSlice = createSlice({
   initialState,
   reducers: {
     addTable: (state, action) => {
-      state.table.push(action.payload);
+      state.table = [...state.table, action.payload];
     },
     saveTable: (state) => {
       localStorage.setItem("newTable", JSON.stringify(state.table));

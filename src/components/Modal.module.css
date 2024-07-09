@@ -35,6 +35,10 @@ form {
   justify-content: space-between;
 }
 
+form input {
+  height: 45px;
+}
+
 form input,
 .commentary input {
   background-color: transparent;
@@ -57,19 +61,10 @@ form input,
   text-align: center;
 }
 
-.first input,
-.second input {
+.leftBlock input,
+.rightBlock input {
   display: block;
   margin-bottom: 30px;
-}
-
-.formBtn {
-  font-size: 20px;
-  padding: 20px;
-  background-color: #ffd9b6;
-  color: #122223;
-  display: block;
-  margin: 0 auto;
 }
 
 /* Checkbox  styling */
@@ -106,3 +101,20 @@ form input,
 }
 
 /* Checkbox */
+
+.formBtn {
+  font-size: 20px;
+  padding: 20px;
+  background-color: #122223;
+  border: 1px solid #ffd9b6;
+  display: block;
+  color: #ffd9b6;
+  margin: 0 auto;
+  transition: 0.25s;
+}
+
+.formBtn:hover,
+.formBtn:focus {
+  box-shadow: inset 190px 0 0 0 #ffd9b6;
+  color: #122223;
+}

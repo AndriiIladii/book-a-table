@@ -20,6 +20,8 @@ const RestPlan = ({ setActive }) => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 523.85 784.28"
       >
+        {/* Static components */}
+
         <rect x="1.5" y="1.5" fill="#ffffff" width="520.85" height="781.28" />
 
         <line
@@ -160,6 +162,8 @@ const RestPlan = ({ setActive }) => {
             ry="13.11"
           />
         </g>
+
+        {/* Static components */}
 
         {tablesData.map(({ table, text }) => (
           <g

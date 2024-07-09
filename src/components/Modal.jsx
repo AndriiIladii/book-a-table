@@ -46,7 +46,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
   return (
     <>
       {active && (
-        <div className={styles.modal} onClick={() => setActive(false)}>
+        <div className={styles.modal}>
           <div
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
@@ -54,7 +54,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
             <h2 className={styles.tableNumber}>Table number: {tableNumber}</h2>
 
             <form>
-              <div className={styles.first}>
+              <div className={styles.leftBlock}>
                 <div>
                   <label>Name</label>
                   <input
@@ -79,7 +79,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
                   />
                 </div>
               </div>
-              <div className={styles.second}>
+              <div className={styles.rightBlock}>
                 <div>
                   <label>Booking Time</label>
                   <input

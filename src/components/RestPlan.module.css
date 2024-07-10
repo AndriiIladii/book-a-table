@@ -3,9 +3,6 @@
 .svgContainer {
   height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
@@ -67,4 +64,41 @@
 
 .bar {
   pointer-events: none;
+}
+
+.headerBtn {
+  font-size: 20px;
+  padding: 20px;
+  background-color: #122223;
+  border: 1px solid #ffd9b6;
+  color: #ffd9b6;
+  margin: 0 auto;
+  transition: 0.25s;
+}
+
+.headerBtn:hover,
+.headerBtn:focus {
+  box-shadow: inset 190px 0 0 0 #ffd9b6;
+  color: #122223;
+}
+
+.reservationBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+}
+
+.noReserveWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.noReserve {
+  max-width: 500px;
+  font-size: 40px;
+  color: #fff;
 }

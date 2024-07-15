@@ -1,25 +1,32 @@
 import React from "react";
-import * as styles from "./RestPlan.module.css";
+import rest from "./rest.jpg";
+import * as styles from "./Reservation.module.css";
 
 const ReservationList = ({ reservations }) => {
   return (
     <div>
       {reservations.length > 0 ? (
-        <div className={styles.reservationBlock}>
-          <ul>
-            {reservations.map((reservation, index) => (
+        <ul className={styles.reservationBlock}>
+          {reservations.map((reservation, index) => (
+            <div className={styles.blockContent}>
               <li key={index}>
-                <p>Guest Name: {reservation.name}</p>
-                <p>Reservation Time:{reservation.time}</p>
-                <p> Reservation Date:{reservation.time}</p>
+                <div className={styles.testImg}>
+                  <img src={rest} alt="rest" />
+                </div>
+                <div className={styles.test}>
+                  <p>Guest Name: {reservation.name}</p>
+                  <p>Table number:{reservation.tableNumber}</p>
+                  <p> Reservation Time:{reservation.time}</p>
+                </div>
+                <button className={styles.reservationBtn}>
+                  View reservation
+                </button>
               </li>
-            ))}
-          </ul>
-        </div>
+            </div>
+          ))}
+        </ul>
       ) : (
-        <div className={styles.noReserveWrapper}>
-          <p className={styles.noReserve}>No reservations available.</p>
-        </div>
+        <p className={styles.noReserve}>No reservations available.</p>
       )}
     </div>
   );

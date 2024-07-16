@@ -1,4 +1,6 @@
 /* Reset and base styles  */
+@import url("https://fonts.cdnfonts.com/css/apercu-pro");
+
 * {
   padding: 0px;
   margin: 0px;
@@ -18,20 +20,9 @@ body {
     rgba(18, 35, 24, 1) 46%,
     rgba(255, 203, 182, 1) 100%
   );
+
+  font-family: "Apercu Pro", sans-serif;
 }
-
-:focus,
-:active {
-  /*outline: none;*/
-}
-
-a:focus,
-a:active {
-  /* outline: none;*/
-}
-
-/* Links */
-
 a,
 a:link,
 a:visited {

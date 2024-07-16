@@ -10,10 +10,10 @@ const ReservationList = ({ reservations }) => {
           {reservations.map((reservation, index) => (
             <div className={styles.blockContent}>
               <li key={index}>
-                <div className={styles.testImg}>
+                <div className={styles.contentImg}>
                   <img src={rest} alt="rest" />
                 </div>
-                <div className={styles.test}>
+                <div className={styles.contentInfo}>
                   <p>Guest Name: {reservation.name}</p>
                   <p>Table number:{reservation.tableNumber}</p>
                   <p> Reservation Time:{reservation.time}</p>

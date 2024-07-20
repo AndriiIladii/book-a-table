@@ -5,9 +5,8 @@ import ReservationList from "./ReservationsList";
 import "../App.module.css";
 import * as styles from "./RestPlan.module.css";
 
-const RestPlan = ({ setActive }) => {
+const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
-  const [view, setView] = useState("Rest Plan");
   const reservations = useSelector((state) => state.table.table);
 
   const handleTable = (number) => {
@@ -15,43 +14,8 @@ const RestPlan = ({ setActive }) => {
     setActive(number);
   };
 
-  function showRestuarantPlan() {
-    setView("Rest Plan");
-  }
-
-  function showPontonPlan() {
-    setView("Ponton Plan");
-  }
-
-  function showTerracePlan() {
-    setView("Terrace Plan");
-  }
-
-  function showReservation() {
-    setView("Reservations");
-  }
-
   return (
     <div className={styles.svgContainer}>
-      <aside>
-        <div className={styles.topButtons}>
-          <button onClick={showRestuarantPlan} className={styles.headerBtn}>
-            Restaurant
-          </button>
-          <button onClick={showReservation} className={styles.headerBtn}>
-            Reservation
-          </button>
-        </div>
-        <div className={styles.bottomButtons}>
-          <button onClick={showPontonPlan} className={styles.headerBtn}>
-            Ponton
-          </button>
-          <button onClick={showTerracePlan} className={styles.headerBtn}>
-            Terrace
-          </button>
-        </div>
-      </aside>
-
       {view === "Rest Plan" && (
         <svg
           id="Layer_1"

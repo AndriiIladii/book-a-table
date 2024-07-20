@@ -1,0 +1,32 @@
+aside {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerBtn {
+  font-size: 20px;
+  padding: 20px;
+  background-color: #122223;
+  border: 1px solid #ffd9b6;
+  color: #ffd9b6;
+  margin: 0 auto;
+  transition: 0.25s;
+  width: 200px;
+}
+
+.topButtons {
+  display: flex;
+  width: 400px;
+}
+
+.bottomButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerBtn:hover,
+.headerBtn:focus {
+  box-shadow: inset 200px 0 0 0 #ffd9b6;
+  color: #122223;
+}

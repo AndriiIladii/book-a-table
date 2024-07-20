@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addTable, saveTable, loadTable } from "../store/TableSlice";
-import * as styles from "./Modal.module.css";
+import * as styles from "../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {
   const [tableName, setTableName] = useState("");

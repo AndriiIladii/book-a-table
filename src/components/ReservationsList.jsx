@@ -1,6 +1,6 @@
 import React from "react";
-import rest from "./rest.jpg";
-import * as styles from "./Reservation.module.css";
+import rest from "../images/rest.jpg";
+import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = ({ reservations }) => {
   return (

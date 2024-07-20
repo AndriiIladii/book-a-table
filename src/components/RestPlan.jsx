@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import tablesData from "./tablesData";
 import { useSelector } from "react-redux";
 import ReservationList from "./ReservationsList";
-import "../App.module.css";
-import * as styles from "./RestPlan.module.css";
+import "../styles/App.module.css";
+import * as styles from "../styles/RestPlan.module.css";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);

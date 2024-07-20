@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./Sidebar.module.css";
+import * as styles from "../styles/Sidebar.module.css";
 
 const Sidebar = ({ setView }) => {
   function showRestuarantPlan() {

@@ -15,8 +15,16 @@ const RestPlan = ({ setActive }) => {
     setActive(number);
   };
 
-  function showTables() {
+  function showRestuarantPlan() {
     setView("Rest Plan");
+  }
+
+  function showPontonPlan() {
+    setView("Ponton Plan");
+  }
+
+  function showTerracePlan() {
+    setView("Terrace Plan");
   }
 
   function showReservation() {
@@ -25,16 +33,26 @@ const RestPlan = ({ setActive }) => {
 
   return (
     <div className={styles.svgContainer}>
-      <div>
-        <button onClick={showTables} className={styles.headerBtn}>
-          Tables
-        </button>
-        <button onClick={showReservation} className={styles.headerBtn}>
-          Reservation
-        </button>
-      </div>
+      <aside>
+        <div className={styles.topButtons}>
+          <button onClick={showRestuarantPlan} className={styles.headerBtn}>
+            Restaurant
+          </button>
+          <button onClick={showReservation} className={styles.headerBtn}>
+            Reservation
+          </button>
+        </div>
+        <div className={styles.bottomButtons}>
+          <button onClick={showPontonPlan} className={styles.headerBtn}>
+            Ponton
+          </button>
+          <button onClick={showTerracePlan} className={styles.headerBtn}>
+            Terrace
+          </button>
+        </div>
+      </aside>
 
-      {view === "Rest Plan" ? (
+      {view === "Rest Plan" && (
         <svg
           id="Layer_1"
           data-name="Layer 1"
@@ -216,9 +234,13 @@ const RestPlan = ({ setActive }) => {
             </g>
           ))}
         </svg>
-      ) : (
+      )}
+
+      {view === "Reservations" && (
         <ReservationList reservations={reservations} />
       )}
+      {view === "Ponton Plan"}
+      {view === "Terrac Plan"}
     </div>
   );
 };

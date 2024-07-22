@@ -21,18 +21,18 @@ const Sidebar = ({ setView }) => {
   return (
     <aside>
       <div className={styles.topButtons}>
-        <button onClick={showRestuarantPlan} className={styles.headerBtn}>
+        <button onClick={showRestuarantPlan} className={styles.sidebarBtn}>
           Restaurant
         </button>
-        <button onClick={showReservation} className={styles.headerBtn}>
+        <button onClick={showReservation} className={styles.sidebarBtn}>
           Reservation
         </button>
       </div>
       <div className={styles.bottomButtons}>
-        <button onClick={showPontonPlan} className={styles.headerBtn}>
+        <button onClick={showPontonPlan} className={styles.sidebarBtn}>
           Ponton
         </button>
-        <button onClick={showTerracePlan} className={styles.headerBtn}>
+        <button onClick={showTerracePlan} className={styles.sidebarBtn}>
           Terrace
         </button>
       </div>

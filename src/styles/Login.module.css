@@ -1,9 +1,17 @@
-aside {
+.login {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
 }
 
-.sidebarBtn {
+.login p {
+  margin-right: 20px;
+  margin-top: 15px;
+  color: #ffd9b6;
+  font-size: 24px;
+  width: 150px;
+}
+
+.loginBtn {
   font-size: 20px;
   padding: 20px;
   background-color: #122223;
@@ -13,18 +21,8 @@ aside {
   width: 200px;
 }
 
-.topButtons {
-  display: flex;
-  width: 400px;
-}
-
-.bottomButtons {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebarBtn:hover,
-.sidebarBtn:focus {
+.loginBtn:hover,
+.loginBtn:focus {
   box-shadow: inset 200px 0 0 0 #ffd9b6;
   color: #122223;
 }

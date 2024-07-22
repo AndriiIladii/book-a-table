@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
+import Login from "./components/Login";
+import * as styles from "./styles/App.module.css";
 
 const App = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -14,8 +16,11 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <Sidebar view={view} setView={setView} />
+    <div>
+      <div className={styles.Header}>
+        <Sidebar view={view} setView={setView} />
+        <Login />
+      </div>
       <RestPlan setActive={handleSetActive} view={view} />
       <Modal
         active={modalActive}

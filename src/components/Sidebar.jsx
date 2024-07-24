@@ -1,40 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import * as styles from "../styles/Sidebar.module.css";
 
-const Sidebar = ({ setView }) => {
-  function showRestuarantPlan() {
-    setView("Rest Plan");
-  }
-
-  function showPontonPlan() {
-    setView("Ponton Plan");
-  }
-
-  function showTerracePlan() {
-    setView("Terrace Plan");
-  }
-
-  function showReservation() {
-    setView("Reservations");
-  }
-
+const Sidebar = () => {
   return (
     <aside>
       <div className={styles.topButtons}>
-        <button onClick={showRestuarantPlan} className={styles.sidebarBtn}>
-          Restaurant
-        </button>
-        <button onClick={showReservation} className={styles.sidebarBtn}>
-          Reservation
-        </button>
+        <Link to="/restuarant-plan">
+          <button className={styles.sidebarBtn}>Restaurant</button>
+        </Link>
+        <Link to="/reservations">
+          <button className={styles.sidebarBtn}>Reservation</button>
+        </Link>
       </div>
       <div className={styles.bottomButtons}>
-        <button onClick={showPontonPlan} className={styles.sidebarBtn}>
-          Ponton
-        </button>
-        <button onClick={showTerracePlan} className={styles.sidebarBtn}>
-          Terrace
-        </button>
+        <Link to="/ponton-plan">
+          <button className={styles.sidebarBtn}>Ponton</button>
+        </Link>
+        <Link to="/terrace-plan">
+          <button className={styles.sidebarBtn}>Terrace</button>
+        </Link>
       </div>
     </aside>
   );

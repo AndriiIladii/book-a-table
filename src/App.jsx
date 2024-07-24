@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
 import Login from "./components/Login";
+import ReservationList from "./components/ReservationsList";
 import * as styles from "./styles/App.module.css";
 
 const App = () => {
@@ -21,7 +23,16 @@ const App = () => {
         <Sidebar view={view} setView={setView} />
         <Login />
       </div>
-      <RestPlan setActive={handleSetActive} view={view} />
+      <Routes>
+        <Route
+          path="/restaurant-plan"
+          element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}
+        />
+        <Route path="/reservation" element={<ReservationList />} />
+        <Route path="/ponton-plan" element={<div>Ponton plan</div>} />
+        <Route path="/terrace-plan" element={<div>Terrace plan</div>} />
+      </Routes>
+
       <Modal
         active={modalActive}
         setActive={setModalActive}

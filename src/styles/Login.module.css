@@ -21,8 +21,7 @@
   width: 200px;
 }
 
-.loginBtn:hover,
-.loginBtn:focus {
+.loginBtn:hover {
   box-shadow: inset 200px 0 0 0 #ffd9b6;
   color: #122223;
 }

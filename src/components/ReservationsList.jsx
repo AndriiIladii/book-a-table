@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import rest from "../images/rest.jpg";
 import * as styles from "../styles/Reservation.module.css";
 
-const ReservationList = ({ reservations }) => {
-  console.log(reservations);
+const ReservationList = () => {
+  const reservations = useSelector((state) => state.table.table);
+
   return (
     <div className={styles.reservationContainer}>
       {reservations && reservations.length > 0 ? (

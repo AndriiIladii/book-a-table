@@ -7,14 +7,12 @@ import * as styles from "../styles/RestPlan.module.css";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
-  const reservations = useSelector((state) => state.table);
+  const reservations = useSelector((state) => state.table.table);
 
   const handleTable = (number) => {
     setSelectedTable(number);
     setActive(number);
   };
-
-  console.log(reservations);
 
   return (
     <div className={styles.svgContainer}>

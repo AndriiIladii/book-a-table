@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
@@ -24,6 +24,7 @@ const App = () => {
         <Login />
       </div>
       <Routes>
+        <Route path="/" element={<Navigate to="/restaurant-plan" />} />
         <Route
           path="/restaurant-plan"
           element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}

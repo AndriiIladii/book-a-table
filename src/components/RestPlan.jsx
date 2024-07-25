@@ -14,6 +14,8 @@ const RestPlan = ({ setActive, view }) => {
     setActive(number);
   };
 
+  console.log(reservations);
+
   return (
     <div className={styles.svgContainer}>
       {view === "Rest Plan" && (

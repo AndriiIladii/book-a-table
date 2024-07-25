@@ -3,9 +3,10 @@ import rest from "../images/rest.jpg";
 import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = ({ reservations }) => {
+  console.log(reservations);
   return (
     <div className={styles.reservationContainer}>
-      {reservations.length > 0 ? (
+      {reservations && reservations.length > 0 ? (
         <ul className={styles.reservationCards}>
           {reservations.map((reservation, index) => (
             <div className={styles.cardContent}>

@@ -29,6 +29,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
 
   function addNewTable() {
     const newReservation = {
+      id: Date.now(),
       name: tableName,
       tableNumber: tableNumber,
       guests: guestCount,
@@ -42,7 +43,6 @@ const Modal = ({ active, setActive, tableNumber }) => {
     dispatch(addTable(newReservation));
     setActive(false);
   }
-
   return (
     <>
       {active && (
@@ -52,7 +52,6 @@ const Modal = ({ active, setActive, tableNumber }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className={styles.tableNumber}>Table number: {tableNumber}</h2>
-
             <form>
               <div className={styles.leftBlock}>
                 <div>

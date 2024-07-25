@@ -5,6 +5,7 @@ import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
 import Login from "./components/Login";
 import ReservationList from "./components/ReservationsList";
+import ReservationDetail from "./components/ReservationDetail";
 import * as styles from "./styles/App.module.css";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
           element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}
         />
         <Route path="/reservations" element={<ReservationList />} />
+        <Route path="/reservation/:id" element={<ReservationDetail />} />
         <Route path="/ponton-plan" element={<div>Ponton plan</div>} />
         <Route path="/terrace-plan" element={<div>Terrace plan</div>} />
         <Route path="*" element={<div>404</div>} />

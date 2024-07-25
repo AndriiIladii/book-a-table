@@ -28,9 +28,10 @@ const App = () => {
           path="/restaurant-plan"
           element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}
         />
-        <Route path="/reservation" element={<ReservationList />} />
+        <Route path="/reservations" element={<ReservationList />} />
         <Route path="/ponton-plan" element={<div>Ponton plan</div>} />
         <Route path="/terrace-plan" element={<div>Terrace plan</div>} />
+        <Route path="*" element={<div>404</div>} />
       </Routes>
 
       <Modal

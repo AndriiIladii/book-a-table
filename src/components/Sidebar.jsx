@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <aside>
       <div className={styles.topButtons}>
-        <Link to="/restuarant-plan">
+        <Link to="/restaurant-plan">
           <button className={styles.sidebarBtn}>Restaurant</button>
         </Link>
         <Link to="/reservations">

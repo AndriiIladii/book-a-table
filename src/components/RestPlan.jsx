@@ -7,7 +7,7 @@ import * as styles from "../styles/RestPlan.module.css";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
-  const reservations = useSelector((state) => state.table.table);
+  const reservations = useSelector((state) => state.table);
 
   const handleTable = (number) => {
     setSelectedTable(number);

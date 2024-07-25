@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import tablesData from "./tablesData";
-import { useSelector } from "react-redux";
 import ReservationList from "./ReservationsList";
 import "../styles/App.module.css";
 import * as styles from "../styles/RestPlan.module.css";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
-  const reservations = useSelector((state) => state.table.table);
 
   const handleTable = (number) => {
     setSelectedTable(number);
@@ -200,9 +198,7 @@ const RestPlan = ({ setActive, view }) => {
         </svg>
       )}
 
-      {view === "Reservations" && (
-        <ReservationList reservations={reservations} />
-      )}
+      {view === "Reservations"}
       {view === "Ponton Plan"}
       {view === "Terrac Plan"}
     </div>

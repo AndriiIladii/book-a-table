@@ -5,11 +5,14 @@ import { useParams } from "react-router-dom";
 const ReservationDetail = () => {
   const { id } = useParams();
   const reservations = useSelector((state) => state.table.table);
+  const reservationId = reservations.find(
+    (reservation) => reservation.id === id
+  );
 
   return (
     <div>
       <ul>
-        {reservations.map((reservation) => (
+        {reservationId.map((reservation) => (
           <div key={reservation.id}>
             <li>
               <p>Guest Name: {reservation.name}</p>

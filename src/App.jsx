@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
 import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
-import Login from "./components/Login";
+import Header from "./components/Header";
 import ReservationList from "./components/ReservationsList";
 import ReservationDetail from "./components/ReservationDetail";
 import * as styles from "./styles/App.module.css";
@@ -20,10 +19,7 @@ const App = () => {
 
   return (
     <div>
-      <div className={styles.Header}>
-        <Sidebar view={view} setView={setView} />
-        <Login />
-      </div>
+      <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/restaurant-plan" />} />
         <Route

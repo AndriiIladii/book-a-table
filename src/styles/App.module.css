@@ -99,8 +99,3 @@ label {
 legend {
   display: block;
 }
-
-.Header {
-  display: flex;
-  justify-content: space-between;
-}

@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 import ReservationList from "./components/ReservationsList";
 import ReservationDetail from "./components/ReservationDetail";
 import * as styles from "./styles/App.module.css";
@@ -19,19 +20,24 @@ const App = () => {
 
   return (
     <div>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Navigate to="/restaurant-plan" />} />
-        <Route
-          path="/restaurant-plan"
-          element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}
-        />
-        <Route path="/reservations" element={<ReservationList />} />
-        <Route path="/reservation/:id" element={<ReservationDetail />} />
-        <Route path="/ponton-plan" element={<div>Ponton plan</div>} />
-        <Route path="/terrace-plan" element={<div>Terrace plan</div>} />
-        <Route path="*" element={<div>404</div>} />
-      </Routes>
+      <div className={styles.topBar}>
+        <Header />
+        <Sidebar />
+      </div>
+      <main>
+        <Routes>
+          <Route path="/" element={<Navigate to="/restaurant-plan" />} />
+          <Route
+            path="/restaurant-plan"
+            element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}
+          />
+          <Route path="/reservations" element={<ReservationList />} />
+          <Route path="/reservation/:id" element={<ReservationDetail />} />
+          <Route path="/ponton-plan" element={<div>Ponton plan</div>} />
+          <Route path="/terrace-plan" element={<div>Terrace plan</div>} />
+          <Route path="*" element={<div>404</div>} />
+        </Routes>
+      </main>
 
       <Modal
         active={modalActive}

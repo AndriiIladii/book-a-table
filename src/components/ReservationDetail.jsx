@@ -18,6 +18,11 @@ const ReservationDetail = () => {
               <p>Guest Name: {reservation.name}</p>
               <p>Table number: {reservation.tableNumber}</p>
               <p>Reservation Time: {reservation.time}</p>
+              <p>Guests count: {reservation.guests}</p>
+              <p>Reservation Date: {reservation.date}</p>
+              <p>Guest Phone Number: {reservation.tel}</p>
+              <p>Has Birthday: {reservation.holiday}</p>
+              <p>Comments: {reservation.comment}</p>
             </li>
           </div>
         ))}

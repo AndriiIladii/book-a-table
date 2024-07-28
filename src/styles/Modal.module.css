@@ -28,18 +28,18 @@
   text-align: center;
 }
 
-form {
+.modalForm {
   font-size: 18px;
   margin: 40px 0 30px;
   display: flex;
   justify-content: space-between;
 }
 
-form input {
+.modalForm input {
   height: 45px;
 }
 
-form input,
+.modalForm input,
 .commentary input {
   background-color: transparent;
   border-bottom: 1px solid #ffd9b6;

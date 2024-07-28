@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import * as styles from "../styles/ReservationDetail.module.css";
 
 const ReservationDetail = () => {
   const { id } = useParams();
@@ -13,17 +14,25 @@ const ReservationDetail = () => {
     <div>
       <ul>
         {reservationId.map((reservation) => (
-          <div>
-            <li>
-              <p>Guest Name: {reservation.name}</p>
-              <p>Table number: {reservation.tableNumber}</p>
-              <p>Reservation Time: {reservation.time}</p>
-              <p>Guests count: {reservation.guests}</p>
-              <p>Reservation Date: {reservation.date}</p>
-              <p>Guest Phone Number: {reservation.tel}</p>
-              <p>Has Birthday: {reservation.holiday}</p>
-              <p>Comments: {reservation.comment}</p>
-            </li>
+          <div className={styles.test} key={reservation.id}>
+            <form className={styles.form}>
+              <h2 className={styles.tableNumber}>
+                Table number: {reservation.tableNumber}
+              </h2>
+              <div className={styles.container}>
+                <div className={styles.leftBlock}>
+                  <p>Name: {reservation.name}</p>
+                  <p>Time: {reservation.time}</p>
+                  <p>Guests count: {reservation.guests}</p>
+                </div>
+                <div className={styles.rightBlock}>
+                  <p>Date: {reservation.date}</p>
+                  <p>Phone: {reservation.tel}</p>
+                  <p>Has Birthday: {reservation.holiday}</p>
+                </div>
+              </div>
+              <p className={styles.comments}>Comments: {reservation.comment}</p>
+            </form>
           </div>
         ))}
       </ul>

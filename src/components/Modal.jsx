@@ -52,7 +52,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className={styles.tableNumber}>Table number: {tableNumber}</h2>
-            <form>
+            <form className={styles.modalForm}>
               <div className={styles.leftBlock}>
                 <div>
                   <label>Name</label>

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 //components
 import RestPlan from "./components/RestPlan";
+import PontonPlan from "./components/PontonPlan";
+import TerracePlan from "./components/TerracePlan";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -36,8 +38,8 @@ const App = () => {
           />
           <Route path="/reservations" element={<ReservationList />} />
           <Route path="/reservation/:id" element={<ReservationDetail />} />
-          <Route path="/ponton-plan" element={<div>Ponton plan</div>} />
-          <Route path="/terrace-plan" element={<div>Terrace plan</div>} />
+          <Route path="/ponton-plan" element={<PontonPlan />} />
+          <Route path="/terrace-plan" element={<TerracePlan />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </main>

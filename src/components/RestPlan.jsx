@@ -206,7 +206,7 @@ const RestPlan = ({ setActive, view }) => {
 
       {view === "Reservations"}
       {view === "Ponton Plan"}
-      {view === "Terrac Plan"}
+      {view === "Terrace Plan"}
     </div>
   );
 };

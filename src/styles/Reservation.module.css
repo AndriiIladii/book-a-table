@@ -1,5 +1,14 @@
+.noReserveWrapper {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .noReserve {
-  font-size: 40px;
+  font-size: 60px;
+  margin-bottom: 40px;
   color: #fff;
 }
 

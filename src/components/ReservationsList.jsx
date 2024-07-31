@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // image
 import rest from "../images/rest.jpg";
+import logo from "../images/logo.png";
 //styles
 import * as styles from "../styles/Reservation.module.css";
 
@@ -33,7 +34,10 @@ const ReservationList = () => {
           ))}
         </ul>
       ) : (
-        <p className={styles.noReserve}>No reservations available.</p>
+        <div className={styles.noReserveWrapper}>
+          <p className={styles.noReserve}>No reservations available.</p>
+          <img src={logo} alt="logo" />
+        </div>
       )}
     </div>
   );

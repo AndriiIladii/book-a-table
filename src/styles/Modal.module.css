@@ -13,6 +13,7 @@
 }
 
 .modalContent {
+  position: relative;
   font-family: "Apercu Pro", sans-serif;
   font-weight: 400;
   background-color: #122223;
@@ -117,4 +118,11 @@
 .formBtn:focus {
   box-shadow: inset 190px 0 0 0 #ffd9b6;
   color: #122223;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
 }

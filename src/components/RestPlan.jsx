@@ -1,15 +1,14 @@
 //node modules
 import React, { useState } from "react";
 import tablesData from "./tablesData";
+// UI library
+import { DatePicker } from "antd";
 //styles
 import "../styles/App.module.css";
 import * as styles from "../styles/RestPlan.module.css";
-import { useDispatch } from "react-redux";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
-
-  const dispatch = useDispatch();
 
   const handleTable = (number) => {
     setSelectedTable(number);
@@ -18,6 +17,9 @@ const RestPlan = ({ setActive, view }) => {
 
   return (
     <div className={styles.svgContainer}>
+      <div className={styles.datePicker}>
+        <DatePicker showTime />
+      </div>
       {view === "Rest Plan" && (
         <svg
           id="Layer_1"

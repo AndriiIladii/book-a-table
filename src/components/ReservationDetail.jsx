@@ -30,7 +30,7 @@ const ReservationDetail = () => {
                 <div className={styles.rightBlock}>
                   <p>Date: {reservation.date}</p>
                   <p>Phone Number: {reservation.tel}</p>
-                  <p>Has Birthday: {reservation.holiday}</p>
+                  <p>Has Birthday: {reservation.holiday ? "Yes" : "No"}</p>
                 </div>
               </div>
               <h3>Comments:</h3>

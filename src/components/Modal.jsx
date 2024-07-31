@@ -10,7 +10,7 @@ import * as styles from "../styles/Modal.module.css";
 const Modal = ({ active, setActive, tableNumber }) => {
   const [tableName, setTableName] = useState("");
   const [guestCount, setGuestCount] = useState(0);
-  const [reservationDate, setReservationDate] = useState(new Date());
+  const [reservationDate, setReservationDate] = useState("");
   const [reservationTime, setReservationTime] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [birthday, setBirthday] = useState(false);

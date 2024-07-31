@@ -1,16 +1,24 @@
 //node modules
 import React from "react";
-import { useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTable } from "../store/TableSlice";
+import { useParams, Link, useNavigate } from "react-router-dom";
 //styles
 import * as styles from "../styles/ReservationDetail.module.css";
 
 const ReservationDetail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const reservations = useSelector((state) => state.table.table);
   const reservationId = reservations.filter(
     (reservation) => reservation.id === +id
   );
+
+  function handleDelete(reservationId) {
+    dispatch(deleteTable(reservationId));
+    navigate("/reservations");
+  }
 
   return (
     <div>
@@ -36,7 +44,12 @@ const ReservationDetail = () => {
               <h3>Comments:</h3>
               <p className={styles.comments}>{reservation.comment}</p>
               <div className={styles.detailsBtn}>
-                <button className={styles.detailBtn}>Delete Reservation</button>
+                <button
+                  className={styles.detailBtn}
+                  onClick={() => handleDelete(reservation.id)}
+                >
+                  Delete Reservation
+                </button>
                 <Link to="/restaurant-plan">
                   <button className={styles.detailBtn}>Change Table</button>
                 </Link>

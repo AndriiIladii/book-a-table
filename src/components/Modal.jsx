@@ -1,6 +1,8 @@
+//node modules
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addTable, saveTable, loadTable } from "../store/TableSlice";
+//styles
 import * as styles from "../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {

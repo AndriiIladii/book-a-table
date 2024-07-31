@@ -1,11 +1,15 @@
+//node modules
 import React, { useState } from "react";
 import tablesData from "./tablesData";
-import ReservationList from "./ReservationsList";
+//styles
 import "../styles/App.module.css";
 import * as styles from "../styles/RestPlan.module.css";
+import { useDispatch } from "react-redux";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleTable = (number) => {
     setSelectedTable(number);

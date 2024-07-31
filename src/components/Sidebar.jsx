@@ -1,5 +1,7 @@
+//node modules
 import React from "react";
 import { Link } from "react-router-dom";
+//styles
 import * as styles from "../styles/Sidebar.module.css";
 
 const Sidebar = () => {

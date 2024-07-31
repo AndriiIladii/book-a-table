@@ -1,5 +1,6 @@
+//node modules
 import React from "react";
-
+//styles
 import * as styles from "../styles/Header.module.css";
 
 const Header = () => {

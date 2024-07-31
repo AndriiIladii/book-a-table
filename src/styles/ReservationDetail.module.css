@@ -1,22 +1,21 @@
-.test {
+.detailBlock {
   display: flex;
   justify-content: center;
   width: 100vw;
 }
 
-.form {
+.detailForm {
   font-size: 18px;
   margin: 40px 0 30px;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.4);
   color: #ffd9b6;
-  padding: 20px;
   width: 600px;
   border-radius: 12px;
 }
 
-.container {
+.detailContainer {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
@@ -24,7 +23,7 @@
 
 .tableNumber {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 30px 0 40px;
 }
 
 .leftBlock,
@@ -39,6 +38,34 @@
   margin-bottom: 30px;
 }
 
+h3 {
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .comments {
-  margin: 20px auto 0;
+  width: 100%;
+  padding-left: 30px;
+}
+
+.detailsBtn {
+  display: flex;
+  margin-top: 50px;
+}
+
+.detailBtn {
+  display: block;
+  width: 300px;
+  font-size: 20px;
+  padding: 20px;
+  background-color: #122223;
+  border: 1px solid #ffd9b6;
+  color: #ffd9b6;
+  transition: 0.25s;
+}
+
+.detailBtn:hover {
+  box-shadow: inset 300px 0 0 0 #ffd9b6;
+  color: #122223;
 }

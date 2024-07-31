@@ -1,11 +1,14 @@
+//node modules
 import React, { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+//components
 import RestPlan from "./components/RestPlan";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ReservationList from "./components/ReservationsList";
 import ReservationDetail from "./components/ReservationDetail";
+//styles
 import * as styles from "./styles/App.module.css";
 
 const App = () => {

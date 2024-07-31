@@ -1,7 +1,10 @@
+//node modules
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+// image
 import rest from "../images/rest.jpg";
+//styles
 import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = () => {

@@ -1,6 +1,8 @@
 //node modules
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { saveTable, loadTable } from "./store/TableSlice";
 //components
 import RestPlan from "./components/RestPlan";
 import PontonPlan from "./components/PontonPlan";
@@ -17,6 +19,20 @@ const App = () => {
   const [modalActive, setModalActive] = useState(false);
   const [tableNumber, setTableNumber] = useState(null);
   const [view, setView] = useState("Rest Plan");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadTable());
+
+    const handleBeforeUnload = () => {
+      dispatch(saveTable());
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   const handleSetActive = (table) => {
     setModalActive(true);

@@ -2,7 +2,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTable } from "../store/TableSlice";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 //styles
 import * as styles from "../styles/ReservationDetail.module.css";
 
@@ -26,23 +26,36 @@ const ReservationDetail = () => {
         {reservationId.map((reservation) => (
           <div className={styles.detailBlock} key={reservation.id}>
             <form className={styles.detailForm}>
-              <h2 className={styles.tableNumber}>
+              <button className={styles.tableNumber}>
                 Table number: {reservation.tableNumber}
-              </h2>
+              </button>
               <div className={styles.detailContainer}>
                 <div className={styles.leftBlock}>
-                  <p>Guest Name: {reservation.name}</p>
-                  <p>Time: {reservation.time}</p>
-                  <p>Guests count: {reservation.guests}</p>
+                  <label>Guest Name: </label>
+                  <input type="text" placeholder={reservation.name} />
+                  <label>Time: </label>
+                  <input type="text" placeholder={reservation.time} />
+                  <label>Guests count: </label>
+                  <input type="text" placeholder={reservation.guests} />
                 </div>
                 <div className={styles.rightBlock}>
-                  <p>Date: {reservation.date}</p>
-                  <p>Phone Number: {reservation.tel}</p>
-                  <p>Has Birthday: {reservation.holiday ? "Yes" : "No"}</p>
+                  <label>Date: </label>
+                  <input type="text" placeholder={reservation.date} />
+                  <label>Phone Number: </label>
+                  <input type="text" placeholder={reservation.tel} />
+                  <label>Has Birthday: </label>
+                  <input
+                    type="text"
+                    placeholder={reservation.holiday ? "Yes" : "No"}
+                  />
                 </div>
               </div>
               <h3>Comments:</h3>
-              <p className={styles.comments}>{reservation.comment}</p>
+              <input
+                className={styles.comments}
+                type="text"
+                placeholder={reservation.comment}
+              />
               <div className={styles.detailsBtn}>
                 <button
                   className={styles.detailBtn}
@@ -50,9 +63,7 @@ const ReservationDetail = () => {
                 >
                   Delete Reservation
                 </button>
-                <Link to="/restaurant-plan">
-                  <button className={styles.detailBtn}>Change Table</button>
-                </Link>
+                <button className={styles.detailBtn}>Save changes</button>
               </div>
             </form>
           </div>

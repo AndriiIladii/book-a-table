@@ -1,9 +1,9 @@
 //node modules
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
-import { addTable, saveTable, loadTable } from "../store/TableSlice";
+import { addTable } from "../store/TableSlice";
 //styles
 import * as styles from "../styles/Modal.module.css";
 
@@ -17,19 +17,6 @@ const Modal = ({ active, setActive, tableNumber }) => {
   const [notes, setNotes] = useState("");
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadTable());
-
-    const handleBeforeUnload = () => {
-      dispatch(saveTable());
-    };
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
 
   function closeModal() {
     setActive(false);

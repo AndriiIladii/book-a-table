@@ -1,5 +1,5 @@
 //node modules
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTable } from "../store/TableSlice";
 import { useParams, useNavigate } from "react-router-dom";
@@ -14,6 +14,14 @@ const ReservationDetail = () => {
   const reservationId = reservations.filter(
     (reservation) => reservation.id === +id
   );
+
+  const [tableName, setTableName] = useState(reservationId.name);
+  const [time, setTime] = useState(reservationId.time);
+  const [guestCount, setGuestCount] = useState(reservationId.guests);
+  const [date, setDate] = useState(reservationId.date);
+  const [phoneNumber, setPhoneNumber] = useState(reservationId.tel);
+  const [birthday, setBirthday] = useState(reservationId.holiday);
+  const [comment, setComment] = useState(reservationId.comment);
 
   function handleDelete(reservationId) {
     dispatch(deleteTable(reservationId));
@@ -32,21 +40,42 @@ const ReservationDetail = () => {
               <div className={styles.detailContainer}>
                 <div className={styles.leftBlock}>
                   <label>Guest Name: </label>
-                  <input type="text" placeholder={reservation.name} />
+                  <input
+                    type="text"
+                    value={tableName}
+                    onChange={(e) => setTableName(e.target.value)}
+                  />
                   <label>Time: </label>
-                  <input type="text" placeholder={reservation.time} />
+                  <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                  />
                   <label>Guests count: </label>
-                  <input type="text" placeholder={reservation.guests} />
+                  <input
+                    type="number"
+                    value={guestCount}
+                    onChange={(e) => setGuestCount(e.target.value)}
+                  />
                 </div>
                 <div className={styles.rightBlock}>
                   <label>Date: </label>
-                  <input type="text" placeholder={reservation.date} />
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
                   <label>Phone Number: </label>
-                  <input type="text" placeholder={reservation.tel} />
+                  <input
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
                   <label>Has Birthday: </label>
                   <input
-                    type="text"
-                    placeholder={reservation.holiday ? "Yes" : "No"}
+                    type="checkbox"
+                    checked={birthday}
+                    onChange={(e) => setBirthday(e.target.checked)}
                   />
                 </div>
               </div>
@@ -54,7 +83,8 @@ const ReservationDetail = () => {
               <input
                 className={styles.comments}
                 type="text"
-                placeholder={reservation.comment}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
               />
               <div className={styles.detailsBtn}>
                 <button

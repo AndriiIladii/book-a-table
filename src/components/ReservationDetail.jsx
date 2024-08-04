@@ -1,5 +1,5 @@
 //node modules
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTable } from "../store/TableSlice";
 import { useParams, useNavigate } from "react-router-dom";
@@ -10,18 +10,27 @@ const ReservationDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservations = useSelector((state) => state.table.table);
-  const reservationId = reservations.filter(
-    (reservation) => reservation.id === +id
+  const reservation = useSelector((state) =>
+    state.table.table.find((reservation) => reservation.id === +id)
   );
 
-  const [tableName, setTableName] = useState(reservationId.name);
-  const [time, setTime] = useState(reservationId.time);
-  const [guestCount, setGuestCount] = useState(reservationId.guests);
-  const [date, setDate] = useState(reservationId.date);
-  const [phoneNumber, setPhoneNumber] = useState(reservationId.tel);
-  const [birthday, setBirthday] = useState(reservationId.holiday);
-  const [comment, setComment] = useState(reservationId.comment);
+  const [tableName, setTableName] = useState("");
+  const [time, setTime] = useState("");
+  const [guestCount, setGuestCount] = useState(0);
+  const [date, setDate] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [birthday, setBirthday] = useState(false);
+  const [comment, setComment] = useState("");
+
+  useEffect(() => {
+    setTableName(reservation?.name);
+    setTime(reservation?.time);
+    setGuestCount(reservation?.guests);
+    setDate(reservation?.date);
+    setPhoneNumber(reservation?.tel);
+    setBirthday(reservation?.holiday);
+    setComment(reservation?.comment);
+  }, []);
 
   function handleDelete(reservationId) {
     dispatch(deleteTable(reservationId));
@@ -31,7 +40,7 @@ const ReservationDetail = () => {
   return (
     <div>
       <ul>
-        {reservationId.map((reservation) => (
+        {reservation && (
           <div className={styles.detailBlock} key={reservation.id}>
             <form className={styles.detailForm}>
               <button className={styles.tableNumber}>
@@ -97,7 +106,7 @@ const ReservationDetail = () => {
               </div>
             </form>
           </div>
-        ))}
+        )}
       </ul>
     </div>
   );

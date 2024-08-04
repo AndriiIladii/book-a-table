@@ -7,6 +7,7 @@
 .detailForm {
   font-size: 18px;
   margin: 40px 0 30px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.4);
@@ -15,13 +16,21 @@
   border-radius: 12px;
 }
 
+.detailForm input {
+  margin: 10px 0 15px;
+  border-bottom: 1px solid #ffd9b6;
+  padding-bottom: 12px;
+}
+
 .detailContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 100%;
 }
 
 .tableNumber {
+  font-size: 28px;
+  font-weight: 700;
   text-align: center;
   margin: 30px 0 40px;
 }
@@ -46,7 +55,7 @@ h3 {
 
 .comments {
   width: 100%;
-  padding-left: 30px;
+  padding-left: 15px;
 }
 
 .detailsBtn {

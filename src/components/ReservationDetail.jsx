@@ -23,14 +23,16 @@ const ReservationDetail = () => {
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    setTableName(reservation?.name);
-    setTime(reservation?.time);
-    setGuestCount(reservation?.guests);
-    setDate(reservation?.date);
-    setPhoneNumber(reservation?.tel);
-    setBirthday(reservation?.holiday);
-    setComment(reservation?.comment);
-  }, []);
+    if (reservation) {
+      setTableName(reservation.name);
+      setTime(reservation.time);
+      setGuestCount(reservation.guests);
+      setDate(reservation.date);
+      setPhoneNumber(reservation.tel);
+      setBirthday(reservation.holiday);
+      setComment(reservation.comment);
+    }
+  }, [reservation]);
 
   function handleUpdate(reservationId) {
     dispatch(

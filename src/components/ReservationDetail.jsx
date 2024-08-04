@@ -1,7 +1,7 @@
 //node modules
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTable } from "../store/TableSlice";
+import { deleteTable, updateTableInfo } from "../store/TableSlice";
 import { useParams, useNavigate } from "react-router-dom";
 //styles
 import * as styles from "../styles/ReservationDetail.module.css";
@@ -31,6 +31,22 @@ const ReservationDetail = () => {
     setBirthday(reservation?.holiday);
     setComment(reservation?.comment);
   }, []);
+
+  function handleUpdate(reservationId) {
+    dispatch(
+      updateTableInfo({
+        id: reservationId,
+        name: tableName,
+        time,
+        guests: guestCount,
+        date,
+        tel: phoneNumber,
+        holiday: birthday,
+        comment,
+      })
+    );
+    navigate("/reservations");
+  }
 
   function handleDelete(reservationId) {
     dispatch(deleteTable(reservationId));
@@ -102,7 +118,12 @@ const ReservationDetail = () => {
                 >
                   Delete Reservation
                 </button>
-                <button className={styles.detailBtn}>Save changes</button>
+                <button
+                  className={styles.detailBtn}
+                  onClick={() => handleUpdate(reservation.id)}
+                >
+                  Save changes
+                </button>
               </div>
             </form>
           </div>

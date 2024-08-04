@@ -7,7 +7,6 @@
 .detailForm {
   font-size: 18px;
   margin: 40px 0 30px;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.4);
@@ -54,7 +53,8 @@ h3 {
 }
 
 .comments {
-  width: 100%;
+  margin: 0 auto !important;
+  width: 90%;
   padding-left: 15px;
 }
 

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import tablesData from "./tablesData";
 // UI library
 import { DatePicker } from "antd";
+import Legend from "./Legend";
 //styles
 import "../styles/App.module.css";
 import * as styles from "../styles/RestPlan.module.css";
@@ -17,6 +18,7 @@ const RestPlan = ({ setActive, view }) => {
 
   return (
     <div className={styles.svgContainer}>
+      <Legend />
       <div className={styles.datePicker}>
         <DatePicker showTime />
       </div>

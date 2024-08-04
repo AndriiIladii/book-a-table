@@ -35,18 +35,17 @@ const ReservationDetail = () => {
   }, [reservation]);
 
   function handleUpdate(reservationId) {
-    dispatch(
-      updateTableInfo({
-        id: reservationId,
-        name: tableName,
-        time,
-        guests: guestCount,
-        date,
-        tel: phoneNumber,
-        holiday: birthday,
-        comment,
-      })
-    );
+    const updateReservation = {
+      id: reservationId,
+      name: tableName,
+      time,
+      guests: guestCount,
+      date,
+      tel: phoneNumber,
+      holiday: birthday,
+      comment,
+    };
+    dispatch(updateTableInfo(updateReservation));
     navigate("/reservations");
   }
 

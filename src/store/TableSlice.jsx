@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   table: [],
+  reservations: [],
 };
 
 export const TableSlice = createSlice({

@@ -40,10 +40,10 @@ h3 {
   width: 30px;
   height: 15px;
   margin-right: 10px;
-  background: rgb(58, 180, 66);
+  background: rgb(131, 58, 180);
   background: linear-gradient(
     90deg,
-    rgba(58, 180, 66, 1) 49%,
-    rgba(29, 253, 205, 1) 49%
+    rgba(131, 58, 180, 1) 50%,
+    rgba(253, 29, 29, 1) 50%
   );
 }

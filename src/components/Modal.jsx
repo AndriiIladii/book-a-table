@@ -23,6 +23,11 @@ const Modal = ({ active, setActive, tableNumber }) => {
   }
 
   function addNewTable() {
+    if (!tableName || !reservationDate) {
+      alert("Name and Date are required!");
+      return;
+    }
+
     const newReservation = {
       id: Date.now(),
       name: tableName,

@@ -19,7 +19,14 @@ const App = () => {
   const [modalActive, setModalActive] = useState(false);
   const [tableNumber, setTableNumber] = useState(null);
   const [view, setView] = useState("Rest Plan");
+  const [data, setData] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api")
+      .then((response) => response.json())
+      .then((data) => setData(data.message));
+  }, []);
 
   useEffect(() => {
     dispatch(loadTable());
@@ -65,6 +72,7 @@ const App = () => {
         setActive={setModalActive}
         tableNumber={tableNumber}
       />
+      <p>{!data ? "Loading..." : data}</p>
     </div>
   );
 };

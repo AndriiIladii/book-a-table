@@ -1,34 +1,28 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import path from "path";
 
-const folderPath = "./server";
-
-const filePath = path.join(folderPath, "reservations.json");
+const filePath = "./reservations.json";
 
 const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/reservations", (req, res) => {
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(data);
-  });
-  res.json({ message: "Hello from Express!" });
-});
+const data = fs.readFileSync(filePath, { encoding: "utf-8" });
+console.log(data);
+let dataObj = JSON.parse(data);
+console.log(dataObj);
 
-app.post("/api/reservations", (req, res) => {
-  try {
-    fs.writeFileSync(filePath, content);
-  } catch (err) {
-    console.error(err);
-  }
+const obj = {
+  aa: "ee",
+  ab: "ef",
+  ac: "eg",
+};
+
+fs.writeFileSync(filePath, JSON.stringify(obj), {
+  encoding: "utf-8",
+  flag: "w",
 });
 
 app.listen(PORT, () => {

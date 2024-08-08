@@ -1,6 +1,7 @@
 //node modules
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 import { addTable } from "../store/TableSlice";
@@ -40,8 +41,19 @@ const Modal = ({ active, setActive, tableNumber }) => {
       comment: notes,
     };
 
-    dispatch(addTable(newReservation));
-    setActive(false);
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/reservations",
+      data: newReservation,
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(addTable(newReservation));
+        setActive(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   return (
     <>

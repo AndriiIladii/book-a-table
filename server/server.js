@@ -9,20 +9,23 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
+let dataObj = [];
+
 const data = fs.readFileSync(filePath, { encoding: "utf-8" });
-console.log(data);
-let dataObj = JSON.parse(data);
-console.log(dataObj);
+dataObj = JSON.parse(data);
 
-const obj = {
-  aa: "ee",
-  ab: "ef",
-  ac: "eg",
-};
+app.post("/reservations", (req, res) => {
+  const newReservation = req.body;
 
-fs.writeFileSync(filePath, JSON.stringify(obj), {
-  encoding: "utf-8",
-  flag: "w",
+  dataObj.push(newReservation);
+
+  fs.writeFileSync(filePath, JSON.stringify(dataObj), {
+    encoding: "utf-8",
+  });
+
+  res.send({
+    message: "New Reservation was added",
+  });
 });
 
 app.listen(PORT, () => {

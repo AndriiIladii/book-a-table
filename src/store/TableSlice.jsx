@@ -29,10 +29,19 @@ export const TableSlice = createSlice({
       const storedTable = JSON.parse(localStorage.getItem("newTable")) || [];
       state.table = storedTable;
     },
+    setReservations: (state, action) => {
+      state.table = action.payload;
+    },
   },
 });
 
-export const { addTable, saveTable, loadTable, deleteTable, updateTableInfo } =
-  TableSlice.actions;
+export const {
+  addTable,
+  saveTable,
+  loadTable,
+  deleteTable,
+  updateTableInfo,
+  setReservations,
+} = TableSlice.actions;
 
 export default TableSlice.reducer;

@@ -1,7 +1,9 @@
 //node modules
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { setReservations } from "../store/TableSlice";
 // image
 import rest from "../images/rest.jpg";
 import logo from "../images/logo.png";
@@ -9,7 +11,23 @@ import logo from "../images/logo.png";
 import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = () => {
+  const dispatch = useDispatch();
   const reservations = useSelector((state) => state.table.table);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/reservations",
+      data: reservations,
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(setReservations(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className={styles.reservationContainer}>

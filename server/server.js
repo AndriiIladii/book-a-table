@@ -14,6 +14,10 @@ let dataObj = [];
 const data = fs.readFileSync(filePath, { encoding: "utf-8" });
 dataObj = JSON.parse(data);
 
+app.get("/reservations", (req, res) => {
+  res.json(dataObj);
+});
+
 app.post("/reservations", (req, res) => {
   const newReservation = req.body;
 

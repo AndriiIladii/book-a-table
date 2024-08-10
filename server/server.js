@@ -33,8 +33,8 @@ app.post("/reservations", (req, res) => {
 });
 
 app.delete("/reservations/:id", (req, res) => {
-  const reservationId = req.params.id;
-
+  const reservationId = +req.params.id;
+  console.log(reservationId);
   const filteredReservation = dataObj.filter(
     (reservation) => reservation.id !== reservationId
   );

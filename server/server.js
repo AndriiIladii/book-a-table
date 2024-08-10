@@ -35,13 +35,18 @@ app.post("/reservations", (req, res) => {
 app.delete("/reservations/:id", (req, res) => {
   const reservationId = +req.params.id;
   console.log(reservationId);
+
   const filteredReservation = dataObj.filter(
     (reservation) => reservation.id !== reservationId
   );
 
   dataObj = filteredReservation;
-
-  return res.status(200);
+  fs.writeFileSync(filePath, JSON.stringify(dataObj), {
+    encoding: "utf-8",
+  });
+  res.send({
+    message: "Reservation was deleted",
+  });
 });
 
 app.listen(PORT, () => {

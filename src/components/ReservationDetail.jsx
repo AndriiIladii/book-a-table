@@ -92,7 +92,7 @@ const ReservationDetail = () => {
                   <input
                     type="number"
                     value={guestCount}
-                    onChange={(e) => setGuestCount(e.target.value)}
+                    onChange={(e) => setGuestCount(+e.target.value)}
                   />
                 </div>
                 <div className={styles.rightBlock}>
@@ -126,7 +126,10 @@ const ReservationDetail = () => {
               <div className={styles.detailsBtn}>
                 <button
                   className={styles.detailBtn}
-                  onClick={() => handleDelete(reservation.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDelete(reservation.id);
+                  }}
                 >
                   Delete Reservation
                 </button>

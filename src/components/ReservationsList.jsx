@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { setReservations } from "../store/TableSlice";
+import { setTable } from "../store/TableSlice";
 // image
 import rest from "../images/rest.jpg";
 import logo from "../images/logo.png";
@@ -22,7 +22,7 @@ const ReservationList = () => {
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(setReservations(response.data));
+        dispatch(setTable(response.data));
       })
       .catch((error) => {
         console.log(error);

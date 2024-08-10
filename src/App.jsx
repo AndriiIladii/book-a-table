@@ -22,8 +22,6 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadTable());
-
     const handleBeforeUnload = () => {
       dispatch(saveTable());
     };

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTable, updateTableInfo } from "../store/TableSlice";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 //styles
 import * as styles from "../styles/ReservationDetail.module.css";
 
@@ -50,8 +51,18 @@ const ReservationDetail = () => {
   }
 
   function handleDelete(reservationId) {
-    dispatch(deleteTable(reservationId));
-    navigate("/reservations");
+    axios({
+      method: "DELETE",
+      url: `http://localhost:5000/reservations/${reservationId}`,
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(deleteTable(reservationId));
+        navigate("/reservations");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (

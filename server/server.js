@@ -32,6 +32,18 @@ app.post("/reservations", (req, res) => {
   });
 });
 
+app.delete("/reservations/:id", (req, res) => {
+  const reservationId = req.params.id;
+
+  const filteredReservation = dataObj.filter(
+    (reservation) => reservation.id !== reservationId
+  );
+
+  dataObj = filteredReservation;
+
+  return res.status(200);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

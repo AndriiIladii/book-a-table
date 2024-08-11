@@ -1,14 +1,14 @@
 //node modules
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
-
+import { message } from "antd";
 //styles
 import * as styles from "../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [tableName, setTableName] = useState("");
   const [guestCount, setGuestCount] = useState(0);
   const [reservationDate, setReservationDate] = useState("");
@@ -21,9 +21,23 @@ const Modal = ({ active, setActive, tableNumber }) => {
     setActive(false);
   }
 
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "Reservation added",
+    });
+  };
+
+  const warning = () => {
+    messageApi.open({
+      type: "warning",
+      content: "You must fill Name and Date",
+    });
+  };
+
   function addNewTable() {
     if (!tableName || !reservationDate) {
-      alert("Name and Date are required!");
+      warning();
       return;
     }
 
@@ -46,6 +60,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
     })
       .then((response) => {
         console.log(response.data);
+        success();
         setActive(false);
       })
       .catch((error) => {
@@ -54,6 +69,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
   }
   return (
     <>
+      {contextHolder}
       {active && (
         <div className={styles.modal}>
           <div

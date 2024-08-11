@@ -46,8 +46,20 @@ const ReservationDetail = () => {
       holiday: birthday,
       comment,
     };
-    dispatch(updateTableInfo(updateReservation));
-    navigate("/reservations");
+
+    axios({
+      method: "PUT",
+      url: `http://localhost:5000/reservations/${reservationId}`,
+      data: updateReservation,
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(updateTableInfo(updateReservation));
+        navigate("/reservations");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function handleDelete(reservationId) {
@@ -135,7 +147,10 @@ const ReservationDetail = () => {
                 </button>
                 <button
                   className={styles.detailBtn}
-                  onClick={() => handleUpdate(reservation.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleUpdate(reservation.id);
+                  }}
                 >
                   Save changes
                 </button>

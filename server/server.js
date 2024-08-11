@@ -34,7 +34,6 @@ app.post("/reservations", (req, res) => {
 
 app.delete("/reservations/:id", (req, res) => {
   const reservationId = +req.params.id;
-  console.log(reservationId);
 
   const filteredReservation = dataObj.filter(
     (reservation) => reservation.id !== reservationId
@@ -46,6 +45,25 @@ app.delete("/reservations/:id", (req, res) => {
   });
   res.send({
     message: "Reservation was deleted",
+  });
+});
+
+app.put("/reservations/:id", (req, res) => {
+  const reservationId = +req.params.id;
+  const updatedReservation = req.body;
+
+  const reservation = dataObj.find(
+    (reservation) => reservation.id === reservationId
+  );
+
+  Object.assign(reservation, updatedReservation);
+
+  fs.writeFileSync(filePath, JSON.stringify(dataObj), {
+    encoding: "utf-8",
+  });
+
+  res.send({
+    message: "Reservation was updated",
   });
 });
 

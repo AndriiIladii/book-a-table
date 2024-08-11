@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
-import { addTable } from "../store/TableSlice";
+
 //styles
 import * as styles from "../styles/Modal.module.css";
 
@@ -16,8 +16,6 @@ const Modal = ({ active, setActive, tableNumber }) => {
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [birthday, setBirthday] = useState(false);
   const [notes, setNotes] = useState("");
-
-  const dispatch = useDispatch();
 
   function closeModal() {
     setActive(false);
@@ -48,7 +46,6 @@ const Modal = ({ active, setActive, tableNumber }) => {
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(addTable(newReservation));
         setActive(false);
       })
       .catch((error) => {

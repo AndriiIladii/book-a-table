@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { saveTable, loadTable } from "./store/TableSlice";
+import { saveReservation } from "./store/ReservationSlice";
 //components
 import RestPlan from "./components/RestPlan";
 import PontonPlan from "./components/PontonPlan";
@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     const handleBeforeUnload = () => {
-      dispatch(saveTable());
+      dispatch(saveReservation());
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
 

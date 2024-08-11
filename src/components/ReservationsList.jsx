@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { setTable, deleteTable } from "../store/TableSlice";
+import { setReservation, deleteReservation } from "../store/ReservationSlice";
 import { DeleteOutlined } from "@ant-design/icons";
 // image
 import rest from "../images/rest.jpg";
@@ -13,7 +13,7 @@ import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = () => {
   const dispatch = useDispatch();
-  const reservations = useSelector((state) => state.table.table);
+  const reservations = useSelector((state) => state.reservation.reservations);
 
   useEffect(() => {
     axios({
@@ -23,7 +23,7 @@ const ReservationList = () => {
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(setTable(response.data));
+        dispatch(setReservation(response.data));
       })
       .catch((error) => {
         console.log(error);
@@ -37,7 +37,7 @@ const ReservationList = () => {
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(deleteTable(reservationId));
+        dispatch(deleteReservation(reservationId));
       })
       .catch((error) => {
         console.log(error);

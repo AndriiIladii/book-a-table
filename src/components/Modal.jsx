@@ -9,7 +9,7 @@ import * as styles from "../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  const [tableName, setTableName] = useState("");
+  const [reservationName, setReservationName] = useState("");
   const [guestCount, setGuestCount] = useState(0);
   const [reservationDate, setReservationDate] = useState("");
   const [reservationTime, setReservationTime] = useState("");
@@ -36,14 +36,14 @@ const Modal = ({ active, setActive, tableNumber }) => {
   };
 
   function addNewTable() {
-    if (!tableName || !reservationDate) {
+    if (!reservationName || !reservationDate) {
       warning();
       return;
     }
 
     const newReservation = {
       id: Date.now(),
-      name: tableName,
+      name: reservationName,
       tableNumber: tableNumber,
       guests: guestCount,
       date: reservationDate,
@@ -87,7 +87,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
                   <input
                     type="text"
                     placeholder="Enter guest name"
-                    onChange={(e) => setTableName(e.target.value)}
+                    onChange={(e) => setReservationName(e.target.value)}
                   />
                 </div>
                 <div>

@@ -1,7 +1,10 @@
 //node modules
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTable, updateTableInfo } from "../store/TableSlice";
+import {
+  deleteReservation,
+  updateReservationInfo,
+} from "../store/ReservationSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 //styles
@@ -12,10 +15,10 @@ const ReservationDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const reservation = useSelector((state) =>
-    state.table.table.find((reservation) => reservation.id === +id)
+    state.reservation.reservations.find((reservation) => reservation.id === +id)
   );
 
-  const [tableName, setTableName] = useState("");
+  const [reservationName, setReservationName] = useState("");
   const [time, setTime] = useState("");
   const [guestCount, setGuestCount] = useState(0);
   const [date, setDate] = useState("");
@@ -25,7 +28,7 @@ const ReservationDetail = () => {
 
   useEffect(() => {
     if (reservation) {
-      setTableName(reservation.name);
+      setReservationName(reservation.name);
       setTime(reservation.time);
       setGuestCount(reservation.guests);
       setDate(reservation.date);
@@ -39,7 +42,7 @@ const ReservationDetail = () => {
     e.preventDefault();
     const updateReservation = {
       id: reservationId,
-      name: tableName,
+      name: reservationName,
       time,
       guests: guestCount,
       date,
@@ -55,7 +58,7 @@ const ReservationDetail = () => {
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(updateTableInfo(updateReservation));
+        dispatch(updateReservationInfo(updateReservation));
         navigate("/reservations");
       })
       .catch((error) => {
@@ -71,7 +74,7 @@ const ReservationDetail = () => {
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(deleteTable(reservationId));
+        dispatch(deleteReservation(reservationId));
         navigate("/reservations");
       })
       .catch((error) => {
@@ -86,15 +89,15 @@ const ReservationDetail = () => {
           <div className={styles.detailBlock} key={reservation.id}>
             <form className={styles.detailForm}>
               <button className={styles.tableNumber}>
-                Table number: {reservation.tableNumber}
+                Table number: {reservation.reservationNumber}
               </button>
               <div className={styles.detailContainer}>
                 <div className={styles.leftBlock}>
                   <label>Guest Name: </label>
                   <input
                     type="text"
-                    value={tableName}
-                    onChange={(e) => setTableName(e.target.value)}
+                    value={reservationName}
+                    onChange={(e) => setReservationName(e.target.value)}
                   />
                   <label>Time: </label>
                   <input

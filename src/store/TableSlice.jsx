@@ -8,9 +8,6 @@ export const TableSlice = createSlice({
   name: "table",
   initialState,
   reducers: {
-    addTable: (state, action) => {
-      state.table = [...state.table, action.payload];
-    },
     deleteTable: (state, action) => {
       state.table = state.table.filter(
         (reservation) => reservation.id !== action.payload
@@ -25,13 +22,13 @@ export const TableSlice = createSlice({
       localStorage.setItem("newTable", JSON.stringify(state.table));
     },
 
-    setReservations: (state, action) => {
+    setTable: (state, action) => {
       state.table = action.payload;
     },
   },
 });
 
-export const { addTable, saveTable, deleteTable, updateTableInfo, setTable } =
+export const { saveTable, deleteTable, updateTableInfo, setTable } =
   TableSlice.actions;
 
 export default TableSlice.reducer;

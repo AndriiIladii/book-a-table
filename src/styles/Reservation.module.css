@@ -60,13 +60,16 @@
   background-color: #ffd9b6;
 }
 
+.btnWrapper {
+  display: flex;
+  border: 1px solid #ffd9b6;
+}
+
 .cardBtn {
-  position: relative;
   font-size: 20px;
-  width: 100%;
+  width: 70%;
   padding: 20px;
   background-color: #122223;
-  border: 1px solid #ffd9b6;
   color: #ffd9b6;
   margin: 0 auto;
   transition: 0.25s;
@@ -74,13 +77,19 @@
 
 .cardBtn:hover,
 .cardBtn:focus {
-  box-shadow: inset 400px 0 0 0 #ffd9b6;
+  box-shadow: inset 360px 0 0 0 #ffd9b6;
   color: #122223;
 }
 
 .deleteBtn {
-  position: absolute;
-  right: 40px;
-  top: 13px;
+  width: 30%;
+  color: #ffd9b6;
   font-size: 30px;
+  transition: 0.25s;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  box-shadow: inset 120px 0 0 0 #ffd9b6;
+  color: #122223;
 }

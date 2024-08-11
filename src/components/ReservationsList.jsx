@@ -59,17 +59,18 @@ const ReservationList = () => {
                   <p>Table number: {reservation.tableNumber}</p>
                   <p>Reservation Time: {reservation.time}</p>
                 </div>
-                <Link to={`/reservation/${reservation.id}`}>
-                  <button className={styles.cardBtn}>
-                    View Reservation{" "}
-                    <span className={styles.deleteBtn}>
-                      <DeleteOutlined
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleDelete(reservation.id);
-                        }}
-                      />
-                    </span>
+                <Link
+                  className={styles.btnWrapper}
+                  to={`/reservation/${reservation.id}`}
+                >
+                  <button className={styles.cardBtn}>View Reservation</button>
+                  <button className={styles.deleteBtn}>
+                    <DeleteOutlined
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleDelete(reservation.id);
+                      }}
+                    />
                   </button>
                 </Link>
               </li>

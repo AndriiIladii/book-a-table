@@ -11,7 +11,6 @@ export const TableSlice = createSlice({
     addTable: (state, action) => {
       state.table = [...state.table, action.payload];
     },
-
     deleteTable: (state, action) => {
       state.table = state.table.filter(
         (reservation) => reservation.id !== action.payload

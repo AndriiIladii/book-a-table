@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { setTable } from "../store/TableSlice";
+import { setTable, deleteTable } from "../store/TableSlice";
+import { DeleteOutlined } from "@ant-design/icons";
 // image
 import rest from "../images/rest.jpg";
 import logo from "../images/logo.png";
@@ -29,6 +30,20 @@ const ReservationList = () => {
       });
   }, []);
 
+  const handleDelete = (reservationId) => {
+    axios({
+      method: "DELETE",
+      url: `http://localhost:5000/reservations/${reservationId}`,
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(deleteTable(reservationId));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className={styles.reservationContainer}>
       {reservations && reservations.length > 0 ? (
@@ -45,7 +60,17 @@ const ReservationList = () => {
                   <p>Reservation Time: {reservation.time}</p>
                 </div>
                 <Link to={`/reservation/${reservation.id}`}>
-                  <button className={styles.cardBtn}>View Reservation</button>
+                  <button className={styles.cardBtn}>
+                    View Reservation{" "}
+                    <span className={styles.deleteBtn}>
+                      <DeleteOutlined
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleDelete(reservation.id);
+                        }}
+                      />
+                    </span>
+                  </button>
                 </Link>
               </li>
             </div>

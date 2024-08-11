@@ -61,6 +61,7 @@
 }
 
 .cardBtn {
+  position: relative;
   font-size: 20px;
   width: 100%;
   padding: 20px;
@@ -75,4 +76,11 @@
 .cardBtn:focus {
   box-shadow: inset 400px 0 0 0 #ffd9b6;
   color: #122223;
+}
+
+.deleteBtn {
+  position: absolute;
+  right: 40px;
+  top: 13px;
+  font-size: 30px;
 }

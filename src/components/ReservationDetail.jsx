@@ -35,7 +35,8 @@ const ReservationDetail = () => {
     }
   }, [reservation]);
 
-  function handleUpdate(reservationId) {
+  const handleUpdate = (reservationId) => (e) => {
+    e.preventDefault();
     const updateReservation = {
       id: reservationId,
       name: tableName,
@@ -60,9 +61,10 @@ const ReservationDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
-  function handleDelete(reservationId) {
+  const handleDelete = (reservationId) => (e) => {
+    e.preventDefault();
     axios({
       method: "DELETE",
       url: `http://localhost:5000/reservations/${reservationId}`,
@@ -75,7 +77,7 @@ const ReservationDetail = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   return (
     <div>
@@ -138,19 +140,13 @@ const ReservationDetail = () => {
               <div className={styles.detailsBtn}>
                 <button
                   className={styles.detailBtn}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleDelete(reservation.id);
-                  }}
+                  onClick={handleDelete(reservation.id)}
                 >
                   Delete Reservation
                 </button>
                 <button
                   className={styles.detailBtn}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleUpdate(reservation.id);
-                  }}
+                  onClick={handleUpdate(reservation.id)}
                 >
                   Save changes
                 </button>

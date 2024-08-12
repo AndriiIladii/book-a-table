@@ -12,7 +12,7 @@ const Sidebar = () => {
           <button className={styles.sidebarBtn}>Restaurant</button>
         </Link>
         <Link to="/reservations">
-          <button className={styles.sidebarBtn}>Reservation</button>
+          <button className={styles.sidebarBtn}>Reservations</button>
         </Link>
       </div>
       <div className={styles.bottomButtons}>

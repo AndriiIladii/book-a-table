@@ -1,4 +1,5 @@
 import React from "react";
+import { CrownFilled } from "@ant-design/icons";
 import * as styles from "../styles/Legend.module.css";
 
 const Legend = () => {
@@ -12,7 +13,7 @@ const Legend = () => {
             <p>Table Reserved</p>
           </div>
           <div className={styles.legendWrapper}>
-            <div className={styles.birthday}></div>
+            <CrownFilled className={styles.birthday} />
             <p>Has birthday</p>
           </div>
           <div className={styles.legendWrapper}>

@@ -9,7 +9,9 @@ import PontonPlan from "./components/PontonPlan";
 import TerracePlan from "./components/TerracePlan";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
+import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
+
 import ReservationList from "./components/ReservationsList";
 import ReservationDetail from "./components/ReservationDetail";
 //styles
@@ -17,8 +19,8 @@ import * as styles from "./styles/App.module.css";
 
 const App = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [loginActive, setLoginActive] = useState(false);
   const [tableNumber, setTableNumber] = useState(null);
-  const [view, setView] = useState("Rest Plan");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const App = () => {
   return (
     <div>
       <div className={styles.topBar}>
-        <Header />
+        <Header setLoginActive={setLoginActive} />
         <Sidebar />
       </div>
       <main>
@@ -63,6 +65,7 @@ const App = () => {
         setActive={setModalActive}
         tableNumber={tableNumber}
       />
+      <Login loginActive={loginActive} setLoginActive={setLoginActive} />
     </div>
   );
 };

@@ -11,7 +11,6 @@ import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
-
 import ReservationList from "./components/ReservationsList";
 import ReservationDetail from "./components/ReservationDetail";
 //styles

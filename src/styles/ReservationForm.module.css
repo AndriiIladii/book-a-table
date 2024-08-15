@@ -1,0 +1,125 @@
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form {
+  font-size: 18px;
+  margin: 40px 0 30px;
+}
+
+.form input {
+  height: 45px;
+}
+
+.form input,
+.commentary input {
+  background-color: transparent;
+  border-bottom: 1px solid #ffd9b6;
+  padding: 10px 0 10px 0;
+  color: #ffd9b6;
+}
+
+.commentary {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.commentary input {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 40px;
+}
+
+.commentary label {
+  display: block;
+  text-align: center;
+}
+
+.leftBlock,
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 40px;
+}
+
+.rightBlock {
+  margin-right: 0;
+}
+
+.leftBlock input,
+.rightBlock input {
+  margin-bottom: 10px;
+}
+
+.formError::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+.formError {
+  height: 20px;
+  color: #bf1650;
+  margin-bottom: 10px;
+}
+
+/* Checkbox  styling */
+
+.checkboxWrapper label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkboxWrapper input {
+  visibility: hidden;
+  display: none;
+}
+
+.checkboxWrapper input:checked ~ .checkbox {
+  transform: rotate(45deg);
+  width: 14px;
+  margin-left: 30px;
+  border-color: #24c78e;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 0;
+}
+
+.checkboxWrapper .checkbox {
+  display: block;
+  border: 3px solid #434343;
+  border-radius: 6px;
+  transition: all 0.375s;
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
+}
+
+/* Checkbox */
+
+.formBtn {
+  font-size: 20px;
+  padding: 20px;
+  background-color: #122223;
+  border: 1px solid #ffd9b6;
+  display: block;
+  color: #ffd9b6;
+  margin: 0 auto;
+  transition: 0.25s;
+}
+
+.formBtn:hover,
+.formBtn:focus {
+  box-shadow: inset 600px 0 0 0 #ffd9b6;
+  color: #122223;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 25px;
+}

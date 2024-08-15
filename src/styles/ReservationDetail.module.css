@@ -6,7 +6,7 @@
 
 .detailForm {
   font-size: 18px;
-  margin: 40px 0 30px;
+  padding: 40px 30px 0;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.4);
@@ -15,16 +15,8 @@
   border-radius: 12px;
 }
 
-.detailForm input {
-  margin: 10px 0 15px;
-  border-bottom: 1px solid #ffd9b6;
-  padding-bottom: 12px;
-}
-
-.detailContainer {
+.buttonWrapper {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
 }
 
 .tableNumber {
@@ -34,38 +26,7 @@
   margin: 30px 0 40px;
 }
 
-.leftBlock,
-.rightBlock {
-  display: flex;
-  flex-direction: column;
-}
-
-.leftBlock p,
-.rightBlock p {
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-h3 {
-  margin-top: 30px;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.comments {
-  margin: 0 auto !important;
-  width: 90%;
-  padding-left: 15px;
-}
-
-.detailsBtn {
-  display: flex;
-  margin-top: 50px;
-}
-
 .detailBtn {
-  display: block;
-  width: 300px;
   font-size: 20px;
   padding: 20px;
   background-color: #122223;

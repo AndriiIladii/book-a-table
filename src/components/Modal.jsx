@@ -1,21 +1,15 @@
 //node modules
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 import { message } from "antd";
+import ReservationForm from "./ReservationForm";
 //styles
 import * as styles from "../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  const [reservationName, setReservationName] = useState("");
-  const [guestCount, setGuestCount] = useState(0);
-  const [reservationDate, setReservationDate] = useState("");
-  const [reservationTime, setReservationTime] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [birthday, setBirthday] = useState(false);
-  const [notes, setNotes] = useState("");
 
   function closeModal() {
     setActive(false);
@@ -28,29 +22,11 @@ const Modal = ({ active, setActive, tableNumber }) => {
     });
   };
 
-  const warning = () => {
-    messageApi.open({
-      type: "warning",
-      content: "You must fill Name and Date",
-    });
-  };
-
-  function addNewTable() {
-    if (!reservationName || !reservationDate) {
-      warning();
-      return;
-    }
-
+  const addNewTable = (data) => {
     const newReservation = {
       id: Date.now(),
-      name: reservationName,
-      tableNumber: tableNumber,
-      guests: guestCount,
-      date: reservationDate,
-      time: reservationTime,
-      tel: phoneNumber,
-      holiday: birthday,
-      comment: notes,
+      ...data,
+      tableNumber,
     };
 
     axios({
@@ -66,7 +42,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
   return (
     <>
       {contextHolder}
@@ -80,77 +56,10 @@ const Modal = ({ active, setActive, tableNumber }) => {
             <button className={styles.closeBtn} onClick={closeModal}>
               <CloseOutlined />
             </button>
-            <form className={styles.modalForm}>
-              <div className={styles.leftBlock}>
-                <div>
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    placeholder="Enter guest name"
-                    onChange={(e) => setReservationName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label>Guest count</label>
-                  <input
-                    type="number"
-                    placeholder="Enter guest count"
-                    onChange={(e) => setGuestCount(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label>Booking date</label>
-                  <input
-                    type="date"
-                    onChange={(e) => setReservationDate(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className={styles.rightBlock}>
-                <div>
-                  <label>Booking Time</label>
-                  <input
-                    type="time"
-                    onChange={(e) => setReservationTime(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label>Phone number</label>
-                  <input
-                    type="tel"
-                    placeholder="+380"
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </div>
-                <div className={styles.checkboxWrapper}>
-                  <label>
-                    Has birthday
-                    <input
-                      type="checkbox"
-                      onChange={(e) => setBirthday(e.target.checked)}
-                    />
-                    <span className={styles.checkbox}></span>
-                  </label>
-                </div>
-              </div>
-            </form>
-            <div className={styles.commentary}>
-              <label>Notes</label>
-              <input
-                type="text"
-                placeholder="Enter special requests"
-                onChange={(e) => setNotes(e.target.value)}
-              />
-            </div>
-            <div>
-              <button
-                onClick={addNewTable}
-                className={styles.formBtn}
-                type="submit"
-              >
-                Add Reservation
-              </button>
-            </div>
+            <ReservationForm
+              onSubmit={addNewTable}
+              submitLabel="Add Reservation"
+            />
           </div>
         </div>
       )}

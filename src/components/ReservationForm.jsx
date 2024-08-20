@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 //styles
 import * as styles from "../styles/ReservationForm.module.css";
 
-const ReservationForm = ({ onSubmit, submitLabel }) => {
+const ReservationForm = ({ onSubmit, submitLabel, defaultValues }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    setValue,
+  } = useForm({
+    defaultValues,
+  });
+
+  useEffect(() => {
+    if (defaultValues) {
+      setValue("name", defaultValues.name);
+      setValue("guests", defaultValues.guests);
+      setValue("date", defaultValues.date);
+      setValue("time", defaultValues.time);
+      setValue("tel", defaultValues.tel);
+      setValue("holiday", defaultValues.holiday);
+      setValue("comment", defaultValues.comment);
+    }
+  }, [defaultValues]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

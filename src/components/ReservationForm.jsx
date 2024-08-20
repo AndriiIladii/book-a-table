@@ -3,7 +3,12 @@ import { useForm } from "react-hook-form";
 //styles
 import * as styles from "../styles/ReservationForm.module.css";
 
-const ReservationForm = ({ onSubmit, submitLabel, defaultValues }) => {
+const ReservationForm = ({
+  onSubmit,
+  submitLabel,
+  defaultValues,
+  onDelete,
+}) => {
   const {
     register,
     handleSubmit,
@@ -79,9 +84,16 @@ const ReservationForm = ({ onSubmit, submitLabel, defaultValues }) => {
         <input {...register("comment")} placeholder="Enter special requests" />
       </div>
 
-      <button className={styles.formBtn} type="submit">
-        {submitLabel}
-      </button>
+      <div className={styles.detailsBtn}>
+        <button className={styles.detailBtn} type="submit">
+          {submitLabel}
+        </button>
+        {onDelete && (
+          <button className={styles.detailBtn} onClick={onDelete}>
+            Delete Reservation
+          </button>
+        )}
+      </div>
     </form>
   );
 };

@@ -62,11 +62,14 @@
 
 .btnWrapper {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
   border: 1px solid #ffd9b6;
 }
 
 .cardBtn {
   font-size: 20px;
+  text-align: center;
   width: 70%;
   padding: 20px;
   background-color: #122223;

@@ -1,4 +1,3 @@
-//node modules
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,7 +18,6 @@ const ReservationList = () => {
     axios({
       method: "GET",
       url: "http://localhost:5000/reservations",
-      data: reservations,
     })
       .then((response) => {
         console.log(response.data);
@@ -28,7 +26,7 @@ const ReservationList = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = (reservationId) => {
     axios({
@@ -59,20 +57,23 @@ const ReservationList = () => {
                   <p>Table number: {reservation.tableNumber}</p>
                   <p>Reservation Time: {reservation.time}</p>
                 </div>
-                <Link
-                  className={styles.btnWrapper}
-                  to={`/reservation/${reservation.id}`}
-                >
-                  <button className={styles.cardBtn}>View Reservation</button>
-                  <button className={styles.deleteBtn}>
-                    <DeleteOutlined
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleDelete(reservation.id);
-                      }}
-                    />
+                <div className={styles.btnWrapper}>
+                  <Link
+                    className={styles.cardBtn}
+                    to={`/reservation/${reservation.id}`}
+                  >
+                    <button>View Reservation</button>
+                  </Link>
+                  <button
+                    className={styles.deleteBtn}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDelete(reservation.id);
+                    }}
+                  >
+                    <DeleteOutlined />
                   </button>
-                </Link>
+                </div>
               </li>
             </div>
           ))}

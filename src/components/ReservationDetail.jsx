@@ -66,6 +66,7 @@ const ReservationDetail = () => {
           </button>
           <ReservationForm
             onSubmit={handleUpdate}
+            onDelete={handleDelete}
             submitLabel="Save changes"
             defaultValues={{
               name: reservation.name,
@@ -77,11 +78,6 @@ const ReservationDetail = () => {
               comment: reservation.comment,
             }}
           />
-          <div className={styles.detailsBtn}>
-            <button className={styles.detailBtn} onClick={handleDelete}>
-              Delete Reservation
-            </button>
-          </div>
         </div>
       )}
     </div>

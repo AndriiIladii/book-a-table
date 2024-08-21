@@ -1,7 +1,9 @@
 //node modules
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import tablesData from "./tablesData";
+import { setReservation } from "../store/ReservationSlice";
 // UI library
 // import { DatePicker } from "antd";
 import Legend from "./Legend";
@@ -12,16 +14,31 @@ import * as styles from "../styles/RestPlan.module.css";
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
   const [bookedTables, setBookedTables] = useState([]);
+  const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
 
   useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/reservations",
+    })
+      .then((response) => {
+        dispatch(setReservation(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  useEffect(() => {
     if (reservations) {
-      const bookedTables = reservations.map((reservation) => ({
-        tableNumber: reservation.tableNumber,
-        status: reservation.status,
-      }));
-      console.log(bookedTables);
-      setBookedTables(bookedTables);
+      const tables = reservations.map((reservation) => {
+        return {
+          tableNumber: reservation.tableNumber,
+          status: reservation.status,
+        };
+      });
+      console.log(tables);
+      setBookedTables(tables);
     }
   }, [reservations]);
 
@@ -198,7 +215,7 @@ const RestPlan = ({ setActive, view }) => {
           {tablesData.map(({ table, text }) => (
             <g
               key={table.number}
-              className={styles.table}
+              className={tableStyle[table.status]}
               onClick={() => handleTable(table.number)}
             >
               {table.x !== undefined && table.y !== undefined ? (

@@ -1,5 +1,6 @@
 //node modules
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import tablesData from "./tablesData";
 // UI library
 // import { DatePicker } from "antd";
@@ -10,10 +11,29 @@ import * as styles from "../styles/RestPlan.module.css";
 
 const RestPlan = ({ setActive, view }) => {
   const [selectedTable, setSelectedTable] = useState(null);
+  const [bookedTables, setBookedTables] = useState([]);
+  const reservations = useSelector((state) => state.reservation.reservations);
+
+  useEffect(() => {
+    if (reservations) {
+      const bookedTables = reservations.map((reservation) => ({
+        tableNumber: reservation.tableNumber,
+        status: reservation.status,
+      }));
+      console.log(bookedTables);
+      setBookedTables(bookedTables);
+    }
+  }, [reservations]);
 
   const handleTable = (number) => {
     setSelectedTable(number);
     setActive(number);
+  };
+
+  const tableStyle = {
+    booked: styles.booked,
+    partiallyBooked: styles.partiallyBooked,
+    birthday: styles.birthday,
   };
 
   return (

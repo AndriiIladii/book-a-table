@@ -52,9 +52,13 @@ const RestPlan = ({ setActive, view }) => {
   };
 
   const tableStyle = {
-    booked: styles.booked,
-    partiallyBooked: styles.partiallyBooked,
+    hasReservation: styles.booked,
     hasBirthday: styles.birthday,
+  };
+
+  const getTableStatus = (number) => {
+    const table = bookedTables.find((table) => table.tableNumber === number);
+    return table ? table.status : null;
   };
 
   return (
@@ -219,12 +223,16 @@ const RestPlan = ({ setActive, view }) => {
           {tablesData.map(({ table, text }) => (
             <g
               key={table.number}
-              className={tableStyle[table.status]}
+              className={`${styles.table} ${
+                tableStyle[getTableStatus(table.number)]
+              }`}
               onClick={() => handleTable(table.number)}
             >
               {table.x !== undefined && table.y !== undefined ? (
                 <rect
-                  className={styles.cls3}
+                  className={`${styles.cls3} ${
+                    tableStyle[getTableStatus(table.number)]
+                  }`}
                   x={table.x}
                   y={table.y}
                   width={table.width}
@@ -232,7 +240,9 @@ const RestPlan = ({ setActive, view }) => {
                 />
               ) : (
                 <ellipse
-                  className={styles.cls3}
+                  className={`${styles.cls3} ${
+                    tableStyle[getTableStatus(table.number)]
+                  }`}
                   cx={table.cx}
                   cy={table.cy}
                   rx={table.rx}

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
+import { parseISO } from "date-fns";
 
 const filePath = "./reservations.json";
 
@@ -20,11 +21,22 @@ function saveData(filePath, dataObj) {
 const data = fs.readFileSync(filePath, { encoding: "utf-8" });
 dataObj = JSON.parse(data);
 
+function expiredReservations() {
+  const currentDate = new Date();
+
+  dataObj = dataObj.filter((reservation) => {
+    const reservationDate = parseISO(reservation.date);
+    return reservationDate > currentDate;
+  });
+
+  saveData(filePath, dataObj);
+}
+
+setInterval(expiredReservations, 300000);
+
 app.get("/reservations", (req, res) => {
   res.json(dataObj);
 });
-
-console.log(dataObj);
 
 app.post("/reservations", (req, res) => {
   const newReservation = req.body;

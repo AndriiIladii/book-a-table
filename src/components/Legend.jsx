@@ -16,10 +16,10 @@ const Legend = () => {
             <CrownFilled className={styles.birthday} />
             <p>Has birthday</p>
           </div>
-          <div className={styles.legendWrapper}>
+          {/* <div className={styles.legendWrapper}>
             <div className={styles.doubleReserve}></div>
             <p>Double Reserve</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

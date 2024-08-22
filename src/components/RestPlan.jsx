@@ -16,7 +16,6 @@ const RestPlan = ({ setActive, view }) => {
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
-  console.log("Reservations from Redux:", reservations);
 
   useEffect(() => {
     axios({
@@ -24,7 +23,6 @@ const RestPlan = ({ setActive, view }) => {
       url: "http://localhost:5000/reservations",
     })
       .then((response) => {
-        console.log("Response data:", response.data);
         dispatch(setReservation(response.data));
       })
       .catch((error) => {
@@ -41,7 +39,7 @@ const RestPlan = ({ setActive, view }) => {
           status: status,
         };
       });
-      console.log(tables);
+
       setBookedTables(tables);
     }
   }, [reservations]);

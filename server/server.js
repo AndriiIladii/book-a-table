@@ -19,23 +19,12 @@ function saveData(filePath, dataObj) {
 
 const data = fs.readFileSync(filePath, { encoding: "utf-8" });
 dataObj = JSON.parse(data);
-function expiredReservations() {
-  const currentTime = new Date().getTime();
-
-  dataObj = dataObj.filter((reservation) => {
-    const reservationTime = new Date(reservation.date).getTime(); // Предполагается, что reservation.date - это дата и время бронирования
-    return reservationTime > currentTime;
-  });
-
-  saveData(filePath, dataObj);
-}
-
-// Запуск проверки истекших бронирований каждые 5 минут (300000 мс)
-setInterval(expiredReservations, 30000);
 
 app.get("/reservations", (req, res) => {
   res.json(dataObj);
 });
+
+console.log(dataObj);
 
 app.post("/reservations", (req, res) => {
   const newReservation = req.body;

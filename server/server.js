@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import { parseISO } from "date-fns";
+import { isBefore, parseISO } from "date-fns";
 
 const filePath = "./reservations.json";
 
@@ -25,8 +25,8 @@ function expiredReservations() {
   const currentDate = new Date();
 
   dataObj = dataObj.filter((reservation) => {
-    const reservationDate = parseISO(reservation.date);
-    return reservationDate > currentDate;
+    const reservationDate = parseISO(`${reservation.date}T${reservation.time}`);
+    return !isBefore(reservationDate, currentDate);
   });
 
   saveData(filePath, dataObj);

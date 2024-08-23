@@ -15,7 +15,7 @@
 .cls1,
 .cls2,
 .cls3 {
-  stroke: #1d1d1b;
+  stroke: #fff;
 }
 
 .cls1,
@@ -26,7 +26,7 @@
 .cls2,
 .cls5,
 .cls6 {
-  fill: #1d1d1b;
+  fill: #fff;
 }
 
 .cls3 {
@@ -34,7 +34,7 @@
 }
 
 .cls4 {
-  fill: #fff;
+  fill: none;
 }
 
 .cls5,
@@ -49,12 +49,12 @@
 
 .table:hover rect,
 .table:hover ellipse {
-  fill: #122223;
+  fill: #ffd9b6;
   cursor: pointer;
 }
 
 .table:hover text {
-  fill: #ffd9b6;
+  fill: #122223;
   cursor: pointer;
 }
 
@@ -78,8 +78,4 @@
 
 .partiallyBooked {
   fill: linear-gradient(90deg, rgb(58, 180, 105) 50%, rgb(29, 245, 253) 50%);
-}
-
-.default {
-  fill: blue;
 }

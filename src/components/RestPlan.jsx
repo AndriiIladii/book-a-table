@@ -75,7 +75,15 @@ const RestPlan = ({ setActive, view }) => {
         >
           {/* Static components */}
 
-          <rect x="1.5" y="1.5" fill="#ffffff" width="520.85" height="781.28" />
+          <rect
+            x="1.5"
+            y="1.5"
+            fill="#122223"
+            stroke="#fff"
+            stroke-width="2"
+            width="520.85"
+            height="781.28"
+          />
 
           <line
             className={styles.cls1}

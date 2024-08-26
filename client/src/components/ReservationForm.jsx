@@ -1,3 +1,4 @@
+//node modules
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 //styles
@@ -65,7 +66,15 @@ const ReservationForm = ({
         </div>
         <div className={styles.rightBlock}>
           <label>Booking Time</label>
-          <input type="time" {...register("time")} />
+          <input
+            type="time"
+            {...register("time", { required: "Enter booking time" })}
+          />
+          {errors?.time && (
+            <p className={styles.formError}>
+              {errors?.time?.message || "Error!"}
+            </p>
+          )}
 
           <label>Phone number</label>
           <input type="tel" {...register("tel")} placeholder="+380" />

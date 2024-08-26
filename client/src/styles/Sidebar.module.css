@@ -21,6 +21,7 @@ aside {
 .bottomButtons {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebarBtn:hover,

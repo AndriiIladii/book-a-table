@@ -1,10 +1,12 @@
+//node modules
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { setReservation, deleteReservation } from "../store/ReservationSlice";
+// UI library
 import { DeleteOutlined } from "@ant-design/icons";
-// image
+// images import
 import rest from "../images/rest.jpg";
 import logo from "../images/logo.png";
 //styles

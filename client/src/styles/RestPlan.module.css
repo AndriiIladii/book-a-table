@@ -75,7 +75,3 @@
 .birthday {
   fill: yellow;
 }
-
-.partiallyBooked {
-  fill: linear-gradient(90deg, rgb(58, 180, 105) 50%, rgb(29, 245, 253) 50%);
-}

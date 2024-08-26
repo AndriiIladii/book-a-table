@@ -1,5 +1,8 @@
+//node modules
 import React from "react";
+// UI library
 import { CrownFilled } from "@ant-design/icons";
+//styles
 import * as styles from "../styles/Legend.module.css";
 
 const Legend = () => {

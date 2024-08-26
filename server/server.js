@@ -5,12 +5,16 @@ import { isBefore, parseISO } from "date-fns";
 
 const filePath = "./reservations.json";
 
+const usersPath = "./users.json";
+
 const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
 let dataObj = [];
+let usersObj = [];
+const PASSWORD = "123";
 
 function saveData(filePath, dataObj) {
   fs.writeFileSync(filePath, JSON.stringify(dataObj), {
@@ -18,8 +22,33 @@ function saveData(filePath, dataObj) {
   });
 }
 
+function saveUsers(usersPath, usersObj) {
+  fs.writeFileSync(usersPath, JSON.stringify(usersObj), {
+    encoding: "utf-8",
+  });
+}
+
 const data = fs.readFileSync(filePath, { encoding: "utf-8" });
+const users = fs.readFileSync(usersPath, { encoding: "utf-8" });
+usersObj = JSON.parse(users);
 dataObj = JSON.parse(data);
+
+app.post("/users", (req, res) => {
+  const newUser = req.body;
+  const { password } = req.body;
+
+  if (password === PASSWORD) {
+    usersObj.push(newUser);
+    saveUsers(usersPath, usersObj);
+    res.send({
+      message: "New User was added",
+    });
+  } else {
+    res.send({
+      message: "Wrong Password",
+    });
+  }
+});
 
 function expiredReservations() {
   const currentDate = new Date();

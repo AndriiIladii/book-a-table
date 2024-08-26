@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import { CloseOutlined } from "@ant-design/icons";
 import * as styles from "../styles/Login.module.css";
 
@@ -8,6 +9,7 @@ const Login = ({ loginActive, setLoginActive }) => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const closeModal = (e) => {
@@ -16,7 +18,24 @@ const Login = ({ loginActive, setLoginActive }) => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    const newUser = {
+      id: Date.now(),
+      password: data.password,
+    };
+
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/users",
+      data: newUser,
+    })
+      .then((response) => {
+        console.log(response.data);
+        setLoginActive(false);
+        reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -45,7 +64,9 @@ const Login = ({ loginActive, setLoginActive }) => {
                   </p>
                 )}
               </div>
-              <input type="submit" />
+              <button className={styles.submitBtn} type="submit">
+                Login
+              </button>
             </form>
           </div>
         </div>

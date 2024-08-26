@@ -55,7 +55,7 @@ input {
   margin-bottom: 10px;
 }
 
-input[type="submit"] {
+.submitBtn {
   background: #ec5990;
   color: white;
   text-transform: uppercase;

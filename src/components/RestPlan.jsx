@@ -80,7 +80,7 @@ const RestPlan = ({ setActive, view }) => {
             y="1.5"
             fill="#122223"
             stroke="#fff"
-            stroke-width="2"
+            strokeWidth="2"
             width="520.85"
             height="781.28"
           />

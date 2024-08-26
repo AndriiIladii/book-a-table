@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./client/src/index.js",
   output: {
     filename: "bundle.js",
     publicPath: "/",
@@ -46,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: "./client/public/index.html",
     }),
   ],
   devServer: {

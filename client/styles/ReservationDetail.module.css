@@ -16,3 +16,14 @@
   text-align: center;
   margin: 30px 0 40px;
 }
+
+@media (max-width: 768px) {
+  .detailBlock {
+    width: 540px;
+  }
+
+  .tableNumber {
+    font-size: 24px;
+    margin: 16px 0 0;
+  }
+}

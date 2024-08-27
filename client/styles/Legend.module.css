@@ -32,12 +32,17 @@ h3 {
   margin-right: 10px;
 }
 
-@media (min-width: 768px) {
-  @media (min-width: 768px) {
-    .legendContainer {
-      top: 10px;
-      left: 330px;
-    }
+@media (max-width: 1024px) {
+  .legendContainer {
+    top: 10px;
+    left: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .legendContainer {
+    top: 10px;
+    left: 330px;
   }
 }
 

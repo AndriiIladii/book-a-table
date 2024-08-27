@@ -66,3 +66,17 @@ input {
   font-weight: 100;
   letter-spacing: 10px;
 }
+
+@media (max-width: 768px) {
+  .loginContent {
+    height: 315px;
+  }
+
+  .loginForm {
+    margin: 40px 0 20px;
+  }
+
+  .submitBtn {
+    margin-top: 30px;
+  }
+}

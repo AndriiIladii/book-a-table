@@ -75,8 +75,17 @@
 .birthday {
   fill: yellow;
 }
+@media (max-width: 1024px) {
+  .svgContainer {
+    margin-top: 30px;
+  }
 
-@media (min-width: 768px) {
+  .svgContent {
+    height: 115%;
+  }
+}
+
+@media (max-width: 768px) {
   .svgContainer {
     margin-top: 30px;
   }

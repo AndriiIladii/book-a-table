@@ -144,3 +144,16 @@
   box-shadow: inset 300px 0 0 0 #ffd9b6;
   color: #122223;
 }
+
+@media (max-width: 768px) {
+  .leftBlock input,
+  .rightBlock input {
+    margin-bottom: 15px;
+  }
+
+  .detailBtn {
+    width: 260px;
+    font-size: 18px;
+    padding: 15px;
+  }
+}

@@ -108,6 +108,13 @@ legend {
 }
 
 .warning {
+  margin-top: 150px;
   font-size: 55px;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .warning {
+    font-size: 45px;
+  }
 }

@@ -25,7 +25,19 @@
   color: #122223;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1024px) {
+  .headerBtn {
+    font-size: 17px;
+    width: 160px;
+    padding: 15px;
+  }
+
+  .header p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
   .headerBtn {
     font-size: 17px;
     width: 160px;

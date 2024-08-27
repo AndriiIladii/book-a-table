@@ -35,3 +35,10 @@
   right: 20px;
   font-size: 25px;
 }
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 520px;
+    height: 620px;
+  }
+}

@@ -62,7 +62,7 @@ const RestPlan = ({ setActive, view }) => {
 
   return (
     <div className={styles.svgContainer}>
-      {user ? (
+      {user && (
         <>
           <Legend />
           {/* <div className={styles.datePicker}>
@@ -265,8 +265,6 @@ const RestPlan = ({ setActive, view }) => {
             ))}
           </svg>
         </>
-      ) : (
-        <p className={styles.warning}>Authorize to have access</p>
       )}
     </div>
   );

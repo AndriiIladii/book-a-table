@@ -1,6 +1,6 @@
 //node modules
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { saveReservation } from "./store/ReservationSlice";
 //components
@@ -21,6 +21,7 @@ const App = () => {
   const [loginActive, setLoginActive] = useState(false);
   const [tableNumber, setTableNumber] = useState(null);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.reservation.user);
 
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -45,18 +46,24 @@ const App = () => {
         <Sidebar />
       </div>
       <main>
-        <Routes>
-          <Route path="/" element={<Navigate to="/restaurant-plan" />} />
-          <Route
-            path="/restaurant-plan"
-            element={<RestPlan setActive={handleSetActive} view="Rest Plan" />}
-          />
-          <Route path="/reservations" element={<ReservationList />} />
-          <Route path="/reservation/:id" element={<ReservationDetail />} />
-          <Route path="/ponton-plan" element={<PontonPlan />} />
-          <Route path="/terrace-plan" element={<TerracePlan />} />
-          <Route path="*" element={<div>404</div>} />
-        </Routes>
+        {user ? (
+          <Routes>
+            <Route path="/" element={<Navigate to="/restaurant-plan" />} />
+            <Route
+              path="/restaurant-plan"
+              element={
+                <RestPlan setActive={handleSetActive} view="Rest Plan" />
+              }
+            />
+            <Route path="/reservations" element={<ReservationList />} />
+            <Route path="/reservation/:id" element={<ReservationDetail />} />
+            <Route path="/ponton-plan" element={<PontonPlan />} />
+            <Route path="/terrace-plan" element={<TerracePlan />} />
+            <Route path="*" element={<div>404</div>} />
+          </Routes>
+        ) : (
+          <p className={styles.warning}>Authorize to have access</p>
+        )}
       </main>
 
       <Modal

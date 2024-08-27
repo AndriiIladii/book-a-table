@@ -106,3 +106,8 @@ legend {
   flex-direction: row-reverse;
   justify-content: space-between;
 }
+
+.warning {
+  font-size: 55px;
+  text-align: center;
+}

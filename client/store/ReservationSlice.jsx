@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   reservations: [],
+  user: null,
 };
 
 export const ReservationSlice = createSlice({
@@ -28,6 +29,9 @@ export const ReservationSlice = createSlice({
     setReservation: (state, action) => {
       state.reservations = action.payload;
     },
+    addUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 
@@ -36,6 +40,7 @@ export const {
   deleteReservation,
   updateReservationInfo,
   setReservation,
+  addUser,
 } = ReservationSlice.actions;
 
 export default ReservationSlice.reducer;

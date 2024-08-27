@@ -2,6 +2,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/ReservationSlice";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 //styles
@@ -15,24 +17,25 @@ const Login = ({ loginActive, setLoginActive }) => {
     reset,
   } = useForm();
 
+  const dispatch = useDispatch();
+
   const closeModal = (e) => {
     e.preventDefault();
     setLoginActive(false);
   };
 
   const onSubmit = (data) => {
-    const newUser = {
-      id: Date.now(),
+    const user = {
       password: data.password,
     };
-
     axios({
       method: "POST",
       url: "http://localhost:5000/users",
-      data: newUser,
+      data: user,
     })
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
+        dispatch(addUser(response.data.name));
         setLoginActive(false);
         reset();
       })

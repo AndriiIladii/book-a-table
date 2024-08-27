@@ -75,3 +75,8 @@
 .birthday {
   fill: yellow;
 }
+
+.warning {
+  font-size: 55px;
+  text-align: center;
+}

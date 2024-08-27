@@ -14,7 +14,6 @@ app.use(express.json());
 
 let dataObj = [];
 let usersObj = [];
-const PASSWORD = "123";
 
 function saveData(filePath, dataObj) {
   fs.writeFileSync(filePath, JSON.stringify(dataObj), {
@@ -34,14 +33,15 @@ usersObj = JSON.parse(users);
 dataObj = JSON.parse(data);
 
 app.post("/users", (req, res) => {
-  const newUser = req.body;
   const { password } = req.body;
 
-  if (password === PASSWORD) {
-    usersObj.push(newUser);
+  const user = usersObj.find((user) => user.password === password);
+
+  if (user) {
     saveUsers(usersPath, usersObj);
     res.send({
-      message: "New User was added",
+      name: user.name,
+      message: `Welcome ${user.name}`,
     });
   } else {
     res.send({

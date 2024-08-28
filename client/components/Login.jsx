@@ -36,6 +36,7 @@ const Login = ({ loginActive, setLoginActive }) => {
       .then((response) => {
         console.log(response);
         dispatch(addUser(response.data.name));
+        sessionStorage.setItem("userName", response.data.name);
         setLoginActive(false);
         reset();
       })

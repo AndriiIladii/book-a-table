@@ -22,6 +22,14 @@ const App = () => {
   const [tableNumber, setTableNumber] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.reservation.user);
+  const [userName, setUserName] = useState(null);
+
+  useEffect(() => {
+    const storedName = sessionStorage.getItem("userName");
+    if (storedName) {
+      setUserName(storedName);
+    }
+  }, []);
 
   useEffect(() => {
     const handleBeforeUnload = () => {

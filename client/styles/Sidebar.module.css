@@ -30,7 +30,7 @@ aside {
   color: #122223;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .sidebarBtn {
     font-size: 17px;
     width: 160px;

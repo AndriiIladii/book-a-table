@@ -1,13 +1,9 @@
 //node modules
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { addUser } from "../store/ReservationSlice";
 //styles
 import * as styles from "../styles/Header.module.css";
 
-const Header = ({ setLoginActive }) => {
-  const user = useSelector((state) => state.reservation.user);
-  const dispatch = useDispatch();
+const Header = ({ setLoginActive, userName, setUserName }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     setLoginActive(true);
@@ -15,14 +11,14 @@ const Header = ({ setLoginActive }) => {
 
   const handleLogout = (e) => {
     e.preventDefault;
-    dispatch(addUser(null));
+    setUserName(null);
   };
 
   return (
     <div className={styles.header}>
-      {user ? (
+      {userName ? (
         <>
-          <p>Hi, {user}</p>
+          <p>Hi, {userName}</p>
           <button onClick={handleLogout} className={styles.headerBtn}>
             Logout
           </button>

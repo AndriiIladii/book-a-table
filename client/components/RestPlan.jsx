@@ -11,7 +11,7 @@ import Legend from "./Legend";
 import "../styles/App.module.css";
 import * as styles from "../styles/RestPlan.module.css";
 
-const RestPlan = ({ setActive, view }) => {
+const RestPlan = ({ setActive, userName }) => {
   const [selectedTable, setSelectedTable] = useState(null);
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const RestPlan = ({ setActive, view }) => {
 
   return (
     <div className={styles.svgContainer}>
-      {user && (
+      {userName && (
         <>
           <Legend />
           {/* <div className={styles.datePicker}>

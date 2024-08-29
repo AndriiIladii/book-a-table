@@ -21,7 +21,6 @@ const App = () => {
   const [loginActive, setLoginActive] = useState(false);
   const [tableNumber, setTableNumber] = useState(null);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.reservation.user);
   const [userName, setUserName] = useState(null);
 
   useEffect(() => {
@@ -50,17 +49,25 @@ const App = () => {
   return (
     <div>
       <div className={styles.topBar}>
-        <Header setLoginActive={setLoginActive} />
-        <Sidebar />
+        <Header
+          setLoginActive={setLoginActive}
+          setUserName={setUserName}
+          userName={userName}
+        />
+        <Sidebar userName={userName} />
       </div>
       <main>
-        {user ? (
+        {userName ? (
           <Routes>
             <Route path="/" element={<Navigate to="/restaurant-plan" />} />
             <Route
               path="/restaurant-plan"
               element={
-                <RestPlan setActive={handleSetActive} view="Rest Plan" />
+                <RestPlan
+                  setActive={handleSetActive}
+                  view="Rest Plan"
+                  userName={userName}
+                />
               }
             />
             <Route path="/reservations" element={<ReservationList />} />
@@ -79,7 +86,11 @@ const App = () => {
         setActive={setModalActive}
         tableNumber={tableNumber}
       />
-      <Login loginActive={loginActive} setLoginActive={setLoginActive} />
+      <Login
+        loginActive={loginActive}
+        setLoginActive={setLoginActive}
+        setUserName={setUserName}
+      />
     </div>
   );
 };

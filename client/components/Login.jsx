@@ -2,22 +2,18 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { addUser } from "../store/ReservationSlice";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 //styles
 import * as styles from "../styles/Login.module.css";
 
-const Login = ({ loginActive, setLoginActive }) => {
+const Login = ({ loginActive, setLoginActive, setUserName }) => {
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
-
-  const dispatch = useDispatch();
 
   const closeModal = (e) => {
     e.preventDefault();
@@ -35,7 +31,7 @@ const Login = ({ loginActive, setLoginActive }) => {
     })
       .then((response) => {
         console.log(response);
-        dispatch(addUser(response.data.name));
+        setUserName(response.data.name);
         sessionStorage.setItem("userName", response.data.name);
         setLoginActive(false);
         reset();

@@ -1,16 +1,13 @@
 //node modules
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //styles
 import * as styles from "../styles/Sidebar.module.css";
 
-const Sidebar = () => {
-  const user = useSelector((state) => state.reservation.user);
-
+const Sidebar = ({ userName }) => {
   return (
     <aside>
-      {user && (
+      {userName && (
         <>
           <div className={styles.topButtons}>
             <Link to="/restaurant-plan">

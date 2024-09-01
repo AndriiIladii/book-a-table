@@ -23,3 +23,13 @@
     font-size: 40px;
   }
 }
+
+@media (max-width: 425px) {
+  .info p {
+    max-width: 350px;
+    font-size: 30px;
+  }
+  .logo {
+    width: 75%;
+  }
+}

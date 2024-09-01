@@ -37,3 +37,13 @@ aside {
     padding: 15px;
   }
 }
+
+@media (max-width: 425px) {
+  .topButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bottomButtons {
+    align-items: center;
+  }
+}

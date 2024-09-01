@@ -17,6 +17,7 @@ import ReservationDetail from "./components/ReservationDetail";
 import * as styles from "./styles/App.module.css";
 
 const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [loginActive, setLoginActive] = useState(false);
   const [tableNumber, setTableNumber] = useState(null);
@@ -48,13 +49,25 @@ const App = () => {
 
   return (
     <div>
-      <div className={styles.topBar}>
-        <Header
-          setLoginActive={setLoginActive}
-          setUserName={setUserName}
-          userName={userName}
-        />
-        <Sidebar userName={userName} />
+      <div className={`${styles.topBar} ${menuOpen ? styles.open : ""}`}>
+        <div
+          className={`${styles.burgerIcon} ${menuOpen ? styles.open : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span className={menuOpen ? styles.open : ""}></span>
+          <span className={menuOpen ? styles.open : ""}></span>
+          <span className={menuOpen ? styles.open : ""}></span>
+        </div>
+        {menuOpen && (
+          <>
+            <Header
+              setLoginActive={setLoginActive}
+              setUserName={setUserName}
+              userName={userName}
+            />
+            <Sidebar userName={userName} />
+          </>
+        )}
       </div>
       <main>
         {userName ? (

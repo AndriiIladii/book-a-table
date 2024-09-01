@@ -46,6 +46,14 @@ h3 {
   }
 }
 
+@media (max-width: 425px) {
+  .legendContainer {
+    top: -5px;
+    left: 130px;
+    z-index: -1;
+  }
+}
+
 /* .doubleReserve {
   width: 20px;
   height: 15px;

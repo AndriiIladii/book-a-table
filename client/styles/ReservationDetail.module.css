@@ -27,3 +27,13 @@
     margin: 16px 0 0;
   }
 }
+
+@media (max-width: 425px) {
+  .tableNumber {
+    font-size: 22px;
+  }
+  .detailBlock {
+    margin-top: 70px;
+    width: 300px;
+  }
+}

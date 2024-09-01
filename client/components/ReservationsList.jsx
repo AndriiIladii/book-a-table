@@ -83,7 +83,7 @@ const ReservationList = () => {
       ) : (
         <div className={styles.noReserveWrapper}>
           <p className={styles.noReserve}>No reservations available.</p>
-          <img src={logo} alt="logo" />
+          <img className={styles.logo} src={logo} alt="logo" />
         </div>
       )}
     </div>

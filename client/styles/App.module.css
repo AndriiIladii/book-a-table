@@ -118,3 +118,69 @@ legend {
     font-size: 45px;
   }
 }
+
+@media (max-width: 425px) {
+  .burgerIcon {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .burgerIcon span {
+    width: 2rem;
+    height: 0.25rem;
+    background: #ffd9b6;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  .burgerIcon span:first-child.open {
+    transform: rotate(45deg);
+  }
+
+  .burgerIcon span:nth-child(2).open {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  .burgerIcon span:nth-child(3).open {
+    transform: rotate(-45deg);
+  }
+
+  .topBar.open {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 999;
+    height: 100vh;
+    width: 100vw;
+    background-color: #305255;
+  }
+
+  .topBar.open .burgerIcon {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 20;
+  }
+
+  .topBar.open Header,
+  .topBar.open Sidebar {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -10,7 +10,7 @@ const TerracePlan = () => {
     <div className={styles.wrapper}>
       <div className={styles.info}>
         <p>Reservations temporary unavailable</p>
-        <img src={logo} alt="rest" />
+        <img className={styles.logo} src={logo} alt="rest" />
       </div>
     </div>
   );

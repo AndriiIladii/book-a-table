@@ -42,3 +42,14 @@
     height: 620px;
   }
 }
+
+@media (max-width: 425px) {
+  .modalContent {
+    width: 450px;
+    height: 590px;
+  }
+
+  .tableNumber {
+    font-size: 21px;
+  }
+}

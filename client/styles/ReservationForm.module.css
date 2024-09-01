@@ -157,3 +157,9 @@
     padding: 15px;
   }
 }
+
+@media (max-width: 425px) {
+  .form {
+    font-size: 17px;
+  }
+}

@@ -25,7 +25,7 @@ const App = () => {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(null);
 
-  const isSmallScreen = useMediaQuery("(max-width: 425px)");
+  const isSmallScreen = useMediaQuery("(max-width: 525px)");
 
   useEffect(() => {
     const storedName = sessionStorage.getItem("userName");

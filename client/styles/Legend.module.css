@@ -46,7 +46,7 @@ h3 {
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 485px) {
   .legendContainer {
     top: -5px;
     left: 130px;

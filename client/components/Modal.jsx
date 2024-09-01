@@ -31,7 +31,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
 
     axios({
       method: "POST",
-      url: "http://localhost:5000/reservations",
+      url: "http://192.168.31.72:5000/reservations",
       data: newReservation,
     })
       .then((response) => {

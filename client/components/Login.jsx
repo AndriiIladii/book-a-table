@@ -26,7 +26,7 @@ const Login = ({ loginActive, setLoginActive, setUserName }) => {
     };
     axios({
       method: "POST",
-      url: "http://localhost:5000/users",
+      url: "http://192.168.31.72:5000/users",
       data: user,
     })
       .then((response) => {

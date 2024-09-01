@@ -19,7 +19,7 @@ const ReservationList = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:5000/reservations",
+      url: "http://192.168.31.72:5000/reservations",
     })
       .then((response) => {
         console.log(response.data);
@@ -33,7 +33,7 @@ const ReservationList = () => {
   const handleDelete = (reservationId) => {
     axios({
       method: "DELETE",
-      url: `http://localhost:5000/reservations/${reservationId}`,
+      url: `http://192.168.31.72:5000/reservations/${reservationId}`,
     })
       .then((response) => {
         console.log(response.data);

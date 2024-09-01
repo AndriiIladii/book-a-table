@@ -38,7 +38,6 @@ app.post("/users", (req, res) => {
   const user = usersObj.find((user) => user.password === password);
 
   if (user) {
-    saveUsers(usersPath, usersObj);
     res.send({
       name: user.name,
       message: `Welcome ${user.name}`,
@@ -110,6 +109,6 @@ app.put("/reservations/:id", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, "192.168.31.72", () => {
+  console.log(`Server is running on http://192.168.31.72:${PORT}`);
 });

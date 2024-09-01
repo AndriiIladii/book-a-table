@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { saveReservation } from "./store/ReservationSlice";
+import { useMediaQuery } from "@uidotdev/usehooks";
 //components
 import RestPlan from "./components/RestPlan";
 import PontonPlan from "./components/PontonPlan";
@@ -23,6 +24,8 @@ const App = () => {
   const [tableNumber, setTableNumber] = useState(null);
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(null);
+
+  const isSmallScreen = useMediaQuery("(max-width: 425px)");
 
   useEffect(() => {
     const storedName = sessionStorage.getItem("userName");
@@ -50,15 +53,26 @@ const App = () => {
   return (
     <div>
       <div className={`${styles.topBar} ${menuOpen ? styles.open : ""}`}>
-        <div
-          className={`${styles.burgerIcon} ${menuOpen ? styles.open : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className={menuOpen ? styles.open : ""}></span>
-          <span className={menuOpen ? styles.open : ""}></span>
-          <span className={menuOpen ? styles.open : ""}></span>
-        </div>
-        {menuOpen && (
+        {isSmallScreen ? (
+          <div
+            className={`${styles.burgerIcon} ${menuOpen ? styles.open : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className={menuOpen ? styles.open : ""}></span>
+            <span className={menuOpen ? styles.open : ""}></span>
+            <span className={menuOpen ? styles.open : ""}></span>
+          </div>
+        ) : (
+          <>
+            <Header
+              setLoginActive={setLoginActive}
+              setUserName={setUserName}
+              userName={userName}
+            />
+            <Sidebar userName={userName} />
+          </>
+        )}
+        {menuOpen && isSmallScreen && (
           <>
             <Header
               setLoginActive={setLoginActive}

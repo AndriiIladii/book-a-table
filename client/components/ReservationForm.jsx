@@ -25,7 +25,7 @@ const ReservationForm = ({
       setValue("guests", defaultValues.guests);
       setValue("date", defaultValues.date);
       setValue("time", defaultValues.time);
-      setValue("tel", defaultValues.tel);
+      setValue("room", defaultValues.room);
       setValue("holiday", defaultValues.holiday);
       setValue("comment", defaultValues.comment);
     }
@@ -76,8 +76,8 @@ const ReservationForm = ({
             </p>
           )}
 
-          <label>Номер телефону</label>
-          <input type="tel" {...register("tel")} placeholder="+380" />
+          <label>Номер проживання</label>
+          <input {...register("room")} placeholder="1304" />
 
           <div className={styles.checkboxWrapper}>
             <label>

@@ -72,7 +72,7 @@ const ReservationDetail = () => {
               guests: reservation.guests,
               date: reservation.date,
               time: reservation.time,
-              tel: reservation.tel,
+              room: reservation.room,
               holiday: reservation.holiday,
               comment: reservation.comment,
             }}

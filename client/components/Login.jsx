@@ -54,21 +54,21 @@ const Login = ({ loginActive, setLoginActive, setUserName }) => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <label>
-                Password
+                Пароль
                 <input
                   type="password"
-                  {...register("password", { required: "Enter a password!" })}
+                  {...register("password", { required: "Введіть пароль!" })}
                 />
               </label>
               <div>
                 {errors?.password && (
                   <p className={styles.formError}>
-                    {errors?.password?.message || "Error!"}
+                    {errors?.password?.message || "Помилка!"}
                   </p>
                 )}
               </div>
               <button className={styles.submitBtn} type="submit">
-                Login
+                Зайти
               </button>
             </form>
           </div>

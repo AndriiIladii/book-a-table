@@ -11,18 +11,18 @@ const Sidebar = ({ userName }) => {
         <>
           <div className={styles.topButtons}>
             <Link to="/restaurant-plan">
-              <button className={styles.sidebarBtn}>Restaurant</button>
+              <button className={styles.sidebarBtn}>Ресторан</button>
             </Link>
             <Link to="/reservations">
-              <button className={styles.sidebarBtn}>Reservations</button>
+              <button className={styles.sidebarBtn}>Бронювання</button>
             </Link>
           </div>
           <div className={styles.bottomButtons}>
             <Link to="/ponton-plan">
-              <button className={styles.sidebarBtn}>Ponton</button>
+              <button className={styles.sidebarBtn}>Понтон</button>
             </Link>
             <Link to="/terrace-plan">
-              <button className={styles.sidebarBtn}>Terrace</button>
+              <button className={styles.sidebarBtn}>Тераса</button>
             </Link>
           </div>
         </>

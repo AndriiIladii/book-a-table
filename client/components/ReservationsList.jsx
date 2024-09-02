@@ -55,16 +55,16 @@ const ReservationList = () => {
                   <img src={rest} alt="rest" />
                 </div>
                 <div className={styles.cardInfo}>
-                  <p>Guest Name: {reservation.name}</p>
-                  <p>Table number: {reservation.tableNumber}</p>
-                  <p>Reservation Time: {reservation.time}</p>
+                  <p>Ім'я гостя: {reservation.name}</p>
+                  <p>Номер столу: {reservation.tableNumber}</p>
+                  <p>Час бронювання: {reservation.time}</p>
                 </div>
                 <div className={styles.btnWrapper}>
                   <Link
                     className={styles.cardBtn}
                     to={`/reservation/${reservation.id}`}
                   >
-                    <button>View Reservation</button>
+                    <button>Перевірити бронювання</button>
                   </Link>
                   <button
                     className={styles.deleteBtn}
@@ -82,7 +82,7 @@ const ReservationList = () => {
         </ul>
       ) : (
         <div className={styles.noReserveWrapper}>
-          <p className={styles.noReserve}>No reservations available.</p>
+          <p className={styles.noReserve}>Бронювань немає.</p>
           <img className={styles.logo} src={logo} alt="logo" />
         </div>
       )}

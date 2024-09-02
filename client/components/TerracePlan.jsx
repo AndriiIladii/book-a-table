@@ -9,7 +9,7 @@ const TerracePlan = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.info}>
-        <p>Reservations temporary unavailable</p>
+        <p>Бронювання наразі недоступно</p>
         <img className={styles.logo} src={logo} alt="rest" />
       </div>
     </div>

@@ -35,53 +35,53 @@ const ReservationForm = ({
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.wrap}>
         <div className={styles.leftBlock}>
-          <label>Name</label>
+          <label>Ім'я</label>
           <input
-            {...register("name", { required: "Enter guest name!" })}
+            {...register("name", { required: "Введіть ім'я гостя!" })}
             placeholder="Enter guest name"
           />
           {errors?.name && (
             <p className={styles.formError}>
-              {errors?.name?.message || "Error!"}
+              {errors?.name?.message || "Помилка!"}
             </p>
           )}
 
-          <label>Guest count</label>
+          <label>К-сть гостей</label>
           <input
             type="number"
             {...register("guests")}
             placeholder="Enter guest count"
           />
 
-          <label>Booking date</label>
+          <label>Дата Бронювання</label>
           <input
             type="date"
-            {...register("date", { required: "Enter reservation date" })}
+            {...register("date", { required: "Введіть дату бронювання" })}
           />
           {errors?.date && (
             <p className={styles.formError}>
-              {errors?.date?.message || "Error!"}
+              {errors?.date?.message || "Помилка!"}
             </p>
           )}
         </div>
         <div className={styles.rightBlock}>
-          <label>Booking Time</label>
+          <label>Час бронювання</label>
           <input
             type="time"
-            {...register("time", { required: "Enter booking time" })}
+            {...register("time", { required: "Введіть час бронювання" })}
           />
           {errors?.time && (
             <p className={styles.formError}>
-              {errors?.time?.message || "Error!"}
+              {errors?.time?.message || "Помилка!"}
             </p>
           )}
 
-          <label>Phone number</label>
+          <label>Номер телефону</label>
           <input type="tel" {...register("tel")} placeholder="+380" />
 
           <div className={styles.checkboxWrapper}>
             <label>
-              Has birthday
+              Є день народження
               <input type="checkbox" {...register("holiday")} />
               <span className={styles.checkbox}></span>
             </label>
@@ -89,8 +89,11 @@ const ReservationForm = ({
         </div>
       </div>
       <div className={styles.commentary}>
-        <label>Notes</label>
-        <input {...register("comment")} placeholder="Enter special requests" />
+        <label>Додаткові коментарі</label>
+        <input
+          {...register("comment")}
+          placeholder="Введіть спеціальні побажання гостя"
+        />
       </div>
 
       <div className={styles.detailsBtn}>
@@ -99,7 +102,7 @@ const ReservationForm = ({
         </button>
         {onDelete && (
           <button className={styles.detailBtn} onClick={onDelete}>
-            Delete Reservation
+            Видалити бронювання
           </button>
         )}
       </div>

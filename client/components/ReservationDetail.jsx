@@ -61,12 +61,12 @@ const ReservationDetail = () => {
       {reservation && (
         <div className={styles.detailBlock} key={reservation.id}>
           <button className={styles.tableNumber}>
-            Table number: {reservation.tableNumber}
+            Номер столу: {reservation.tableNumber}
           </button>
           <ReservationForm
             onSubmit={handleUpdate}
             onDelete={handleDelete}
-            submitLabel="Save changes"
+            submitLabel="Зберегти зміни"
             defaultValues={{
               name: reservation.name,
               guests: reservation.guests,

@@ -109,6 +109,6 @@ app.put("/reservations/:id", (req, res) => {
   });
 });
 
-app.listen(PORT, "192.168.31.72", () => {
-  console.log(`Server is running on http://192.168.31.72:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

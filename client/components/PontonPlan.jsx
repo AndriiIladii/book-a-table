@@ -9,7 +9,7 @@ const PontonPlan = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.info}>
-        <p>Reservations temporary unavailable</p>
+        <p>Бронювання наразі недоступно</p>
         <img src={logo} alt="rest" />
       </div>
     </div>

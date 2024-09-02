@@ -16,7 +16,6 @@ const RestPlan = ({ setActive, userName }) => {
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
-  const user = useSelector((state) => state.reservation.user);
 
   useEffect(() => {
     axios({

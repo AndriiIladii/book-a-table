@@ -18,7 +18,7 @@ const Modal = ({ active, setActive, tableNumber }) => {
   const success = () => {
     messageApi.open({
       type: "success",
-      content: "Reservation added",
+      content: "Резервація додана",
     });
   };
 
@@ -52,13 +52,13 @@ const Modal = ({ active, setActive, tableNumber }) => {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className={styles.tableNumber}>Table number: {tableNumber}</h2>
+            <h2 className={styles.tableNumber}>Номер столу: {tableNumber}</h2>
             <button className={styles.closeBtn} onClick={closeModal}>
               <CloseOutlined />
             </button>
             <ReservationForm
               onSubmit={addNewTable}
-              submitLabel="Add Reservation"
+              submitLabel="Забронювати столик"
             />
           </div>
         </div>

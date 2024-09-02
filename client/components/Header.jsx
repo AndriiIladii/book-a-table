@@ -18,14 +18,14 @@ const Header = ({ setLoginActive, userName, setUserName }) => {
     <div className={styles.header}>
       {userName ? (
         <>
-          <p>Hi, {userName}</p>
+          <p>Привіт, {userName}</p>
           <button onClick={handleLogout} className={styles.headerBtn}>
-            Logout
+            Вийти
           </button>
         </>
       ) : (
         <button onClick={handleLogin} className={styles.headerBtn}>
-          Login
+          Зайти
         </button>
       )}
     </div>

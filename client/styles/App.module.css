@@ -127,8 +127,8 @@ legend {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -137,8 +137,8 @@ legend {
   }
 
   .burgerIcon span {
-    width: 2rem;
-    height: 0.25rem;
+    width: 32px;
+    height: 4px;
     background: #ffd9b6;
     border-radius: 10px;
     transition: all 0.3s linear;
@@ -159,6 +159,12 @@ legend {
     transform: rotate(-45deg);
   }
 
+  .topBar {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease, background-color 0.3s ease;
+  }
+
   .topBar.open {
     display: flex;
     flex-direction: column-reverse;
@@ -172,15 +178,23 @@ legend {
 
   .topBar.open .burgerIcon {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 32px;
+    left: 32px;
     z-index: 20;
   }
 
   .topBar.open Header,
   .topBar.open Sidebar {
-    margin-top: 1rem;
+    margin-top: 16px;
     width: 100%;
     text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .topBar:not(.open) Header,
+  .topBar:not(.open) Sidebar {
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 }

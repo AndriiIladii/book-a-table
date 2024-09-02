@@ -99,8 +99,9 @@
 
 @media (max-width: 768px) {
   .reservationCards {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    column-gap: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
   .cardContent {
@@ -108,8 +109,8 @@
   }
 
   .cardImg img {
-    width: 260px;
-    height: 180px;
+    width: 100%;
+    height: auto;
   }
 
   .cardInfo p {

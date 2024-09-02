@@ -81,11 +81,11 @@
   }
 
   .svgContent {
-    height: 115%;
+    height: 230%;
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .svgContainer {
     margin-top: 30px;
   }
@@ -95,14 +95,23 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 510px) {
   .svgContent {
-    height: 120%;
+    height: 260%;
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 485px) {
   .svgContent {
-    height: 107%;
+    height: 110%;
+  }
+}
+
+@media (max-width: 320px) {
+  .svgContent {
+    height: 90%;
+  }
+  .svgContainer {
+    height: 100vh;
   }
 }

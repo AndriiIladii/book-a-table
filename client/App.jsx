@@ -68,8 +68,9 @@ const App = () => {
               setLoginActive={setLoginActive}
               setUserName={setUserName}
               userName={userName}
+              closeMenu={() => setMenuOpen(false)}
             />
-            <Sidebar userName={userName} />
+            <Sidebar userName={userName} closeMenu={() => setMenuOpen(false)} />
           </>
         )}
         {menuOpen && isSmallScreen && (
@@ -78,8 +79,9 @@ const App = () => {
               setLoginActive={setLoginActive}
               setUserName={setUserName}
               userName={userName}
+              closeMenu={() => setMenuOpen(false)}
             />
-            <Sidebar userName={userName} />
+            <Sidebar userName={userName} closeMenu={() => setMenuOpen(false)} />
           </>
         )}
       </div>
@@ -104,7 +106,7 @@ const App = () => {
             <Route path="*" element={<div>404</div>} />
           </Routes>
         ) : (
-          <p className={styles.warning}>Authorize to have access</p>
+          <p className={styles.warning}>Авторизуйтесь для роботи</p>
         )}
       </main>
 

@@ -27,7 +27,7 @@ const ReservationDetail = () => {
 
     axios({
       method: "PUT",
-      url: `http://192.168.31.72:5000/reservations/${reservation.id}`,
+      url: `http://localhost:5000/reservations/${reservation.id}`,
       data: updateReservation,
     })
       .then((response) => {
@@ -44,7 +44,7 @@ const ReservationDetail = () => {
     e.preventDefault();
     axios({
       method: "DELETE",
-      url: `http://192.168.31.72:5000/reservations/${reservation.id}`,
+      url: `http://localhost:5000/reservations/${reservation.id}`,
     })
       .then((response) => {
         console.log(response.data);

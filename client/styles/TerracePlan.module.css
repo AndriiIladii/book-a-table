@@ -1,8 +1,48 @@
 .wrapper {
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.st0 {
+  fill: #122223;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+}
+
+.st1 {
+  fill: #122223;
+  stroke: #fff;
+  stroke-width: 3px;
+}
+
+.st2 {
+  fill: #fff;
+  stroke: #000000;
+}
+
+.st3 {
+  font-family: "Apercu Pro", sans-serif;
+
+  cursor: pointer;
+  fill: #fff;
+  font-size: 14px;
+}
+
+.booked {
+  fill: red;
+}
+
+.birthday {
+  fill: yellow;
+}
+
+.table {
+  fill: #fff;
 }
 
 .info {

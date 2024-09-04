@@ -60,7 +60,7 @@ function expiredReservations() {
   saveData(filePath, dataObj);
 }
 
-setInterval(expiredReservations, 300000);
+setInterval(expiredReservations, 1800000);
 
 app.get("/reservations", (req, res) => {
   res.json(dataObj);

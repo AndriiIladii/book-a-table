@@ -20,7 +20,7 @@ const RestPlan = ({ setActive, userName }) => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://192.168.31.72:5000/reservations",
+      url: "http://localhost:5000/reservations",
     })
       .then((response) => {
         dispatch(setReservation(response.data));

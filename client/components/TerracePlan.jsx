@@ -1,53 +1,122 @@
-//node modules
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Legend from "./Legend";
 import terraceTables from "./terraceData";
-//styles
 import * as styles from "../styles/TerracePlan.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { setReservation } from "../store/ReservationSlice";
 
-const TerracePlan = () => {
+const TerracePlan = ({ setActive, userName }) => {
+  const [selectedTable, setSelectedTable] = useState(null);
+  const [bookedTables, setBookedTables] = useState([]);
+  const dispatch = useDispatch();
+  const reservations = useSelector((state) => state.reservation.reservations);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/reservations",
+    })
+      .then((response) => {
+        dispatch(setReservation(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (reservations) {
+      const tables = reservations.map((reservation) => {
+        const status = reservation.holiday ? "hasBirthday" : "hasReservation";
+        return {
+          tableNumber: reservation.tableNumber,
+          status: status,
+        };
+      });
+
+      setBookedTables(tables);
+    }
+  }, [reservations]);
+
+  const handleTable = (number) => {
+    setSelectedTable(number);
+    setActive(number);
+  };
+
+  const tableStyle = {
+    hasReservation: styles.booked,
+    hasBirthday: styles.birthday,
+  };
+
+  const getTableStatus = (number) => {
+    const table = bookedTables.find((table) => table.tableNumber === number);
+    return table ? table.status : null;
+  };
+
   return (
-    <div className={styles.wrapper}>
+    <>
+      {userName && <Legend />}
+
       <div className={styles.svgContainer}>
         <svg
-          version="1.1"
           id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1920 1080"
+          viewBox="0 0 1519.74 1063.83"
+          className={styles.svgContent}
         >
           <rect
-            x="564"
-            y="263"
-            className={styles.st0}
-            width="792"
-            height="554.25"
+            className={styles.cls1}
+            x="0.5"
+            y="0.5"
+            width="1518.74"
+            height="1062.83"
           />
           <rect
-            x="906.74"
-            y="481.36"
-            className={styles.st2}
-            width="62.94"
-            height="63.32"
+            className={styles.cls2}
+            x="657.74"
+            y="419.23"
+            width="120.69"
+            height="121.42"
           />
 
           {terraceTables.map(({ table, text }) => (
-            <g key={table.number}>
-              {table.x !== undefined && table.y !== undefined && (
+            <g
+              key={table.number}
+              className={`${styles.table} ${
+                tableStyle[getTableStatus(table.number)]
+              }`}
+              onClick={() => handleTable(table.number)}
+            >
+              {table.x !== undefined && table.y !== undefined ? (
                 <rect
                   x={table.x}
                   y={table.y}
                   width={table.width}
                   height={table.height}
-                  className={styles.st1}
+                  className={`${styles.cls3} ${
+                    tableStyle[getTableStatus(table.number)]
+                  }`}
+                />
+              ) : (
+                <ellipse
+                  cx={table.cx}
+                  cy={table.cy}
+                  rx={table.rx}
+                  ry={table.ry}
+                  className={`${styles.cls3} ${
+                    tableStyle[getTableStatus(table.number)]
+                  }`}
                 />
               )}
-              <text className={styles.st3} transform={text.transform}>
+              <text className={styles.cls4} transform={text.transform}>
                 {table.number}
               </text>
             </g>
           ))}
         </svg>
       </div>
-    </div>
+    </>
   );
 };
 

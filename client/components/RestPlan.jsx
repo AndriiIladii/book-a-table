@@ -65,9 +65,8 @@ const RestPlan = ({ setActive, userName }) => {
         <>
           <Legend />
           {/* <div className={styles.datePicker}>
-        <DatePicker showTime />
-      </div> */}
-
+            <DatePicker showTime />
+          </div> */}
           <svg
             id="Layer_1"
             data-name="Layer 1"

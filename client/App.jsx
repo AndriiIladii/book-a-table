@@ -6,7 +6,6 @@ import { saveReservation } from "./store/ReservationSlice";
 import { useMediaQuery } from "@uidotdev/usehooks";
 //components
 import RestPlan from "./components/RestPlan";
-import PontonPlan from "./components/PontonPlan";
 import TerracePlan from "./components/TerracePlan";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
@@ -101,8 +100,12 @@ const App = () => {
             />
             <Route path="/reservations" element={<ReservationList />} />
             <Route path="/reservation/:id" element={<ReservationDetail />} />
-            <Route path="/ponton-plan" element={<PontonPlan />} />
-            <Route path="/terrace-plan" element={<TerracePlan />} />
+            <Route
+              path="/terrace-plan"
+              element={
+                <TerracePlan setActive={handleSetActive} userName={userName} />
+              }
+            />
             <Route path="*" element={<div>404</div>} />
           </Routes>
         ) : (

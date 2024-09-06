@@ -7,11 +7,9 @@ import logo from "../images/logo.png";
 
 const PontonPlan = () => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.info}>
-        <p>Бронювання наразі недоступно</p>
-        <img src={logo} alt="rest" />
-      </div>
+    <div className={styles.info}>
+      <p>Бронювання наразі недоступно</p>
+      <img src={logo} alt="rest" />
     </div>
   );
 };

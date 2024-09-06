@@ -22,11 +22,6 @@ const Sidebar = ({ userName, closeMenu }) => {
             </Link>
           </div>
           <div className={styles.bottomButtons}>
-            <Link to="/ponton-plan">
-              <button onClick={closeMenu} className={styles.sidebarBtn}>
-                Понтон
-              </button>
-            </Link>
             <Link to="/terrace-plan">
               <button onClick={closeMenu} className={styles.sidebarBtn}>
                 Тераса

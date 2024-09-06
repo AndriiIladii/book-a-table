@@ -14,6 +14,7 @@
 
 .reservationContainer {
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .reservationCards {
@@ -40,7 +41,7 @@
 .cardInfo {
   display: flex;
   justify-content: space-around;
-  margin: 80px 0;
+  margin: 40px 0;
 }
 
 .cardInfo p {

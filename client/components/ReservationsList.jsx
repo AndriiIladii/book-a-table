@@ -7,6 +7,7 @@ import { setReservation, deleteReservation } from "../store/ReservationSlice";
 // UI library
 import { DeleteOutlined } from "@ant-design/icons";
 // images import
+import terrace from "../images/terrace.jpg";
 import rest from "../images/rest.jpg";
 import logo from "../images/logo.png";
 //styles
@@ -44,6 +45,13 @@ const ReservationList = () => {
       });
   };
 
+  const getImage = (tableNumber) => {
+    if (tableNumber >= 401 && tableNumber <= 410) {
+      return terrace;
+    }
+    return rest;
+  };
+
   return (
     <div className={styles.reservationContainer}>
       {reservations && reservations.length > 0 ? (
@@ -52,7 +60,7 @@ const ReservationList = () => {
             <div key={reservation.id} className={styles.cardContent}>
               <li>
                 <div className={styles.cardImg}>
-                  <img src={rest} alt="rest" />
+                  <img src={getImage(reservation.tableNumber)} alt="location" />
                 </div>
                 <div className={styles.cardInfo}>
                   <p>Ім'я гостя: {reservation.name}</p>

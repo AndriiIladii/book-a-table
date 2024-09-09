@@ -1,7 +1,7 @@
 const terraceTables = [
   {
     table: {
-      number: 402, // Исправлено
+      number: 402,
       x: 84.01,
       y: 91.36,
       width: 53.04,
@@ -13,11 +13,11 @@ const terraceTables = [
   },
   {
     table: {
-      number: 401, // Исправлено
+      number: 401,
       x: 85.64,
       y: 298.78,
-      width: 52.54, // Исправлено
-      height: 104.13, // Исправлено
+      width: 52.54,
+      height: 104.13,
     },
     text: {
       transform: "translate(104.73 328.33) rotate(90)",
@@ -28,8 +28,8 @@ const terraceTables = [
       number: 403,
       x: 1248.61,
       y: 91.36,
-      width: 54.19, // Исправлено
-      height: 103.8, // Исправлено
+      width: 54.19,
+      height: 103.8,
     },
     text: {
       transform: "translate(1268.76 119.52) rotate(90)",
@@ -76,8 +76,8 @@ const terraceTables = [
       number: 407,
       x: 827.56,
       y: 885.17,
-      width: 104.13, // Исправлено
-      height: 69.21, // Исправлено
+      width: 104.13,
+      height: 69.21,
     },
     text: {
       transform: "translate(859.47 925.97)",

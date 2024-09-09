@@ -32,6 +32,13 @@ h3 {
   margin-right: 10px;
 }
 
+.doubleReserve {
+  width: 20px;
+  height: 15px;
+  margin-right: 10px;
+  background-color: blue;
+}
+
 @media (max-width: 1024px) {
   .legendContainer {
     top: 30px;
@@ -59,6 +66,13 @@ h3 {
     color: yellow;
     font-size: 10px;
     margin-right: 10px;
+  }
+
+  .doubleReserve {
+    width: 10px;
+    height: 7.5px;
+    margin-right: 10px;
+    background-color: blue;
   }
 
   h3 {
@@ -92,6 +106,12 @@ h3 {
     color: yellow;
     font-size: 10px;
     margin-right: 10px;
+  }
+
+  .doubleReserve {
+    color: blue;
+    width: 10px;
+    height: 7.5px;
   }
 
   h3 {

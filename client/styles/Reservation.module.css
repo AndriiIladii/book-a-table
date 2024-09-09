@@ -13,6 +13,7 @@
 }
 
 .reservationContainer {
+  margin-top: 50px;
   overflow-y: auto;
   overflow-x: auto;
 }
@@ -95,6 +96,13 @@
 .deleteBtn:hover,
 .deleteBtn:focus {
   box-shadow: inset 120px 0 0 0 #ffd9b6;
+  color: #122223;
+}
+
+.select {
+  margin: 0 auto 30px;
+  width: 300px;
+  cursor: pointer;
   color: #122223;
 }
 

@@ -1,6 +1,8 @@
 //node modules
 import React from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setReservation } from "../store/ReservationSlice";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 import { message } from "antd";
@@ -9,6 +11,8 @@ import ReservationForm from "./ReservationForm";
 import * as styles from "../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {
+  const dispatch = useDispatch();
+
   const [messageApi, contextHolder] = message.useMessage();
 
   function closeModal() {
@@ -22,11 +26,13 @@ const Modal = ({ active, setActive, tableNumber }) => {
     });
   };
 
-  const addNewTable = (data) => {
+  const addNewTable = async (data) => {
     const newReservation = {
       id: Date.now(),
       ...data,
       tableNumber,
+      location:
+        tableNumber >= 401 && tableNumber <= 410 ? "terrace" : "restaurant",
     };
 
     axios({
@@ -37,12 +43,24 @@ const Modal = ({ active, setActive, tableNumber }) => {
       .then((response) => {
         console.log(response.data);
         success();
+        axios({
+          method: "GET",
+          url: "http://localhost:5000/reservations",
+        })
+          .then((response) => {
+            console.log(response.data);
+            dispatch(setReservation(response.data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         setActive(false);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   return (
     <>
       {contextHolder}

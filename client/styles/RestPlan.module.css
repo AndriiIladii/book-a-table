@@ -75,6 +75,10 @@
 .birthday {
   fill: yellow;
 }
+
+.doubleReserve {
+  fill: blue;
+}
 @media (max-width: 1024px) {
   .svgContainer {
     margin-top: 30px;

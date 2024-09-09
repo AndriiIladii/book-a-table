@@ -27,13 +27,23 @@ const TerracePlan = ({ setActive, userName }) => {
 
   useEffect(() => {
     if (reservations) {
-      const tables = reservations.map((reservation) => {
+      const tables = reservations.reduce((acc, reservation) => {
         const status = reservation.holiday ? "hasBirthday" : "hasReservation";
-        return {
-          tableNumber: reservation.tableNumber,
-          status: status,
-        };
-      });
+        const existingTable = acc.find(
+          (table) => table.tableNumber === reservation.tableNumber
+        );
+
+        if (existingTable) {
+          existingTable.status = "hasDoubleReserve";
+        } else {
+          acc.push({
+            tableNumber: reservation.tableNumber,
+            status: status,
+          });
+        }
+
+        return acc;
+      }, []);
 
       setBookedTables(tables);
     }
@@ -47,6 +57,7 @@ const TerracePlan = ({ setActive, userName }) => {
   const tableStyle = {
     hasReservation: styles.booked,
     hasBirthday: styles.birthday,
+    hasDoubleReserve: styles.doubleReserve,
   };
 
   const getTableStatus = (number) => {

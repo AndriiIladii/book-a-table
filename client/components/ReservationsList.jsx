@@ -1,8 +1,9 @@
 //node modules
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Select from "react-select";
 import { setReservation, deleteReservation } from "../store/ReservationSlice";
 // UI library
 import { DeleteOutlined } from "@ant-design/icons";
@@ -14,6 +15,7 @@ import logo from "../images/logo.png";
 import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = () => {
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
 
@@ -52,11 +54,33 @@ const ReservationList = () => {
     return rest;
   };
 
+  const locationOptions = [
+    { value: "", label: "Всі бронювання" },
+    { value: "restaurant", label: "Ресторан" },
+    { value: "terrace", label: "Тераса" },
+  ];
+
+  const filteredReservations =
+    selectedLocation && selectedLocation.value
+      ? reservations.filter(
+          (reservation) => reservation.location === selectedLocation.value
+        )
+      : reservations;
+
   return (
     <div className={styles.reservationContainer}>
-      {reservations && reservations.length > 0 ? (
+      <Select
+        className={styles.select}
+        options={locationOptions}
+        onChange={(option) => setSelectedLocation(option)}
+        value={selectedLocation}
+        isClearable
+        placeholder="Виберіть локацію"
+      />
+
+      {filteredReservations.length > 0 ? (
         <ul className={styles.reservationCards}>
-          {reservations.map((reservation) => (
+          {filteredReservations.map((reservation) => (
             <div key={reservation.id} className={styles.cardContent}>
               <li>
                 <div className={styles.cardImg}>

@@ -59,6 +59,10 @@
   fill: yellow;
 }
 
+.doubleReserve {
+  fill: blue;
+}
+
 .info {
   display: flex;
   justify-content: center;

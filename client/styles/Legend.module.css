@@ -41,8 +41,43 @@ h3 {
 
 @media (max-width: 1024px) {
   .legendContainer {
-    top: 30px;
-    left: 450px;
+    top: 120px;
+    left: 6px;
+  }
+}
+
+@media (max-width: 845px) {
+  .legendContainer {
+    top: 120px;
+    left: 6px;
+  }
+  .reserved {
+    width: 10px;
+    height: 7.5px;
+    margin-right: 10px;
+    background-color: red;
+  }
+
+  .birthday {
+    color: yellow;
+    font-size: 10px;
+    margin-right: 10px;
+  }
+
+  .doubleReserve {
+    width: 10px;
+    height: 7.5px;
+    margin-right: 10px;
+    background-color: blue;
+  }
+
+  h3 {
+    margin: 15px;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
   }
 }
 

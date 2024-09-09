@@ -11,6 +11,7 @@ const Header = ({ setLoginActive, userName, setUserName }) => {
 
   const handleLogout = (e) => {
     e.preventDefault;
+    localStorage.removeItem("userName");
     setUserName(null);
   };
 

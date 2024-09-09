@@ -32,7 +32,7 @@ const Login = ({ loginActive, setLoginActive, setUserName }) => {
       .then((response) => {
         console.log(response);
         setUserName(response.data.name);
-        sessionStorage.setItem("userName", response.data.name);
+        localStorage.setItem("userName", response.data.name);
         setLoginActive(false);
         reset();
       })

@@ -1,6 +1,7 @@
 //node modules
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import { TimePicker } from "antd";
 //styles
 import * as styles from "../styles/ReservationForm.module.css";
 
@@ -15,6 +16,7 @@ const ReservationForm = ({
     handleSubmit,
     formState: { errors },
     setValue,
+    control,
   } = useForm({
     defaultValues,
   });
@@ -24,7 +26,7 @@ const ReservationForm = ({
       setValue("name", defaultValues.name);
       setValue("guests", defaultValues.guests);
       setValue("date", defaultValues.date);
-      setValue("time", defaultValues.time);
+      setValue("time", defaultValues.time ? defaultValues.time : null);
       setValue("tel", defaultValues.tel);
       setValue("holiday", defaultValues.holiday);
       setValue("comment", defaultValues.comment);
@@ -66,9 +68,20 @@ const ReservationForm = ({
         </div>
         <div className={styles.rightBlock}>
           <label>Час бронювання</label>
-          <input
-            type="time"
-            {...register("time", { required: "Введіть час бронювання" })}
+          <Controller
+            name="time"
+            control={control}
+            rules={{ required: "Введіть час бронювання" }}
+            render={({ field }) => (
+              <TimePicker
+                {...field}
+                format="HH:mm"
+                minuteStep={15}
+                showSecond={false}
+                needConfirm={false}
+                onChange={(time) => field.onChange(time)}
+              />
+            )}
           />
           {errors?.time && (
             <p className={styles.formError}>

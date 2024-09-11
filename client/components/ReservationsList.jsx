@@ -6,6 +6,7 @@ import axios from "axios";
 import Select from "react-select";
 import { setReservation, deleteReservation } from "../store/ReservationSlice";
 // UI library
+import { message } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 // images import
 import terrace from "../images/terrace.jpg";
@@ -16,8 +17,16 @@ import * as styles from "../styles/Reservation.module.css";
 
 const ReservationList = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
+
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "Резервація успішно видалена",
+    });
+  };
 
   useEffect(() => {
     axios({
@@ -40,6 +49,7 @@ const ReservationList = () => {
     })
       .then((response) => {
         console.log(response.data);
+        success();
         dispatch(deleteReservation(reservationId));
       })
       .catch((error) => {
@@ -68,57 +78,63 @@ const ReservationList = () => {
       : reservations;
 
   return (
-    <div className={styles.reservationContainer}>
-      <Select
-        className={styles.select}
-        options={locationOptions}
-        onChange={(option) => setSelectedLocation(option)}
-        value={selectedLocation}
-        isClearable
-        placeholder="Виберіть локацію"
-      />
+    <>
+      {contextHolder}
+      <div className={styles.reservationContainer}>
+        <Select
+          className={styles.select}
+          options={locationOptions}
+          onChange={(option) => setSelectedLocation(option)}
+          value={selectedLocation}
+          isClearable
+          placeholder="Виберіть локацію"
+        />
 
-      {filteredReservations.length > 0 ? (
-        <ul className={styles.reservationCards}>
-          {filteredReservations.map((reservation) => (
-            <div key={reservation.id} className={styles.cardContent}>
-              <li>
-                <div className={styles.cardImg}>
-                  <img src={getImage(reservation.tableNumber)} alt="location" />
-                </div>
-                <div className={styles.cardInfo}>
-                  <p>Ім'я гостя: {reservation.name}</p>
-                  <p>Номер столу: {reservation.tableNumber}</p>
-                  <p>Час бронювання: {reservation.time}</p>
-                </div>
-                <div className={styles.btnWrapper}>
-                  <Link
-                    className={styles.cardBtn}
-                    to={`/reservation/${reservation.id}`}
-                  >
-                    <button>Перевірити бронювання</button>
-                  </Link>
-                  <button
-                    className={styles.deleteBtn}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleDelete(reservation.id);
-                    }}
-                  >
-                    <DeleteOutlined />
-                  </button>
-                </div>
-              </li>
-            </div>
-          ))}
-        </ul>
-      ) : (
-        <div className={styles.noReserveWrapper}>
-          <p className={styles.noReserve}>Бронювань немає.</p>
-          <img className={styles.logo} src={logo} alt="logo" />
-        </div>
-      )}
-    </div>
+        {filteredReservations.length > 0 ? (
+          <ul className={styles.reservationCards}>
+            {filteredReservations.map((reservation) => (
+              <div key={reservation.id} className={styles.cardContent}>
+                <li>
+                  <div className={styles.cardImg}>
+                    <img
+                      src={getImage(reservation.tableNumber)}
+                      alt="location"
+                    />
+                  </div>
+                  <div className={styles.cardInfo}>
+                    <p>Ім'я гостя: {reservation.name}</p>
+                    <p>Стіл: {reservation.tableNumber}</p>
+                    <p>Час : {reservation.time}</p>
+                  </div>
+                  <div className={styles.btnWrapper}>
+                    <Link
+                      className={styles.cardBtn}
+                      to={`/reservation/${reservation.id}`}
+                    >
+                      <button>Перевірити бронювання</button>
+                    </Link>
+                    <button
+                      className={styles.deleteBtn}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleDelete(reservation.id);
+                      }}
+                    >
+                      <DeleteOutlined />
+                    </button>
+                  </div>
+                </li>
+              </div>
+            ))}
+          </ul>
+        ) : (
+          <div className={styles.noReserveWrapper}>
+            <p className={styles.noReserve}>Бронювань немає.</p>
+            <img className={styles.logo} src={logo} alt="logo" />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

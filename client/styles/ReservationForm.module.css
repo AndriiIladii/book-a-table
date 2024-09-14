@@ -145,6 +145,12 @@
   color: #122223;
 }
 
+.ant-picker {
+  padding: 0 !important;
+}
+.ant-picker-outlined {
+  background: none !important;
+}
 @media (max-width: 768px) {
   .leftBlock input,
   .rightBlock input {

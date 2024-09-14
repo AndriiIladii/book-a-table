@@ -1,7 +1,8 @@
 //node modules
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { TimePicker } from "antd";
+import { TimePicker, DatePicker } from "antd";
+import dayjs from "dayjs";
 //styles
 import * as styles from "../styles/ReservationForm.module.css";
 
@@ -25,16 +26,27 @@ const ReservationForm = ({
     if (defaultValues) {
       setValue("name", defaultValues.name);
       setValue("guests", defaultValues.guests);
-      setValue("date", defaultValues.date);
-      setValue("time", defaultValues.time ? defaultValues.time : null);
+      setValue("date", dayjs(defaultValues.date));
+      setValue("time", dayjs(defaultValues.time));
       setValue("tel", defaultValues.tel);
       setValue("holiday", defaultValues.holiday);
       setValue("comment", defaultValues.comment);
     }
   }, [defaultValues]);
 
+  const handleFormSubmit = (data) => {
+    const formattedTime = dayjs(data.time).format("HH:mm");
+    const formattedDate = dayjs(data.date).format("DD.MM.YYYY");
+    const formattedData = {
+      ...data,
+      time: formattedTime,
+      date: formattedDate,
+    };
+    onSubmit(formattedData);
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
       <div className={styles.wrap}>
         <div className={styles.leftBlock}>
           <label>Ім'я або Номер </label>
@@ -56,9 +68,17 @@ const ReservationForm = ({
           />
 
           <label>Дата Бронювання</label>
-          <input
-            type="date"
-            {...register("date", { required: "Введіть дату бронювання" })}
+          <Controller
+            name="date"
+            control={control}
+            rules={{ required: "Введіть дату броннюваня" }}
+            render={({ field }) => (
+              <DatePicker
+                {...field}
+                needConfirm={false}
+                onChange={(date) => field.onChange(date)}
+              />
+            )}
           />
           {errors?.date && (
             <p className={styles.formError}>
@@ -75,10 +95,10 @@ const ReservationForm = ({
             render={({ field }) => (
               <TimePicker
                 {...field}
+                needConfirm={false}
                 format="HH:mm"
                 minuteStep={15}
                 showSecond={false}
-                needConfirm={false}
                 onChange={(time) => field.onChange(time)}
               />
             )}

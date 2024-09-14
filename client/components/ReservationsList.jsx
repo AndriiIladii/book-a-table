@@ -102,9 +102,19 @@ const ReservationList = () => {
                     />
                   </div>
                   <div className={styles.cardInfo}>
-                    <p>Ім'я гостя: {reservation.name}</p>
-                    <p>Стіл: {reservation.tableNumber}</p>
-                    <p>Час : {reservation.time}</p>
+                    <p>
+                      Ім'я гостя:
+                      <br />
+                      {reservation.name}
+                    </p>
+                    <p>
+                      Стіл: <br />
+                      {reservation.tableNumber}
+                    </p>
+                    <p>
+                      Час: <br />
+                      {reservation.time}
+                    </p>
                   </div>
                   <div className={styles.btnWrapper}>
                     <Link

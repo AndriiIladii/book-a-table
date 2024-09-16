@@ -15,9 +15,38 @@
 
 .form input,
 .commentary input {
-  background-color: transparent;
+  background-color: transparent !important;
   border-bottom: 1px solid #ffd9b6;
   padding: 10px 0 10px 0;
+  color: #ffd9b6;
+}
+
+.time,
+.time:focus-within,
+.time:hover {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #ffd9b6;
+  color: #ffd9b6;
+  box-shadow: none;
+  height: 45px !important;
+  padding: 0 !important;
+  margin: 10px 0 !important;
+}
+
+.time input {
+  color: #ffd9b6 !important;
+  font-size: 18px !important;
+  font-family: "Apercu Pro", sans-serif !important;
+}
+
+.time input::placeholder {
+  color: #757371 !important;
+}
+
+.time span {
+  font-size: 20px;
   color: #ffd9b6;
 }
 

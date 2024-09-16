@@ -52,7 +52,7 @@ const ReservationForm = ({
           <label>Ім'я або Номер </label>
           <input
             {...register("name", { required: "Введіть ім'я гостя!" })}
-            placeholder="Enter guest name"
+            placeholder="Введіть номер або ім'я"
           />
           {errors?.name && (
             <p className={styles.formError}>
@@ -64,7 +64,7 @@ const ReservationForm = ({
           <input
             type="number"
             {...register("guests")}
-            placeholder="Enter guest count"
+            placeholder="Введіть к-сть гостей"
           />
 
           <label>Дата Бронювання</label>
@@ -75,7 +75,9 @@ const ReservationForm = ({
             render={({ field }) => (
               <DatePicker
                 {...field}
+                className={styles.time}
                 needConfirm={false}
+                placeholder="Введіть дату"
                 onChange={(date) => field.onChange(date)}
               />
             )}
@@ -95,7 +97,9 @@ const ReservationForm = ({
             render={({ field }) => (
               <TimePicker
                 {...field}
+                className={styles.time}
                 needConfirm={false}
+                placeholder="Введіть час"
                 format="HH:mm"
                 minuteStep={15}
                 showSecond={false}

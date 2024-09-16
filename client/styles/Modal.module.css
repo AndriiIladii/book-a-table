@@ -21,11 +21,12 @@
   padding: 20px;
   border-radius: 12px;
   width: 600px;
-  height: 650px;
+  height: 630px;
 }
 
 .tableNumber {
   font-size: 24px;
+  margin-top: 10px;
   text-align: center;
 }
 

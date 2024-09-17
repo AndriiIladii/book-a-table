@@ -63,7 +63,13 @@ function expiredReservations() {
 setInterval(expiredReservations, 7200000);
 
 app.get("/reservations", (req, res) => {
-  res.json(dataObj);
+  const sortedArray = dataObj.sort((a, b) => {
+    const dateTimeA = parseISO(`${a.date}T${a.time}`);
+    const dateTimeB = parseISO(`${b.date}T${b.time}`);
+    return dateTimeA - dateTimeB;
+  });
+
+  res.json(sortedArray);
 });
 
 app.post("/reservations", (req, res) => {

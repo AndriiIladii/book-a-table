@@ -1,11 +1,12 @@
-//node modules
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TimePicker, DatePicker } from "antd";
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 //styles
 import * as styles from "../styles/ReservationForm.module.css";
 
+dayjs.extend(customParseFormat);
 const ReservationForm = ({
   onSubmit,
   submitLabel,
@@ -18,25 +19,23 @@ const ReservationForm = ({
     formState: { errors },
     setValue,
     control,
-  } = useForm({
-    defaultValues,
-  });
+  } = useForm();
 
   useEffect(() => {
     if (defaultValues) {
       setValue("name", defaultValues.name);
       setValue("guests", defaultValues.guests);
-      setValue("date", dayjs(defaultValues.date));
-      setValue("time", dayjs(defaultValues.time));
+      setValue("date", dayjs(defaultValues.date, "DD-MM-YYYY"), true);
+      setValue("time", dayjs(defaultValues.time, "HH:mm"), true);
       setValue("tel", defaultValues.tel);
       setValue("holiday", defaultValues.holiday);
       setValue("comment", defaultValues.comment);
     }
-  }, [defaultValues]);
+  }, [defaultValues, setValue]);
 
   const handleFormSubmit = (data) => {
     const formattedTime = dayjs(data.time).format("HH:mm");
-    const formattedDate = dayjs(data.date).format("DD.MM.YYYY");
+    const formattedDate = dayjs(data.date).format("DD-MM-YYYY");
     const formattedData = {
       ...data,
       time: formattedTime,
@@ -77,6 +76,7 @@ const ReservationForm = ({
                 {...field}
                 className={styles.time}
                 needConfirm={false}
+                format="DD-MM-YYYY"
                 placeholder="Введіть дату"
                 onChange={(date) => field.onChange(date)}
               />

@@ -2,10 +2,20 @@ import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TimePicker, DatePicker } from "antd";
 import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import localeData from "dayjs/plugin/localeData";
+import weekday from "dayjs/plugin/weekday";
+import weekOfYear from "dayjs/plugin/weekOfYear";
+import weekYear from "dayjs/plugin/weekYear";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 //styles
 import * as styles from "../styles/ReservationForm.module.css";
 
+dayjs.extend(advancedFormat);
+dayjs.extend(weekday);
+dayjs.extend(localeData);
+dayjs.extend(weekOfYear);
+dayjs.extend(weekYear);
 dayjs.extend(customParseFormat);
 const ReservationForm = ({
   onSubmit,

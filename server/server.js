@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import { isBefore, parseISO } from "date-fns";
+import { isBefore, parseISO, parse } from "date-fns";
 
 const filePath = "./reservations.json";
 
@@ -64,11 +64,20 @@ setInterval(expiredReservations, 7200000);
 
 app.get("/reservations", (req, res) => {
   const sortedArray = dataObj.sort((a, b) => {
-    const dateTimeA = parseISO(`${a.date}T${a.time}`);
-    const dateTimeB = parseISO(`${b.date}T${b.time}`);
+    const dateTimeA = parse(
+      `${a.date} ${a.time}`,
+      "dd-MM-yyyy HH:mm",
+      new Date()
+    );
+    const dateTimeB = parse(
+      `${b.date} ${b.time}`,
+      "dd-MM-yyyy HH:mm",
+      new Date()
+    );
     return dateTimeA - dateTimeB;
   });
 
+  console.log(sortedArray);
   res.json(sortedArray);
 });
 

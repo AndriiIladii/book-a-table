@@ -164,8 +164,8 @@ h3 {
     margin-bottom: 10px;
   }
   .legendContainer {
-    top: -35px;
-    left: 130px;
+    top: 15px;
+    left: 30px;
     z-index: -1;
   }
   .reserved {

@@ -5,14 +5,23 @@ import axios from "axios";
 import tablesData from "./tablesData";
 import { setReservation } from "../store/ReservationSlice";
 // UI library
-// import { DatePicker } from "antd";
+import { DatePicker } from "antd";
 import Legend from "./Legend";
+import dayjs from "dayjs";
+import localeData from "dayjs/plugin/localeData";
+import weekday from "dayjs/plugin/weekday";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 //styles
 import "../styles/App.module.css";
 import * as styles from "../styles/RestPlan.module.css";
 
+dayjs.extend(weekday);
+dayjs.extend(localeData);
+dayjs.extend(customParseFormat);
+
 const RestPlan = ({ setActive, userName }) => {
   const [selectedTable, setSelectedTable] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
@@ -30,9 +39,24 @@ const RestPlan = ({ setActive, userName }) => {
       });
   }, []);
 
+  const getFilteredReservations = () => {
+    if (!selectedDate) {
+      return reservations;
+    }
+
+    const formattedSelectedDate = dayjs(selectedDate).format("DD-MM-YYYY");
+
+    return reservations.filter((reservation) => {
+      const reservationDate = dayjs(reservation.date, "DD-MM-YYYY", true);
+      return reservationDate.format("DD-MM-YYYY") === formattedSelectedDate;
+    });
+  };
+
   useEffect(() => {
     if (reservations) {
-      const tables = reservations.reduce((acc, reservation) => {
+      const filteredReservations = getFilteredReservations();
+
+      const tables = filteredReservations.reduce((acc, reservation) => {
         const status = reservation.holiday ? "hasBirthday" : "hasReservation";
         const existingTable = acc.find(
           (table) => table.tableNumber === reservation.tableNumber
@@ -52,11 +76,16 @@ const RestPlan = ({ setActive, userName }) => {
 
       setBookedTables(tables);
     }
-  }, [reservations]);
+  }, [reservations, selectedDate]);
 
   const handleTable = (number) => {
     setSelectedTable(number);
     setActive(number);
+  };
+
+  const handleDateChange = (date) => {
+    console.log(date);
+    setSelectedDate(date);
   };
 
   const tableStyle = {
@@ -75,9 +104,14 @@ const RestPlan = ({ setActive, userName }) => {
       {userName && (
         <>
           <Legend />
-          {/* <div className={styles.datePicker}>
-            <DatePicker showTime />
-          </div> */}
+          <div className={styles.datePicker}>
+            <DatePicker
+              className={styles.date}
+              placeholder="Виберіть дату"
+              onChange={handleDateChange}
+              format="DD-MM-YYYY"
+            />
+          </div>
           <svg
             id="Layer_1"
             data-name="Layer 1"

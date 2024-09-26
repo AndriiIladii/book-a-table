@@ -4,10 +4,14 @@ import axios from "axios";
 import Select from "react-select";
 import tablesData from "./tablesData";
 import terraceTables from "./terraceData";
-import { setReservation } from "../store/ReservationSlice";
+import {
+  setReservation,
+  updateReservationInfo,
+} from "../store/ReservationSlice";
 import * as styles from "../styles/TableModal.module.css";
 
-const TableModal = ({ setActive }) => {
+const TableModal = ({ setActive, setTableChange }) => {
+  const [selectedTable, setSelectedTable] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
@@ -55,6 +59,11 @@ const TableModal = ({ setActive }) => {
     { value: "restaurant", label: "Ресторан" },
     { value: "terrace", label: "Тераса" },
   ];
+
+  const handleTable = (number) => {
+    setTableChange(number);
+    setActive(false);
+  };
 
   const tableStyle = {
     hasReservation: styles.booked,

@@ -14,7 +14,7 @@ import axios from "axios";
 import * as styles from "../styles/ReservationDetail.module.css";
 import TableModal from "./TableModal";
 
-const ReservationDetail = () => {
+const ReservationDetail = ({ setTable }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -64,6 +64,28 @@ const ReservationDetail = () => {
     setIsModalOpen(true);
   };
 
+  const handleTableChange = (tableNumber) => {
+    const updatedReservation = {
+      ...reservation,
+      tableNumber,
+    };
+
+    axios({
+      method: "PUT",
+      url: `http://localhost:5000/reservations/${reservation.id}`,
+      data: updatedReservation,
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(updateReservationInfo(updatedReservation));
+        setTable(tableNumber);
+        setIsModalOpen(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className={styles.container}>
       {reservation && (
@@ -72,7 +94,12 @@ const ReservationDetail = () => {
             Номер столу: {reservation.tableNumber}
           </button>
 
-          {isModalOpen && <TableModal setActive={setIsModalOpen} />}
+          {isModalOpen && (
+            <TableModal
+              setTableChange={handleTableChange}
+              setActive={setIsModalOpen}
+            />
+          )}
           <ReservationForm
             onSubmit={handleUpdate}
             onDelete={handleDelete}

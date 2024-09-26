@@ -1,0 +1,127 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(18, 35, 24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.closeBtn {
+  font-size: 28px;
+}
+
+/* .btnWrapper {
+  margin: 40px 0;
+}
+
+.modalBtn {
+  font-size: 20px;
+  padding: 20px;
+  background-color: #122223;
+  border: 1px solid #ffd9b6;
+  color: #ffd9b6;
+  transition: 0.25s;
+  width: 200px;
+}
+
+.modalBtn:hover,
+.modalBtn:focus {
+  box-shadow: inset 200px 0 0 0 #ffd9b6;
+  color: #122223;
+} */
+
+.locationSelect {
+  margin: 20px 0;
+  padding: 10px;
+  font-size: 16px;
+  color: red;
+}
+.svgContainer {
+  height: 100vh;
+  width: 100%;
+}
+
+.svgContent {
+  height: 100%;
+  width: 100%;
+}
+
+.cls3 {
+  fill: none;
+}
+
+.cls1,
+.cls2,
+.cls3 {
+  stroke: #fff;
+}
+
+.cls1,
+.cls2 {
+  stroke-width: 3px;
+}
+
+.cls2,
+.cls5,
+.cls6 {
+  fill: #fff;
+}
+
+.cls3 {
+  stroke-width: 2px;
+}
+
+.cls4 {
+  fill: none;
+}
+
+.cls5,
+.cls6 {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.table {
+  fill: #fff;
+}
+
+.table:hover rect,
+.table:hover ellipse {
+  fill: #ffd9b6;
+  cursor: pointer;
+}
+
+.table:hover text {
+  fill: #122223;
+  cursor: pointer;
+}
+
+.bar {
+  pointer-events: none;
+}
+
+.booked {
+  fill: red;
+}
+
+.birthday {
+  fill: yellow;
+}
+
+.doubleReserve {
+  fill: blue;
+}

@@ -1,5 +1,5 @@
 //node modules
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -12,6 +12,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 //styles
 import * as styles from "../styles/ReservationDetail.module.css";
+import TableModal from "./TableModal";
 
 const ReservationDetail = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const ReservationDetail = () => {
   const reservation = useSelector((state) =>
     state.reservation.reservations.find((reservation) => reservation.id === +id)
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleUpdate = (data) => {
     const updateReservation = {
@@ -58,13 +60,19 @@ const ReservationDetail = () => {
       });
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className={styles.container}>
       {reservation && (
         <div className={styles.detailBlock} key={reservation.id}>
-          <button className={styles.tableNumber}>
+          <button onClick={handleOpenModal} className={styles.tableNumber}>
             Номер столу: {reservation.tableNumber}
           </button>
+
+          {isModalOpen && <TableModal setActive={setIsModalOpen} />}
           <ReservationForm
             onSubmit={handleUpdate}
             onDelete={handleDelete}

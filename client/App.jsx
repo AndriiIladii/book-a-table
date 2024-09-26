@@ -10,6 +10,7 @@ import TerracePlan from "./components/TerracePlan";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import TableModal from "./components/TableModal";
 import Sidebar from "./components/Sidebar";
 import ReservationList from "./components/ReservationsList";
 import ReservationDetail from "./components/ReservationDetail";
@@ -107,6 +108,12 @@ const App = () => {
               }
             />
             <Route path="*" element={<div>404</div>} />
+            <Route
+              path="/table-modal"
+              element={
+                <TableModal active={modalActive} setActive={setModalActive} />
+              }
+            />
           </Routes>
         ) : (
           <p className={styles.warning}>Авторизуйтесь для роботи</p>

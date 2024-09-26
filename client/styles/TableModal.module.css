@@ -21,7 +21,11 @@
 }
 
 .closeBtn {
-  font-size: 28px;
+  font-size: 25px;
+}
+
+.title {
+  font-size: 25px;
 }
 
 .locationSelect {
@@ -33,7 +37,7 @@
 
 /* Restuarant */
 .svgContainer {
-  height: 780px;
+  height: 770px;
   width: 890px;
 }
 
@@ -99,6 +103,11 @@
 
 /* Terrace */
 
+.svgContainerTerrace {
+  height: 580px;
+  width: 890px;
+}
+
 .cls1Terrace,
 .cls3Terrace {
   fill: #122223;
@@ -154,4 +163,100 @@
 
 .doubleReserve {
   fill: blue;
+}
+
+@media (max-width: 1024px) {
+  .svgContainerTerrace {
+    height: 550px;
+    width: 895px;
+  }
+}
+
+@media (max-width: 768px) {
+  .svgContainerTerrace {
+    height: 510px;
+    width: 895px;
+  }
+
+  .svgContainer {
+    height: 590px;
+    width: 895px;
+  }
+
+  .modal {
+    height: 95vh;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .closeBtn {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 425px) {
+  .svgContainerTerrace {
+    height: 340px;
+    width: 930px;
+  }
+
+  .modal {
+    height: 75vh;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .closeBtn {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 375px) {
+  .svgContainerTerrace {
+    height: 300px;
+    width: 930px;
+  }
+
+  .svgContainer {
+    height: 560px;
+  }
+
+  .modal {
+    height: 65vh;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .closeBtn {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 320px) {
+  .svgContainerTerrace {
+    height: 265px;
+    width: 925px;
+  }
+
+  .svgContainer {
+    height: 510px;
+  }
+
+  .modal {
+    height: 65vh;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .closeBtn {
+    font-size: 18px;
+  }
 }

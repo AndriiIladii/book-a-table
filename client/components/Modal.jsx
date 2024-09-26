@@ -1,11 +1,14 @@
 //node modules
 import React from "react";
-import axios from "axios";
+//Redux
 import { useDispatch } from "react-redux";
 import { setReservation } from "../store/ReservationSlice";
+//Api library
+import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 import { message } from "antd";
+//Components
 import ReservationForm from "./ReservationForm";
 //styles
 import * as styles from "../styles/Modal.module.css";

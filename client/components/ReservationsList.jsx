@@ -1,10 +1,12 @@
 //node modules
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import Select from "react-select";
+import { Link } from "react-router-dom";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
 import { setReservation, deleteReservation } from "../store/ReservationSlice";
+//Api Library
+import axios from "axios";
 // UI library
 import { message } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -70,12 +72,11 @@ const ReservationList = () => {
     { value: "terrace", label: "Тераса" },
   ];
 
-  const filteredReservations =
-    selectedLocation && selectedLocation.value
-      ? reservations.filter(
-          (reservation) => reservation.location === selectedLocation.value
-        )
-      : reservations;
+  const filteredReservations = selectedLocation
+    ? reservations.filter(
+        (reservation) => reservation.location === selectedLocation.value
+      )
+    : reservations;
 
   return (
     <>
@@ -84,7 +85,7 @@ const ReservationList = () => {
         <Select
           className={styles.select}
           options={locationOptions}
-          onChange={(option) => setSelectedLocation(option)}
+          onChange={setSelectedLocation}
           value={selectedLocation}
           isClearable
           placeholder="Виберіть локацію"

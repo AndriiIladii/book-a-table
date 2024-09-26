@@ -1,17 +1,18 @@
+//node modules
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import Select from "react-select";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
+import { setReservation } from "../store/ReservationSlice";
+//Api Library
+import axios from "axios";
+//Components
 import tablesData from "./tablesData";
 import terraceTables from "./terraceData";
-import {
-  setReservation,
-  updateReservationInfo,
-} from "../store/ReservationSlice";
+//Styles
 import * as styles from "../styles/TableModal.module.css";
 
 const TableModal = ({ setActive, setTableChange }) => {
-  const [selectedTable, setSelectedTable] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
@@ -79,7 +80,7 @@ const TableModal = ({ setActive, setTableChange }) => {
   return (
     <div className={styles.overlay} onClick={() => setActive(false)}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <h1>Виберіть локацію для зміни столу</h1>
+        <h1 className={styles.title}>Оберіть локацію для зміни столу</h1>
         <Select
           className={styles.locationSelect}
           options={locationOptions}
@@ -288,7 +289,7 @@ const TableModal = ({ setActive, setTableChange }) => {
             </svg>
           )}
           {selectedLocation?.value === "terrace" && (
-            <div className={styles.svgContainer}>
+            <div className={styles.svgContainerTerrace}>
               <svg
                 id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"

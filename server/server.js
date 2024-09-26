@@ -21,12 +21,6 @@ function saveData(filePath, dataObj) {
   });
 }
 
-function saveUsers(usersPath, usersObj) {
-  fs.writeFileSync(usersPath, JSON.stringify(usersObj), {
-    encoding: "utf-8",
-  });
-}
-
 const data = fs.readFileSync(filePath, { encoding: "utf-8" });
 const users = fs.readFileSync(usersPath, { encoding: "utf-8" });
 usersObj = JSON.parse(users);
@@ -77,7 +71,6 @@ app.get("/reservations", (req, res) => {
     return dateTimeA - dateTimeB;
   });
 
-  console.log(sortedArray);
   res.json(sortedArray);
 });
 

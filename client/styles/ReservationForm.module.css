@@ -183,7 +183,7 @@
 @media (max-width: 768px) {
   .leftBlock input,
   .rightBlock input {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .detailBtn {
@@ -194,7 +194,30 @@
 }
 
 @media (max-width: 425px) {
+  .wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leftBlock,
+  .rightBlock {
+    margin-right: 0;
+  }
   .form {
+    margin: 10px 0 0;
     font-size: 17px;
+  }
+
+  .checkboxWrapper .checkbox {
+    margin-left: 115px;
+  }
+
+  .commentary input {
+    margin-bottom: 20px;
+  }
+
+  .detailBtn {
+    font-size: 16px;
+    padding: 10px;
   }
 }

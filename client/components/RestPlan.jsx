@@ -1,12 +1,16 @@
 //node modules
 import React, { useState, useEffect } from "react";
+//Redux
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import tablesData from "./tablesData";
 import { setReservation } from "../store/ReservationSlice";
+//Api Library
+import axios from "axios";
 // UI library
 import { DatePicker } from "antd";
+//Componentes
 import Legend from "./Legend";
+import tablesData from "./tablesData";
+//Date & Time parsing library
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import weekday from "dayjs/plugin/weekday";

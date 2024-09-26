@@ -1,15 +1,22 @@
+//node modules
 import React, { useState, useEffect } from "react";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
+import { setReservation } from "../store/ReservationSlice";
+//Api Library
 import axios from "axios";
+//Componets
 import Legend from "./Legend";
 import terraceTables from "./terraceData";
+//UI Library
 import { DatePicker } from "antd";
+//Date & Time parsing library
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import weekday from "dayjs/plugin/weekday";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+//styles
 import * as styles from "../styles/TerracePlan.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { setReservation } from "../store/ReservationSlice";
 
 dayjs.extend(weekday);
 dayjs.extend(localeData);
@@ -106,7 +113,7 @@ const TerracePlan = ({ setActive, userName }) => {
           format="DD-MM-YYYY"
         />
       </div>
-      <div className={styles.svgContainer}>
+      <div className={styles.svgContainerTerrace}>
         <svg
           id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"

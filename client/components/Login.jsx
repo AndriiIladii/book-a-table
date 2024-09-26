@@ -1,6 +1,8 @@
 //node modules
 import React from "react";
+//Form Hook
 import { useForm } from "react-hook-form";
+//Api library
 import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
@@ -42,39 +44,34 @@ const Login = ({ loginActive, setLoginActive, setUserName }) => {
   };
 
   return (
-    <>
-      {loginActive && (
-        <div className={styles.loginWrapper}>
-          <div className={styles.loginContent}>
-            <button className={styles.closeBtn} onClick={closeModal}>
-              <CloseOutlined />
+    loginActive && (
+      <div className={styles.loginWrapper}>
+        <div className={styles.loginContent}>
+          <button className={styles.closeBtn} onClick={closeModal}>
+            <CloseOutlined />
+          </button>
+          <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
+            <label>
+              Пароль
+              <input
+                type="password"
+                {...register("password", { required: "Введіть пароль!" })}
+              />
+            </label>
+            <div>
+              {errors?.password && (
+                <p className={styles.formError}>
+                  {errors?.password?.message || "Помилка!"}
+                </p>
+              )}
+            </div>
+            <button className={styles.submitBtn} type="submit">
+              Зайти
             </button>
-            <form
-              className={styles.loginForm}
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              <label>
-                Пароль
-                <input
-                  type="password"
-                  {...register("password", { required: "Введіть пароль!" })}
-                />
-              </label>
-              <div>
-                {errors?.password && (
-                  <p className={styles.formError}>
-                    {errors?.password?.message || "Помилка!"}
-                  </p>
-                )}
-              </div>
-              <button className={styles.submitBtn} type="submit">
-                Зайти
-              </button>
-            </form>
-          </div>
+          </form>
         </div>
-      )}
-    </>
+      </div>
+    )
   );
 };
 

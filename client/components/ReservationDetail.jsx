@@ -1,15 +1,16 @@
 //node modules
 import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+//Redux
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   deleteReservation,
   updateReservationInfo,
 } from "../store/ReservationSlice";
-import ReservationForm from "./ReservationForm";
-import { useParams, useNavigate } from "react-router-dom";
-
+//Api Libary
 import axios from "axios";
+//Components
+import ReservationForm from "./ReservationForm";
 //styles
 import * as styles from "../styles/ReservationDetail.module.css";
 import TableModal from "./TableModal";

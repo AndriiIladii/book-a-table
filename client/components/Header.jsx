@@ -10,7 +10,7 @@ const Header = ({ setLoginActive, userName, setUserName }) => {
   };
 
   const handleLogout = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     localStorage.removeItem("userName");
     setUserName(null);
   };

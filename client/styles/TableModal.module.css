@@ -24,35 +24,17 @@
   font-size: 28px;
 }
 
-/* .btnWrapper {
-  margin: 40px 0;
-}
-
-.modalBtn {
-  font-size: 20px;
-  padding: 20px;
-  background-color: #122223;
-  border: 1px solid #ffd9b6;
-  color: #ffd9b6;
-  transition: 0.25s;
-  width: 200px;
-}
-
-.modalBtn:hover,
-.modalBtn:focus {
-  box-shadow: inset 200px 0 0 0 #ffd9b6;
-  color: #122223;
-} */
-
 .locationSelect {
   margin: 20px 0;
   padding: 10px;
   font-size: 16px;
-  color: red;
+  color: #000;
 }
+
+/* Restuarant */
 .svgContainer {
-  height: 100vh;
-  width: 100%;
+  height: 780px;
+  width: 890px;
 }
 
 .svgContent {
@@ -113,9 +95,57 @@
 .bar {
   pointer-events: none;
 }
+/* Restuarant */
+
+/* Terrace */
+
+.cls1Terrace,
+.cls3Terrace {
+  fill: #122223;
+}
+.cls1Terrace,
+.cls2Terrace,
+.cls3Terrace {
+  stroke: #fff;
+  stroke-miterlimit: 10;
+}
+.cls2Terrace {
+  fill: #fff;
+}
+.cls2Terrace,
+.cls3Terrace {
+  stroke-width: 2px;
+  color: #fff;
+}
+.cls4Terrace {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.tableTerrace {
+  fill: #fff;
+}
+
+.tableTerrace:hover rect,
+.tableTerrace:hover ellipse {
+  fill: #ffd9b6;
+  cursor: pointer;
+}
+
+.tableTerrace:hover text {
+  fill: #122223;
+  cursor: pointer;
+}
+
+/* Terrace */
 
 .booked {
   fill: red;
+}
+
+.booked text,
+.birthday text {
+  fill: #fff;
 }
 
 .birthday {

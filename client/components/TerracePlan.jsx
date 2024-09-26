@@ -2,12 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Legend from "./Legend";
 import terraceTables from "./terraceData";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
+import localeData from "dayjs/plugin/localeData";
+import weekday from "dayjs/plugin/weekday";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import * as styles from "../styles/TerracePlan.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setReservation } from "../store/ReservationSlice";
 
+dayjs.extend(weekday);
+dayjs.extend(localeData);
+dayjs.extend(customParseFormat);
+
 const TerracePlan = ({ setActive, userName }) => {
   const [selectedTable, setSelectedTable] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservation.reservations);
@@ -25,9 +35,24 @@ const TerracePlan = ({ setActive, userName }) => {
       });
   }, []);
 
+  const getFilteredReservations = () => {
+    if (!selectedDate) {
+      return reservations;
+    }
+
+    const formattedSelectedDate = dayjs(selectedDate).format("DD-MM-YYYY");
+
+    return reservations.filter((reservation) => {
+      const reservationDate = dayjs(reservation.date, "DD-MM-YYYY", true);
+      return reservationDate.format("DD-MM-YYYY") === formattedSelectedDate;
+    });
+  };
+
   useEffect(() => {
     if (reservations) {
-      const tables = reservations.reduce((acc, reservation) => {
+      const filteredReservations = getFilteredReservations();
+
+      const tables = filteredReservations.reduce((acc, reservation) => {
         const status = reservation.holiday ? "hasBirthday" : "hasReservation";
         const existingTable = acc.find(
           (table) => table.tableNumber === reservation.tableNumber
@@ -47,11 +72,16 @@ const TerracePlan = ({ setActive, userName }) => {
 
       setBookedTables(tables);
     }
-  }, [reservations]);
+  }, [reservations, selectedDate]);
 
   const handleTable = (number) => {
     setSelectedTable(number);
     setActive(number);
+  };
+
+  const handleDateChange = (date) => {
+    console.log(date);
+    setSelectedDate(date);
   };
 
   const tableStyle = {
@@ -68,7 +98,14 @@ const TerracePlan = ({ setActive, userName }) => {
   return (
     <>
       {userName && <Legend />}
-
+      <div className={styles.datePicker}>
+        <DatePicker
+          className={styles.date}
+          placeholder="Виберіть дату"
+          onChange={handleDateChange}
+          format="DD-MM-YYYY"
+        />
+      </div>
       <div className={styles.svgContainer}>
         <svg
           id="Layer_1"
@@ -77,14 +114,14 @@ const TerracePlan = ({ setActive, userName }) => {
           className={styles.svgContent}
         >
           <rect
-            className={styles.cls1}
+            className={styles.cls1Terrace}
             x="0.5"
             y="0.5"
             width="1518.74"
             height="1062.83"
           />
           <rect
-            className={styles.cls2}
+            className={styles.cls2Terrace}
             x="657.74"
             y="419.23"
             width="120.69"
@@ -94,7 +131,7 @@ const TerracePlan = ({ setActive, userName }) => {
           {terraceTables.map(({ table, text }) => (
             <g
               key={table.number}
-              className={`${styles.table} ${
+              className={`${styles.tableTerrace} ${
                 tableStyle[getTableStatus(table.number)]
               }`}
               onClick={() => handleTable(table.number)}
@@ -105,7 +142,7 @@ const TerracePlan = ({ setActive, userName }) => {
                   y={table.y}
                   width={table.width}
                   height={table.height}
-                  className={`${styles.cls3} ${
+                  className={`${styles.cls3Terrace} ${
                     tableStyle[getTableStatus(table.number)]
                   }`}
                 />
@@ -115,12 +152,12 @@ const TerracePlan = ({ setActive, userName }) => {
                   cy={table.cy}
                   rx={table.rx}
                   ry={table.ry}
-                  className={`${styles.cls3} ${
+                  className={`${styles.cls3Terrace} ${
                     tableStyle[getTableStatus(table.number)]
                   }`}
                 />
               )}
-              <text className={styles.cls4} transform={text.transform}>
+              <text className={styles.cls4Terrace} transform={text.transform}>
                 {table.number}
               </text>
             </g>

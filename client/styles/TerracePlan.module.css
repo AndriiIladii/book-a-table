@@ -9,40 +9,40 @@
   width: 100%;
 }
 
-.cls1,
-.cls3 {
+.cls1Terrace,
+.cls3Terrace {
   fill: #122223;
 }
-.cls1,
-.cls2,
-.cls3 {
+.cls1Terrace,
+.cls2Terrace,
+.cls3Terrace {
   stroke: #fff;
   stroke-miterlimit: 10;
 }
-.cls2 {
+.cls2Terrace {
   fill: #fff;
 }
-.cls2,
-.cls3 {
+.cls2Terrace,
+.cls3Terrace {
   stroke-width: 2px;
   color: #fff;
 }
-.cls4 {
+.cls4Terrace {
   font-size: 24px;
   font-weight: 700;
 }
 
-.table {
+.tableTerrace {
   fill: #fff;
 }
 
-.table:hover rect,
-.table:hover ellipse {
+.tableTerrace:hover rect,
+.tableTerrace:hover ellipse {
   fill: #ffd9b6;
   cursor: pointer;
 }
 
-.table:hover text {
+.tableTerrace:hover text {
   fill: #122223;
   cursor: pointer;
 }
@@ -50,6 +50,7 @@
 .booked {
   fill: red;
 }
+
 .booked text,
 .birthday text {
   fill: #fff;
@@ -61,6 +62,16 @@
 
 .doubleReserve {
   fill: blue;
+}
+
+.datePicker {
+  position: absolute;
+  top: 60px;
+  left: 45%;
+}
+
+.date {
+  height: 30px;
 }
 
 .info {

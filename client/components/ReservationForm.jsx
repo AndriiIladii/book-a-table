@@ -87,7 +87,9 @@ const ReservationForm = ({
                 needConfirm={false}
                 format="DD-MM-YYYY"
                 placeholder="Введіть дату"
-                onChange={(date) => field.onChange(date)}
+                onChange={(date) => {
+                  field.onChange(date);
+                }}
               />
             )}
           />
@@ -112,7 +114,9 @@ const ReservationForm = ({
                 format="HH:mm"
                 minuteStep={15}
                 showSecond={false}
-                onChange={(time) => field.onChange(time)}
+                onChange={(time) => {
+                  field.onChange(time);
+                }}
               />
             )}
           />

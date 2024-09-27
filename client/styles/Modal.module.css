@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20;
 }
 
 .modalContent {
@@ -21,7 +22,7 @@
   padding: 20px;
   border-radius: 12px;
   width: 600px;
-  height: 630px;
+  height: 675px;
 }
 
 .tableNumber {
@@ -40,14 +41,14 @@
 @media (max-width: 768px) {
   .modalContent {
     width: 520px;
-    height: 620px;
+    height: 665px;
   }
 }
 
 @media (max-width: 425px) {
   .modalContent {
     width: 450px;
-    height: 590px;
+    height: 100vh;
   }
 
   .tableNumber {

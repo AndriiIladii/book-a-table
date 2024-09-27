@@ -66,6 +66,7 @@
   position: absolute;
   top: 60px;
   left: 45%;
+  z-index: 1;
 }
 
 .date {
@@ -116,7 +117,7 @@
 
 @media (max-width: 485px) {
   .svgContent {
-    height: 110%;
+    height: 120%;
   }
 
   .datePicker {
@@ -132,7 +133,7 @@
 
 @media (max-width: 320px) {
   .svgContent {
-    height: 90%;
+    height: 100%;
   }
   .svgContainer {
     height: 100vh;

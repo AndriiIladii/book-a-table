@@ -208,6 +208,10 @@
     font-size: 17px;
   }
 
+  .commentary {
+    margin-top: 15px;
+  }
+
   .checkboxWrapper .checkbox {
     margin-left: 115px;
   }

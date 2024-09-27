@@ -24,7 +24,7 @@ dayjs.extend(localeData);
 dayjs.extend(customParseFormat);
 
 const RestPlan = ({ setActive, userName }) => {
-  const [selectedTable, setSelectedTable] = useState(null);
+  const [selectedTable, setSelectedTable] = useState(dayjs());
   const [selectedDate, setSelectedDate] = useState(null);
   const [bookedTables, setBookedTables] = useState([]);
   const dispatch = useDispatch();
@@ -114,6 +114,7 @@ const RestPlan = ({ setActive, userName }) => {
               placeholder="Виберіть дату"
               onChange={handleDateChange}
               format="DD-MM-YYYY"
+              defaultValue={dayjs()}
             />
           </div>
           <svg

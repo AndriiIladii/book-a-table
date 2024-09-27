@@ -170,17 +170,17 @@ legend {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: space-evenly;
-    z-index: 999;
+    position: relative;
     height: 100vh;
     width: 100vw;
     background-color: #305255;
+    z-index: 15;
   }
 
   .topBar.open .burgerIcon {
     position: absolute;
     top: 32px;
     left: 32px;
-    z-index: 20;
   }
 
   .topBar.open Header,

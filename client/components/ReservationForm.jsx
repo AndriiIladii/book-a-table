@@ -90,6 +90,7 @@ const ReservationForm = ({
                 onChange={(date) => {
                   field.onChange(date);
                 }}
+                onFocus={(e) => e.target.blur()}
               />
             )}
           />
@@ -117,6 +118,7 @@ const ReservationForm = ({
                 onChange={(time) => {
                   field.onChange(time);
                 }}
+                onFocus={(e) => e.target.blur()}
               />
             )}
           />

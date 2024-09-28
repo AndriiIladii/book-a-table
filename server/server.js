@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import { isBefore, parseISO, parse } from "date-fns";
+import { isBefore, parse } from "date-fns";
 
 const filePath = "./reservations.json";
 
@@ -47,7 +47,12 @@ function expiredReservations() {
   const currentDate = new Date();
 
   dataObj = dataObj.filter((reservation) => {
-    const reservationDate = parseISO(`${reservation.date}T${reservation.time}`);
+    const reservationDate = parse(
+      `${reservation.date} ${reservation.time}`,
+      "dd-MM-yyyy HH:mm",
+      new Date()
+    );
+
     return !isBefore(reservationDate, currentDate);
   });
 

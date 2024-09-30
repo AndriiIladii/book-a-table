@@ -5,8 +5,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { saveReservation } from "./store/ReservationSlice";
 import { useMediaQuery } from "@uidotdev/usehooks";
 //components
-import RestPlan from "./components/RestPlan";
-import TerracePlan from "./components/TerracePlan";
+import RestPlan from "./components/RestPlan.page";
+import TerracePlan from "./components/TerracePlan.page";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Login from "./components/Login";

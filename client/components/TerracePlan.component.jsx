@@ -1,13 +1,12 @@
 //node modules
 import React, { useState, useEffect } from "react";
+//components
+import terraceTables from "./terraceData";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setReservation } from "../store/ReservationSlice";
 //Api Library
 import axios from "axios";
-//Componets
-import Legend from "./Legend";
-import terraceTables from "./terraceData";
 //UI Library
 import { DatePicker } from "antd";
 //Date & Time parsing library
@@ -22,7 +21,7 @@ dayjs.extend(weekday);
 dayjs.extend(localeData);
 dayjs.extend(customParseFormat);
 
-const TerracePlan = ({ setActive, userName }) => {
+const TerracePlanSvg = ({ setActive }) => {
   const [selectedTable, setSelectedTable] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [bookedTables, setBookedTables] = useState([]);
@@ -101,10 +100,8 @@ const TerracePlan = ({ setActive, userName }) => {
     const table = bookedTables.find((table) => table.tableNumber === number);
     return table ? table.status : null;
   };
-
   return (
     <>
-      {userName && <Legend />}
       <div className={styles.datePicker}>
         <DatePicker
           className={styles.date}
@@ -175,4 +172,4 @@ const TerracePlan = ({ setActive, userName }) => {
   );
 };
 
-export default TerracePlan;
+export default TerracePlanSvg;

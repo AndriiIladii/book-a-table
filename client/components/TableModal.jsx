@@ -1,11 +1,6 @@
 //node modules
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
-//Redux
-import { useSelector, useDispatch } from "react-redux";
-import { setReservation } from "../store/ReservationSlice";
-//Api Library
-import axios from "axios";
 //Components
 import RestPlanSvg from "./RestPlan.component";
 import TerracePlanSvg from "./TerracePlan.component";
@@ -14,46 +9,6 @@ import * as styles from "../styles/TableModal.module.css";
 
 const TableModal = ({ setActive, setTableChange }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
-  const [bookedTables, setBookedTables] = useState([]);
-  const dispatch = useDispatch();
-  const reservations = useSelector((state) => state.reservation.reservations);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:5000/reservations",
-    })
-      .then((response) => {
-        dispatch(setReservation(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (reservations) {
-      const tables = reservations.reduce((acc, reservation) => {
-        const status = reservation.holiday ? "hasBirthday" : "hasReservation";
-        const existingTable = acc.find(
-          (table) => table.tableNumber === reservation.tableNumber
-        );
-
-        if (existingTable) {
-          existingTable.status = "hasDoubleReserve";
-        } else {
-          acc.push({
-            tableNumber: reservation.tableNumber,
-            status: status,
-          });
-        }
-
-        return acc;
-      }, []);
-
-      setBookedTables(tables);
-    }
-  }, [reservations]);
 
   const locationOptions = [
     { value: "", label: "Виберіть локацію" },
@@ -64,17 +19,6 @@ const TableModal = ({ setActive, setTableChange }) => {
   const handleTable = (number) => {
     setTableChange(number);
     setActive(false);
-  };
-
-  const tableStyle = {
-    hasReservation: styles.booked,
-    hasBirthday: styles.birthday,
-    hasDoubleReserve: styles.doubleReserve,
-  };
-
-  const getTableStatus = (number) => {
-    const table = bookedTables.find((table) => table.tableNumber === number);
-    return table ? table.status : null;
   };
 
   return (

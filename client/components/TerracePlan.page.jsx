@@ -87,7 +87,6 @@ const TerracePlan = ({ setActive, userName }) => {
   };
 
   const handleDateChange = (date) => {
-    console.log(date);
     setSelectedDate(date);
   };
 

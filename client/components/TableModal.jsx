@@ -1,6 +1,11 @@
 //node modules
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
+//Redux
+import { useSelector, useDispatch } from "react-redux";
+import { setReservation } from "../store/ReservationSlice";
+//Api Library
+import axios from "axios";
 //Components
 import RestPlanSvg from "./RestPlan.component";
 import TerracePlanSvg from "./TerracePlan.component";
@@ -9,6 +14,46 @@ import * as styles from "../styles/TableModal.module.css";
 
 const TableModal = ({ setActive, setTableChange }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [bookedTables, setBookedTables] = useState([]);
+  const dispatch = useDispatch();
+  const reservations = useSelector((state) => state.reservation.reservations);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/reservations",
+    })
+      .then((response) => {
+        dispatch(setReservation(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (reservations) {
+      const tables = reservations.reduce((acc, reservation) => {
+        const status = reservation.holiday ? "hasBirthday" : "hasReservation";
+        const existingTable = acc.find(
+          (table) => table.tableNumber === reservation.tableNumber
+        );
+
+        if (existingTable) {
+          existingTable.status = "hasDoubleReserve";
+        } else {
+          acc.push({
+            tableNumber: reservation.tableNumber,
+            status: status,
+          });
+        }
+
+        return acc;
+      }, []);
+
+      setBookedTables(tables);
+    }
+  }, [reservations]);
 
   const locationOptions = [
     { value: "", label: "Виберіть локацію" },
@@ -19,6 +64,11 @@ const TableModal = ({ setActive, setTableChange }) => {
   const handleTable = (number) => {
     setTableChange(number);
     setActive(false);
+  };
+
+  const getTableStatus = (number) => {
+    const table = bookedTables.find((table) => table.tableNumber === number);
+    return table ? table.status : null;
   };
 
   return (
@@ -35,11 +85,21 @@ const TableModal = ({ setActive, setTableChange }) => {
         />
 
         <div className={styles.svgContainer}>
-          {selectedLocation?.value === "restaurant" && <RestPlanSvg />}
+          {selectedLocation?.value === "restaurant" && (
+            <RestPlanSvg
+              setActive={setActive}
+              bookedTables={bookedTables}
+              getTableStatus={getTableStatus}
+              handleTable={handleTable}
+            />
+          )}
           {selectedLocation?.value === "terrace" && (
-            <div className={styles.svgContainerTerrace}>
-              <TerracePlanSvg />
-            </div>
+            <TerracePlanSvg
+              setActive={setActive}
+              bookedTables={bookedTables}
+              getTableStatus={getTableStatus}
+              handleTable={handleTable}
+            />
           )}
         </div>
 

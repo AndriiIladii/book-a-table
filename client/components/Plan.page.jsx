@@ -1,11 +1,13 @@
 //node modules
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setReservation } from "../store/ReservationSlice";
 //Components
 import Legend from "./Legend";
 import RestPlanSvg from "./RestPlan.component";
+import TerracePlanSvg from "./TerracePlan.component";
 //UI Library
 import { DatePicker } from "antd";
 //Api Library
@@ -23,7 +25,8 @@ dayjs.extend(weekday);
 dayjs.extend(localeData);
 dayjs.extend(customParseFormat);
 
-const RestPlan = ({ setActive, userName }) => {
+const Plan = ({ setActive, userName }) => {
+  const { location } = useParams();
   const [selectedTable, setSelectedTable] = useState(null);
   const [selectedDate, setSelectedDate] = useState(dayjs());
   const [bookedTables, setBookedTables] = useState([]);
@@ -41,7 +44,7 @@ const RestPlan = ({ setActive, userName }) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [dispatch]);
 
   const getFilteredReservations = () => {
     if (!selectedDate) {
@@ -88,7 +91,6 @@ const RestPlan = ({ setActive, userName }) => {
   };
 
   const handleDateChange = (date) => {
-    console.log(date);
     setSelectedDate(date);
   };
 
@@ -96,6 +98,7 @@ const RestPlan = ({ setActive, userName }) => {
     const table = bookedTables.find((table) => table.tableNumber === number);
     return table ? table.status : null;
   };
+
   return (
     <div className={styles.svgContainer}>
       {userName && (
@@ -110,17 +113,21 @@ const RestPlan = ({ setActive, userName }) => {
             />
           </div>
           <Legend />
-          <RestPlanSvg
-            setActive={setActive}
-            selectedTable={selectedTable}
-            bookedTables={bookedTables}
-            getTableStatus={getTableStatus}
-            handleTable={handleTable}
-          />
+          {location === "restaurant" ? (
+            <RestPlanSvg
+              getTableStatus={getTableStatus}
+              handleTable={handleTable}
+            />
+          ) : location === "terrace" ? (
+            <TerracePlanSvg
+              getTableStatus={getTableStatus}
+              handleTable={handleTable}
+            />
+          ) : null}
         </>
       )}
     </div>
   );
 };
 
-export default RestPlan;
+export default Plan;

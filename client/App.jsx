@@ -1,12 +1,11 @@
 //node modules
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { saveReservation } from "./store/ReservationSlice";
 import { useMediaQuery } from "@uidotdev/usehooks";
 //components
-import RestPlan from "./components/RestPlan.page";
-import TerracePlan from "./components/TerracePlan.page";
+import Plan from "./components/Plan.page";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Login from "./components/Login";
@@ -87,27 +86,15 @@ const App = () => {
       <main>
         {userName ? (
           <Routes>
-            <Route path="/" element={<Navigate to="/restaurant-plan" />} />
+            <Route path="/" element={<Navigate to="/plan/restuarant" />} />
             <Route
-              path="/restaurant-plan"
-              element={
-                <RestPlan
-                  setActive={handleSetActive}
-                  view="Rest Plan"
-                  userName={userName}
-                />
-              }
+              path="/plan/:location"
+              element={<Plan setActive={handleSetActive} userName={userName} />}
             />
             <Route path="/reservations" element={<ReservationList />} />
             <Route
               path="/reservation/:id"
               element={<ReservationDetail setTable={setTableNumber} />}
-            />
-            <Route
-              path="/terrace-plan"
-              element={
-                <TerracePlan setActive={handleSetActive} userName={userName} />
-              }
             />
 
             <Route path="*" element={<div>404</div>} />

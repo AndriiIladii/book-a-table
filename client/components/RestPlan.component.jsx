@@ -4,13 +4,7 @@ import React from "react";
 import tablesData from "./tablesData";
 import * as styles from "../styles/RestPlan.module.css";
 
-const RestPlanSvg = ({
-  setActive,
-  selectedTable,
-  bookedTables,
-  getTableStatus,
-  handleTable,
-}) => {
+const RestPlanSvg = ({ getTableStatus, handleTable }) => {
   const tableStyle = {
     hasReservation: styles.booked,
     hasBirthday: styles.birthday,

@@ -5,13 +5,7 @@ import terraceTables from "./terraceData";
 //styles
 import * as styles from "../styles/TerracePlan.module.css";
 
-const TerracePlanSvg = ({
-  setActive,
-  selectedTable,
-  bookedTables,
-  getTableStatus,
-  handleTable,
-}) => {
+const TerracePlanSvg = ({ getTableStatus, handleTable }) => {
   const tableStyle = {
     hasReservation: styles.booked,
     hasBirthday: styles.birthday,

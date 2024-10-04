@@ -10,7 +10,7 @@ const Sidebar = ({ userName, closeMenu }) => {
       {userName && (
         <>
           <div className={styles.topButtons}>
-            <Link to="/restaurant-plan">
+            <Link to="/plan/restaurant">
               <button onClick={closeMenu} className={styles.sidebarBtn}>
                 Ресторан
               </button>
@@ -22,7 +22,7 @@ const Sidebar = ({ userName, closeMenu }) => {
             </Link>
           </div>
           <div className={styles.bottomButtons}>
-            <Link to="/terrace-plan">
+            <Link to="/plan/terrace">
               <button onClick={closeMenu} className={styles.sidebarBtn}>
                 Тераса
               </button>

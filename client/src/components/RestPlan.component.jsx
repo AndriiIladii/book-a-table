@@ -1,8 +1,8 @@
 //node modules
 import React from "react";
 //components
-import tablesData from "./tablesData";
-import * as styles from "../styles/RestPlan.module.css";
+import tablesData from "../configs/restaurant.config";
+import * as styles from "../../styles/RestPlan.module.css";
 
 const RestPlanSvg = ({ getTableStatus, handleTable }) => {
   const tableStyle = {

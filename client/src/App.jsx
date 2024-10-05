@@ -2,18 +2,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { saveReservation } from "./store/ReservationSlice";
+import { saveReservation } from "./redux/ReservationSlice";
 import { useMediaQuery } from "@uidotdev/usehooks";
 //components
-import Plan from "./components/Plan.page";
+import Plan from "./pages/Plan.page";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
-import ReservationList from "./components/ReservationsList";
-import ReservationDetail from "./components/ReservationDetail";
+import ReservationList from "./pages/ReservationsList.page";
+import ReservationDetail from "./pages/Reservation Details/ReservationDetail.page";
 //styles
-import * as styles from "./styles/App.module.css";
+import * as styles from "../styles/App.module.css";
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -86,7 +86,7 @@ const App = () => {
       <main>
         {userName ? (
           <Routes>
-            <Route path="/" element={<Navigate to="/plan/restuarant" />} />
+            <Route path="/" element={<Navigate to="/plan/restaurant" />} />
             <Route
               path="/plan/:location"
               element={<Plan setActive={handleSetActive} userName={userName} />}

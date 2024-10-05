@@ -1,9 +1,9 @@
 //node modules
 import React from "react";
 //components
-import terraceTables from "./terraceData";
+import terraceTables from "../configs/terrace.config";
 //styles
-import * as styles from "../styles/TerracePlan.module.css";
+import * as styles from "../../styles/TerracePlan.module.css";
 
 const TerracePlanSvg = ({ getTableStatus, handleTable }) => {
   const tableStyle = {

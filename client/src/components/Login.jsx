@@ -7,7 +7,7 @@ import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 //styles
-import * as styles from "../styles/Login.module.css";
+import * as styles from "../../styles/Login.module.css";
 
 const Login = ({ loginActive, setLoginActive, setUserName }) => {
   const {

@@ -1,7 +1,7 @@
 //node modules
 import React from "react";
 //styles
-import * as styles from "../styles/Header.module.css";
+import * as styles from "../../styles/Header.module.css";
 
 const Header = ({ setLoginActive, userName, setUserName }) => {
   const handleLogin = (e) => {

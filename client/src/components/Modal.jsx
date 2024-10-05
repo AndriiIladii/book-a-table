@@ -2,16 +2,16 @@
 import React from "react";
 //Redux
 import { useDispatch } from "react-redux";
-import { setReservation } from "../store/ReservationSlice";
+import { setReservation } from "../redux/ReservationSlice";
 //Api library
 import axios from "axios";
 // UI library
 import { CloseOutlined } from "@ant-design/icons";
 import { message } from "antd";
 //Components
-import ReservationForm from "./ReservationForm";
+import ReservationForm from "../pages/Reservation Details/components/ReservationForm.component";
 //styles
-import * as styles from "../styles/Modal.module.css";
+import * as styles from "../../styles/Modal.module.css";
 
 const Modal = ({ active, setActive, tableNumber }) => {
   const dispatch = useDispatch();

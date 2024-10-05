@@ -4,18 +4,18 @@ import Select from "react-select";
 import { Link } from "react-router-dom";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setReservation, deleteReservation } from "../store/ReservationSlice";
+import { setReservation, deleteReservation } from "../redux/ReservationSlice";
 //Api Library
 import axios from "axios";
 // UI library
 import { message } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 // images import
-import terrace from "../images/terrace.jpg";
-import rest from "../images/rest.jpg";
-import logo from "../images/logo.png";
+import terrace from "../../public/images/terrace.jpg";
+import rest from "../../public/images/rest.jpg";
+import logo from "../../public/images/logo.png";
 //styles
-import * as styles from "../styles/Reservation.module.css";
+import * as styles from "../../styles/Reservation.module.css";
 
 const ReservationList = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);

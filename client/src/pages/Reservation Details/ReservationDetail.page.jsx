@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   deleteReservation,
   updateReservationInfo,
-} from "../store/ReservationSlice";
+} from "../../redux/ReservationSlice";
 //Api Libary
 import axios from "axios";
 //Components
-import ReservationForm from "./ReservationForm";
+import TableModal from "../Reservation Details/components/TableModal.component";
+import ReservationForm from "../Reservation Details/components/ReservationForm.component";
 //styles
-import * as styles from "../styles/ReservationDetail.module.css";
-import TableModal from "./TableModal";
+import * as styles from "../../../styles/ReservationDetail.module.css";
 
 const ReservationDetail = ({ setTable }) => {
   const { id } = useParams();

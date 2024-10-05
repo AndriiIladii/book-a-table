@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setReservation } from "../store/ReservationSlice";
+import { setReservation } from "../redux/ReservationSlice";
 //Components
-import Legend from "./Legend";
-import RestPlanSvg from "./RestPlan.component";
-import TerracePlanSvg from "./TerracePlan.component";
+import Legend from "../components/Legend";
+import RestPlanSvg from "../components/RestPlan.component";
+import TerracePlanSvg from "../components/TerracePlan.component";
 //UI Library
 import { DatePicker } from "antd";
 //Api Library
@@ -18,8 +18,8 @@ import localeData from "dayjs/plugin/localeData";
 import weekday from "dayjs/plugin/weekday";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 //styles
-import "../styles/App.module.css";
-import * as styles from "../styles/RestPlan.module.css";
+import "../../styles/App.module.css";
+import * as styles from "../../styles/RestPlan.module.css";
 
 dayjs.extend(weekday);
 dayjs.extend(localeData);

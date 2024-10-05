@@ -10,7 +10,7 @@ import localeData from "dayjs/plugin/localeData";
 import weekday from "dayjs/plugin/weekday";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 //styles
-import * as styles from "../styles/ReservationForm.module.css";
+import * as styles from "../../../../styles/ReservationForm.module.css";
 
 dayjs.extend(weekday);
 dayjs.extend(localeData);

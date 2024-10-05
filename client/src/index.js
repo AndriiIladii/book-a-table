@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import store from "./store/store";
+import store from "../src/store";
 import { ConfigProvider } from "antd";
 import { Provider } from "react-redux";
 import App from "./App";

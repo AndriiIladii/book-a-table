@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setReservation } from "../store/ReservationSlice";
+import { setReservation } from "../../../redux/ReservationSlice";
 //Api Library
 import axios from "axios";
 //Components
-import RestPlanSvg from "./RestPlan.component";
-import TerracePlanSvg from "./TerracePlan.component";
+import RestPlanSvg from "../../../components/RestPlan.component";
+import TerracePlanSvg from "../../../components/TerracePlan.component";
 //Styles
-import * as styles from "../styles/TableModal.module.css";
+import * as styles from "../../../../styles/TableModal.module.css";
 
 const TableModal = ({ setActive, setTableChange }) => {
   const [selectedLocation, setSelectedLocation] = useState("");

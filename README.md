@@ -56,13 +56,7 @@ Before installation, make sure you have the following dependencies installed:
 6. Start the server:
 
    ```bash
-    yarn
-   ```
-
-7. Start the server:
-
-   ```bash
-    yarn
+    yarn dev
    ```
 
 ### Running the Application

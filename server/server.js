@@ -1,45 +1,61 @@
 import express from "express";
+import mongoose from "mongoose";
 import cors from "cors";
 import fs from "fs";
 import { isBefore, parse } from "date-fns";
-
-const filePath = "./reservations.json";
-
-const usersPath = "./users.json";
+import User from "./models/users.model.js";
+import Reservation from "./models/reservations.model.js";
 
 const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-let dataObj = [];
-let usersObj = [];
-
-function saveData(filePath, dataObj) {
-  fs.writeFileSync(filePath, JSON.stringify(dataObj), {
-    encoding: "utf-8",
+mongoose
+  .connect(
+    "mongodb+srv://admin:admin@backenddb.j6vlx.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB"
+  )
+  .then(() => {
+    console.log("connected to db");
+    migrateUsers();
+  })
+  .catch(() => {
+    console.log("connection failed");
   });
+
+async function migrateUsers() {
+  try {
+    const data = fs.readFileSync("users.json", { encoding: "utf-8" });
+    const users = JSON.parse(data);
+
+    await User.insertMany(users);
+    console.log("migrated successfully");
+
+    mongoose.connection.close();
+  } catch (error) {
+    console.error("Error ", error);
+    mongoose.connection.close();
+  }
 }
 
-const data = fs.readFileSync(filePath, { encoding: "utf-8" });
-const users = fs.readFileSync(usersPath, { encoding: "utf-8" });
-usersObj = JSON.parse(users);
-dataObj = JSON.parse(data);
-
-app.post("/users", (req, res) => {
+app.post("/users", async (req, res) => {
   const { password } = req.body;
 
-  const user = usersObj.find((user) => user.password === password);
+  try {
+    const user = await User.findOne({ password });
 
-  if (user) {
-    res.send({
-      name: user.name,
-      message: `Welcome ${user.name}`,
-    });
-  } else {
-    res.send({
-      message: "Wrong Password",
-    });
+    if (user) {
+      res.send({
+        name: user.name,
+        message: `Welcome ${user.name}`,
+      });
+    } else {
+      res.send({
+        message: "Wrong Password",
+      });
+    }
+  } catch (error) {
+    res.status(500).send({ message: "Server error" });
   }
 });
 

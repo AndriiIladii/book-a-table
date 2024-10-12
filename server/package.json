@@ -11,6 +11,8 @@
     "date-fns": "^3.6.0",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
     "nodemon": "^3.1.7",
     "path": "^0.12.7"
   },

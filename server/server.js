@@ -17,7 +17,12 @@ mongoose
   )
   .then(() => {
     console.log("connected to db");
+
     migrateUsers();
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
   })
   .catch(() => {
     console.log("connection failed");
@@ -30,11 +35,8 @@ async function migrateUsers() {
 
     await User.insertMany(users);
     console.log("migrated successfully");
-
-    mongoose.connection.close();
   } catch (error) {
     console.error("Error ", error);
-    mongoose.connection.close();
   }
 }
 
@@ -55,6 +57,7 @@ app.post("/users", async (req, res) => {
       });
     }
   } catch (error) {
+    console.error("Error during authentication", error);
     res.status(500).send({ message: "Server error" });
   }
 });
@@ -136,8 +139,4 @@ app.put("/reservations/:id", (req, res) => {
   res.send({
     message: "Reservation was updated",
   });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
 });

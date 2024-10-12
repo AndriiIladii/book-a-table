@@ -15,7 +15,12 @@ const reservationSchema = mongoose.Schema({
   },
   table_number: {
     type: Number,
-    required: true,
+  },
+  phone_number: {
+    type: Number,
+  },
+  guest_count: {
+    type: Number,
   },
   special_requests: {
     type: String,

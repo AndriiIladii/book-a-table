@@ -14,6 +14,18 @@ const reservationSchema = mongoose.Schema({
     required: true,
   },
   tableNumber: {
+<<<<<<< HEAD
+=======
+    type: String,
+  },
+  phoneNumber: {
+    type: String,
+  },
+  guestCount: {
+    type: Number,
+  },
+  specialRequests: {
+>>>>>>> bb14034e0c59f13e0de43cfc08a8a9d5e102b2fe
     type: String,
   },
   tel: {

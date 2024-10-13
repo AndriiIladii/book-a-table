@@ -35,7 +35,6 @@ async function migrateUsers() {
     const users = JSON.parse(data);
 
     await User.insertMany(users);
-    console.log("migrated successfully");
   } catch (error) {
     console.error("Error ", error);
   }
@@ -68,6 +67,10 @@ async function expiredReservations() {
 
   try {
     const expiredReservations = await Reservation.find({});
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb14034e0c59f13e0de43cfc08a8a9d5e102b2fe
     const expired = expiredReservations
       .filter((reservation) => {
         const reservationDate = parse(
@@ -78,6 +81,10 @@ async function expiredReservations() {
         return isBefore(reservationDate, currentDate);
       })
       .map((reservation) => reservation._id);
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb14034e0c59f13e0de43cfc08a8a9d5e102b2fe
     if (expired.length > 0) {
       await Reservation.deleteMany({ _id: { $in: expired } });
     } else {
@@ -105,7 +112,10 @@ app.post("/reservations", async (req, res) => {
     await newReservation.save();
     res.send({ message: "New Reservation was added" });
   } catch (error) {
+<<<<<<< HEAD
     console.error("Error saving reservation:", error);
+=======
+>>>>>>> bb14034e0c59f13e0de43cfc08a8a9d5e102b2fe
     res.status(500).send({ message: "Server error" });
   }
 });

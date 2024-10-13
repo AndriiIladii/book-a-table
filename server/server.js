@@ -34,7 +34,6 @@ async function migrateUsers() {
     const users = JSON.parse(data);
 
     await User.insertMany(users);
-    console.log("migrated successfully");
   } catch (error) {
     console.error("Error ", error);
   }
@@ -62,81 +61,77 @@ app.post("/users", async (req, res) => {
   }
 });
 
-function expiredReservations() {
+async function expiredReservations() {
   const currentDate = new Date();
 
-  dataObj = dataObj.filter((reservation) => {
-    const reservationDate = parse(
-      `${reservation.date} ${reservation.time}`,
-      "dd-MM-yyyy HH:mm",
-      new Date()
-    );
+  try {
+    const expiredReservations = await Reservation.find({});
 
-    return !isBefore(reservationDate, currentDate);
-  });
+    const expired = expiredReservations
+      .filter((reservation) => {
+        const reservationDate = parse(
+          `${reservation.date} ${reservation.time}`,
+          "dd-MM-yyyy HH:mm",
+          new Date()
+        );
+        return isBefore(reservationDate, currentDate);
+      })
+      .map((reservation) => reservation._id);
 
-  saveData(filePath, dataObj);
+    if (expired.length > 0) {
+      await Reservation.deleteMany({ _id: { $in: expired } });
+    } else {
+    }
+  } catch (error) {
+    console.error("Error removing expired reservations", error);
+  }
 }
 
 setInterval(expiredReservations, 7200000);
 
-app.get("/reservations", (req, res) => {
-  const sortedArray = dataObj.sort((a, b) => {
-    const dateTimeA = parse(
-      `${a.date} ${a.time}`,
-      "dd-MM-yyyy HH:mm",
-      new Date()
+app.get("/reservations", async (req, res) => {
+  try {
+    const reservations = await Reservation.find().sort({ date: 1, time: 1 });
+    res.json(reservations);
+  } catch (error) {
+    res.status(500).send({ message: "Server error" });
+  }
+});
+
+app.post("/reservations", async (req, res) => {
+  const newReservation = new Reservation(req.body);
+
+  try {
+    await newReservation.save();
+    res.send({ message: "New Reservation was added" });
+  } catch (error) {
+    res.status(500).send({ message: "Server error" });
+  }
+});
+
+app.delete("/reservations/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Reservation.findByIdAndDelete(id);
+    res.send({ message: "Reservation was deleted" });
+  } catch (error) {
+    res.status(500).send({ message: "Server error" });
+  }
+});
+
+app.put("/reservations/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+
+  try {
+    const updatedReservation = await Reservation.findByIdAndUpdate(
+      id,
+      updatedData,
+      { new: true }
     );
-    const dateTimeB = parse(
-      `${b.date} ${b.time}`,
-      "dd-MM-yyyy HH:mm",
-      new Date()
-    );
-    return dateTimeA - dateTimeB;
-  });
-
-  res.json(sortedArray);
-});
-
-app.post("/reservations", (req, res) => {
-  const newReservation = req.body;
-
-  dataObj.push(newReservation);
-
-  saveData(filePath, dataObj);
-
-  res.send({
-    message: "New Reservation was added",
-  });
-});
-
-app.delete("/reservations/:id", (req, res) => {
-  const reservationId = +req.params.id;
-
-  const filteredReservation = dataObj.filter(
-    (reservation) => reservation.id !== reservationId
-  );
-
-  dataObj = filteredReservation;
-  saveData(filePath, dataObj);
-  res.send({
-    message: "Reservation was deleted",
-  });
-});
-
-app.put("/reservations/:id", (req, res) => {
-  const reservationId = +req.params.id;
-  const updatedReservation = req.body;
-
-  const reservation = dataObj.find(
-    (reservation) => reservation.id === reservationId
-  );
-
-  Object.assign(reservation, updatedReservation);
-
-  saveData(filePath, dataObj);
-
-  res.send({
-    message: "Reservation was updated",
-  });
+    res.send({ message: "Reservation was updated", updatedReservation });
+  } catch (error) {
+    res.status(500).send({ message: "Server error" });
+  }
 });

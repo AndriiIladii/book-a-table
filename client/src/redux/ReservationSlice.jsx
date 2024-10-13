@@ -10,7 +10,7 @@ export const ReservationSlice = createSlice({
   reducers: {
     deleteReservation: (state, action) => {
       state.reservations = state.reservations.filter(
-        (reservation) => reservation.id !== action.payload
+        (reservation) => reservation._id !== action.payload
       );
     },
     updateReservationInfo: (state, action) => {

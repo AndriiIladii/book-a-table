@@ -94,7 +94,7 @@ const ReservationList = () => {
         {filteredReservations.length > 0 ? (
           <ul className={styles.reservationCards}>
             {filteredReservations.map((reservation) => (
-              <div key={reservation.id} className={styles.cardContent}>
+              <div key={reservation._id} className={styles.cardContent}>
                 <li>
                   <div className={styles.cardImg}>
                     <img
@@ -120,7 +120,7 @@ const ReservationList = () => {
                   <div className={styles.btnWrapper}>
                     <Link
                       className={styles.cardBtn}
-                      to={`/reservation/${reservation.id}`}
+                      to={`/reservation/${reservation._id}`}
                     >
                       <button>Перевірити бронювання</button>
                     </Link>
@@ -128,7 +128,7 @@ const ReservationList = () => {
                       className={styles.deleteBtn}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleDelete(reservation.id);
+                        handleDelete(reservation._id);
                       }}
                     >
                       <DeleteOutlined />

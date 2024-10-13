@@ -20,19 +20,19 @@ const ReservationDetail = ({ setTable }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const reservation = useSelector((state) =>
-    state.reservation.reservations.find((reservation) => reservation.id === +id)
+    state.reservation.reservations.find((reservation) => reservation._id === id)
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleUpdate = (data) => {
     const updateReservation = {
-      id: reservation.id,
+      id: reservation._id,
       ...data,
     };
 
     axios({
       method: "PUT",
-      url: `http://localhost:5000/reservations/${reservation.id}`,
+      url: `http://localhost:5000/reservations/${reservation._id}`,
       data: updateReservation,
     })
       .then((response) => {
@@ -49,11 +49,11 @@ const ReservationDetail = ({ setTable }) => {
     e.preventDefault();
     axios({
       method: "DELETE",
-      url: `http://localhost:5000/reservations/${reservation.id}`,
+      url: `http://localhost:5000/reservations/${reservation._id}`,
     })
       .then((response) => {
         console.log(response.data);
-        dispatch(deleteReservation(reservation.id));
+        dispatch(deleteReservation(reservation._id));
         navigate("/reservations");
       })
       .catch((error) => {
@@ -73,7 +73,7 @@ const ReservationDetail = ({ setTable }) => {
 
     axios({
       method: "PUT",
-      url: `http://localhost:5000/reservations/${reservation.id}`,
+      url: `http://localhost:5000/reservations/${reservation._id}`,
       data: updatedReservation,
     })
       .then((response) => {
@@ -90,7 +90,7 @@ const ReservationDetail = ({ setTable }) => {
   return (
     <div className={styles.container}>
       {reservation && (
-        <div className={styles.detailBlock} key={reservation.id}>
+        <div className={styles.detailBlock} key={reservation._id}>
           <button onClick={handleOpenModal} className={styles.tableNumber}>
             Номер столу: {reservation.tableNumber}
           </button>

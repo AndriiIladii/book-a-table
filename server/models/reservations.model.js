@@ -13,19 +13,19 @@ const reservationSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  table_number: {
-    type: Number,
-  },
-  phone_number: {
-    type: Number,
-  },
-  guest_count: {
-    type: Number,
-  },
-  special_requests: {
+  tableNumber: {
     type: String,
   },
-  birthday: {
+  tel: {
+    type: String,
+  },
+  guests: {
+    type: Number,
+  },
+  comment: {
+    type: String,
+  },
+  holiday: {
     type: Boolean,
   },
 });

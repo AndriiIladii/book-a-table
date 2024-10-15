@@ -175,7 +175,7 @@ const RestPlanSvg = ({ getTableStatus, handleTable }) => {
 
         {tablesData.map(({ table, text }) => (
           <g
-            key={table.number}
+            key={`${table.number}-${getTableStatus(table.number)}`} // Изменение ключа для перерисовки
             className={`${styles.table} ${
               tableStyle[getTableStatus(table.number)]
             }`}

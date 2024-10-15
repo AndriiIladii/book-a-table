@@ -99,11 +99,26 @@ app.get("/reservations", async (req, res) => {
 });
 
 app.post("/reservations", async (req, res) => {
-  const newReservation = new Reservation(req.body);
+  const { date, tableNumber, holiday } = req.body;
 
   try {
+    const existingReservation = await Reservation.findOne({
+      date,
+      tableNumber,
+    });
+
+    let status = holiday ? "hasBirthday" : "hasReservation";
+    if (existingReservation) {
+      status = "hasDoubleReserve";
+    }
+
+    const newReservation = new Reservation({
+      ...req.body,
+      status,
+    });
+
     await newReservation.save();
-    res.send({ message: "New Reservation was added" });
+    res.send({ message: "New Reservation was added", newReservation });
   } catch (error) {
     res.status(500).send({ message: "Server error" });
   }

@@ -28,6 +28,9 @@ const reservationSchema = mongoose.Schema({
   holiday: {
     type: Boolean,
   },
+  status: {
+    type: String,
+  },
 });
 
 const Reservation = mongoose.model("Reservation", reservationSchema);

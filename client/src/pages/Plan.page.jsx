@@ -95,7 +95,9 @@ const Plan = ({ setActive, userName }) => {
   };
 
   const getTableStatus = (number) => {
-    const table = bookedTables.find((table) => table.tableNumber === number);
+    const table = bookedTables.find(
+      (table) => table.tableNumber === String(number)
+    );
     return table ? table.status : null;
   };
 
